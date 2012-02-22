@@ -1,0 +1,26 @@
+<% @index_page=false; @subject_page=true; @calender_page=false; %>
+<% @bbs_page=false; @mail_page=false; @sns_page=false; about_page=false %>
+<% content_for :content do %>
+  <nav id="grobal-side-navigation">
+    <h1>2年前期</h1>
+    <section>
+      <ul>
+        <li><a href=medical-introduction.html>医学概論</a></li>
+        <li><a href=clinical-introduction.html>診療学入門</a></li>
+        <li><a href=medical-english.html>医学英語演習</a></li>
+        <li><a href=genetics.html>遺伝学</a></li>
+        <li><a href=cell-biology.html>細胞生物学</a></li>
+        <li><a href=anatomy-histology.html>解剖学（組織学）</a></li>
+        <li><a href=histology-practice.html>組織学実習</a></li>
+        <li><a href=early-clinical-practice.html>早期臨床演習</a></li>
+      </ul>
+    </section>
+  </nav>
+
+  <div id=grobal-main-column>
+
+    <%= yield %>
+
+  </div>
+<% end %>
+<%= render template: 'layouts/application' %>

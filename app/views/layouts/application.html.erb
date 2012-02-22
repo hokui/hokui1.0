@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @page_title ? @page_title : "hokudaimedicine93.com" %></title>
+  <%= stylesheet_link_tag    "reset" %>
+  <%= stylesheet_link_tag    "grobal" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id=grobal-wrapper>
+
+    <header id=grobal-header>
+      <%= image_tag 'grobal-image/grobal-top.png', alt: 'page-top' %>
+      <nav id=grobal-header-menu>
+        <ul>
+          <li id="grobal-header-menu-home">
+            <% if @index_page %>
+              <%= link_to '', {controller: 'index', action: 'index'}, {class: 'self-link'} %>
+            <% else %>
+              <%= link_to '', {controller: 'index', action: 'index'}, {class: 'other-page'} %>
+            <% end %>
+          </li>
+          <li id="grobal-header-menu-subject">
+            <% if @subject_page %>
+              <%= link_to '', {controller: 'subject', action: 'index'}, {class: 'self-link'} %>
+            <% else %>
+              <%= link_to '', {controller: 'subject', action: 'index'}, {class: 'other-page'} %>
+            <% end %>
+          </li>
+          <li id="grobal-header-menu-calender">
+            <% if @calender_page %>
+              <%= link_to '', {controller: 'calender', action: 'index'}, {class: 'self-link'} %>
+            <% else %>
+              <%= link_to '', {controller: 'calender', action: 'index'}, {class: 'other-page'} %>
+            <% end %>
+          </li>
+          <li id="grobal-header-menu-bbs">
+            <% if @bbs_page %>
+              <%= link_to '', {controller: 'bbs', action: 'index'}, {class: 'self-link'} %>
+            <% else %>
+              <%= link_to '', {controller: 'bbs', action: 'index'}, {class: 'other-page'} %>
+            <% end %>
+          </li>
+          <li id="grobal-header-menu-mail">
+            <% if @mail_page %>
+              <%= link_to '', {controller: 'mail', action: 'index'}, {class: 'self-link'} %>
+            <% else %>
+              <%= link_to '', {controller: 'mail', action: 'index'}, {class: 'other-page'} %>
+            <% end %>
+          </li>
+          <li id="grobal-header-menu-sns">
+            <% if @sns_page %>
+              <%= link_to '', {controller: 'index', action: 'sns'}, {class: 'self-link'} %>
+            <% else %>
+              <%= link_to '', {controller: 'index', action: 'sns'}, {class: 'other-page'} %>
+            <% end %>
+          </li>
+          <li id="grobal-header-menu-about">
+            <% if @about_page %>
+              <%= link_to '', {controller: 'index', action: 'about'}, {class: 'self-link'} %>
+            <% else %>
+              <%= link_to '', {controller: 'index', action: 'about'}, {class: 'other-page'} %>
+           <% end %>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <%= content_for?(:content) ? yield(:content) : yield %>
+
+    <footer id=grobal-footer>
+      <hr><!-- TODO 後できちんと画像にすること-->
+      <address>
+        Copyright 2011-2012 hokudaimedicine93.com
+      </address>
+    </footer>
+
+  </div>
+</body>
+</html>
