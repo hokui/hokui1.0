@@ -1,12 +1,14 @@
 class CreateExams < ActiveRecord::Migration
   def change
     create_table :exams do |t|
-      t.integer :year
-      t.boolean :type
-      t.binary :file
-      t.string :ftype
+      t.integer :year, null: false
+      t.boolean :type, null: false
+      t.binary :file, null: false
+      t.string :ftype, null: false
 
       t.timestamps
     end
+
+    add_index :exams, :file, unique: true
   end
 end
