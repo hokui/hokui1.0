@@ -1,4 +1,10 @@
 Med93::Application.routes.draw do
+  resources :summaries
+
+  resources :quizzes
+
+  resources :exams
+
   resources :subjects
 
   #get "mail/index"

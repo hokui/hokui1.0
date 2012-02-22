@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Year:</b>
+  <%= @exam.year %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @exam.type %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%= @exam.file %>
+</p>
+
+<p>
+  <b>Ftype:</b>
+  <%= @exam.ftype %>
+</p>
+
+
+<%= link_to 'Edit', edit_exam_path(@exam) %> |
+<%= link_to 'Back', exams_path %>

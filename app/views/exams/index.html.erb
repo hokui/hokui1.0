@@ -1,0 +1,29 @@
+<h1>Listing exams</h1>
+
+<table>
+  <tr>
+    <th>Year</th>
+    <th>Type</th>
+    <th>File</th>
+    <th>Ftype</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @exams.each do |exam| %>
+  <tr>
+    <td><%= exam.year %></td>
+    <td><%= exam.type %></td>
+    <td><%= exam.file %></td>
+    <td><%= exam.ftype %></td>
+    <td><%= link_to 'Show', exam %></td>
+    <td><%= link_to 'Edit', edit_exam_path(exam) %></td>
+    <td><%= link_to 'Destroy', exam, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Exam', new_exam_path %>

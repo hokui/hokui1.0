@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Number:</b>
+  <%= @summary.number %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%= @summary.file %>
+</p>
+
+<p>
+  <b>Ftype:</b>
+  <%= @summary.ftype %>
+</p>
+
+
+<%= link_to 'Edit', edit_summary_path(@summary) %> |
+<%= link_to 'Back', summaries_path %>
