@@ -4,7 +4,8 @@ class CreateExams < ActiveRecord::Migration
       t.integer :year, null: false
       t.boolean :type, null: false
       t.binary :file, null: false
-      t.string :ftype, null: false
+      t.string :content_type, null: false
+      t.string :file_name, null: false
 
       t.timestamps
     end

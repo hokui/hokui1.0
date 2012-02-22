@@ -1,4 +1,7 @@
 class ExamsController < ApplicationController
+
+  layout "subject"
+
   # GET /exams
   # GET /exams.json
   def index

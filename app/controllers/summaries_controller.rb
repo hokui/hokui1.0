@@ -1,4 +1,7 @@
 class SummariesController < ApplicationController
+
+  layout "subject"
+
   # GET /summaries
   # GET /summaries.json
   def index

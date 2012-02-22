@@ -2,8 +2,9 @@
 <html>
 <head>
   <title><%= @page_title ? @page_title : "hokudaimedicine93.com" %></title>
-  <%= stylesheet_link_tag    "reset" %>
-  <%= stylesheet_link_tag    "grobal" %>
+  <%= stylesheet_link_tag "reset" %>
+  <%= stylesheet_link_tag "grobal" %>
+  <%= yield :stylesheet %>
   <%= csrf_meta_tags %>
 </head>
 <body>

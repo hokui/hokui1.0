@@ -1,4 +1,7 @@
 class SubjectsController < ApplicationController
+
+  layout "subject"
+
   # GET /subjects
   # GET /subjects.json
   def index

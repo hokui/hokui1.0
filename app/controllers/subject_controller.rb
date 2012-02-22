@@ -1,9 +1,10 @@
 class SubjectController < ApplicationController
+
+  layout "subject"
+
   def index
-    render layout: 'subject'
   end
 
   def statistics
-    render layout: 'subject'
   end
 end

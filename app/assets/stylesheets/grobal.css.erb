@@ -24,6 +24,7 @@ body
   padding: 0;
   clear: both;
   height: 88px;
+  position: relative;
 }
 
 #grobal-header img
@@ -32,9 +33,10 @@ body
   height: 60px;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
-#grobal-header nav#grobal-header-menu
+#grobal-header #grobal-header-menu
 {
   margin: 0;
   padding: 0;
@@ -42,14 +44,15 @@ body
   height: 28px;
 }
 
-#grobal-header nav#grobal-header-menu ul
+#grobal-header #grobal-header-menu ul
 {
   position: absolute;
+  top: 60px; left: 0;
   margin: 0;
   padding: 0;
 }
 
-#grobal-header nav#grobal-header-menu ul li
+#grobal-header #grobal-header-menu ul li
 {
   float: left;
   list-style: none;
@@ -59,16 +62,12 @@ body
   height: 28px;
 }
 
-#grobal-header nav#grobal-header-menu ul li a
+#grobal-header #grobal-header-menu ul li a
 {
   background-image: url(<%= asset_path 'grobal-image/grobal-top-menu.png' %>);
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  vertical-align: middle;
   width: 140px;
   height: 28px;
-  display: block;
+  display: inline-block;
 }
 
 #grobal-side-navigation

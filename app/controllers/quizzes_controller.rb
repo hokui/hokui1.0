@@ -1,4 +1,7 @@
 class QuizzesController < ApplicationController
+
+  layout "subject"
+
   # GET /quizzes
   # GET /quizzes.json
   def index

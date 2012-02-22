@@ -1,5 +1,10 @@
 <% @index_page=false; @subject_page=true; @calender_page=false; %>
-<% @bbs_page=false; @mail_page=false; @sns_page=false; about_page=false %>
+<% @bbs_page=false; @mail_page=false; @sns_page=false; @about_page=false %>
+
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "subject" %>
+<% end %>
+
 <% content_for :content do %>
   <nav id="grobal-side-navigation">
     <h1>2年前期</h1>
