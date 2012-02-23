@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Title</th>
     <th></th>
     <th></th>
@@ -10,6 +11,7 @@
 
 <% @terms.each do |term| %>
   <tr>
+    <td><%= term.id %></td>
     <td><%= term.title %></td>
     <td><%= link_to 'Show', term %></td>
     <td><%= link_to 'Edit', edit_term_path(term) %></td>

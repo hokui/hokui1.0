@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :subject_id %>
+    <%= f.grouped_collection_select(:subject_id,Term.find(:all),:subjects,:title,:id,:screen_title,include_blank: '教科を選択') %>
+  </div>
+  <div class="field">
     <%= f.label :number %><br />
     <%= f.number_field :number %>
   </div>
   <div class="field">
     <%= f.label :file %><br />
-    <%= f.text_field :file %>
-  </div>
-  <div class="field">
-    <%= f.label :ftype %><br />
-    <%= f.text_field :ftype %>
+    <%= f.file_field :file %>
   </div>
   <div class="actions">
     <%= f.submit %>

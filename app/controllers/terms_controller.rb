@@ -1,4 +1,7 @@
 class TermsController < ApplicationController
+
+  layout 'subject'
+
   # GET /terms
   # GET /terms.json
   def index

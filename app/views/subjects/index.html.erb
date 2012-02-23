@@ -2,8 +2,10 @@
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Group</th>
+    <th>ID</th>
+    <th>Term</th>
+    <th>Page_title</th>
+    <th>Screen_title</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,8 +13,10 @@
 
 <% @subjects.each do |subject| %>
   <tr>
-    <td><%= subject.title %></td>
-    <td><%= subject.group %></td>
+    <td><%= subject.id %></td>
+    <td><%= subject.term.title %></td>
+    <td><%= subject.page_title %></td>
+    <td><%= subject.screen_title %></td>
     <td><%= link_to 'Show', subject %></td>
     <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
     <td><%= link_to 'Destroy', subject, confirm: 'Are you sure?', method: :delete %></td>

@@ -1,15 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
-  <%= @subject.title %>
+  <b>ID:</b>
+  <%= @subject.id %>
 </p>
 
 <p>
-  <b>Group:</b>
-  <%= @subject.group %>
+  <b>Term:</b>
+  <%= @subject.term.title %>
 </p>
 
+<p>
+  <b>Page_title:</b>
+  <%= @subject.page_title %>
+</p>
+
+<p>
+  <b>Screen_title:</b>
+  <%= @subject.screen_title %>
+</p>
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
 <%= link_to 'Back', subjects_path %>

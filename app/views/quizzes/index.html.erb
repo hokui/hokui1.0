@@ -2,10 +2,13 @@
 
 <table>
   <tr>
+    <th>ID</th>
+    <th>Subject</th>
     <th>Number</th>
-    <th>Type</th>
+    <th>Q/A</th>
     <th>File</th>
-    <th>Ftype</th>
+    <th>File_name</th>
+    <th>Content_type</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +16,13 @@
 
 <% @quizzes.each do |quiz| %>
   <tr>
+    <td><%= quiz.id %></td>
+    <td><%= quiz.subject.screen_title %></td>
     <td><%= quiz.number %></td>
-    <td><%= quiz.type %></td>
+    <td><%= if quiz.type==1 do "A" else "Q" end %></td>
     <td><%= quiz.file %></td>
-    <td><%= quiz.ftype %></td>
+    <td><%= quiz.file_name %></td>
+    <td><%= quiz.content_type %></td>
     <td><%= link_to 'Show', quiz %></td>
     <td><%= link_to 'Edit', edit_quiz_path(quiz) %></td>
     <td><%= link_to 'Destroy', quiz, confirm: 'Are you sure?', method: :delete %></td>

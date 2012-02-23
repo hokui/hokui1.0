@@ -2,10 +2,13 @@
 
 <table>
   <tr>
+    <th>ID</th>
+    <th>Subject</th>
     <th>Year</th>
-    <th>Type</th>
+    <th>Q/A</th>
     <th>File</th>
-    <th>Ftype</th>
+    <th>File_name</th>
+    <th>Content_type</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +16,13 @@
 
 <% @exams.each do |exam| %>
   <tr>
+    <td><%= exam.id %></td>
+    <td><%= exam.subject.screen_title %></td>
     <td><%= exam.year %></td>
-    <td><%= exam.type %></td>
+    <td><%= if exam.type==1 do "A" else "Q" end %></td>
     <td><%= exam.file %></td>
-    <td><%= exam.ftype %></td>
+    <td><%= exam.file_name %></td>
+    <td><%= exam.content_type %></td>
     <td><%= link_to 'Show', exam %></td>
     <td><%= link_to 'Edit', edit_exam_path(exam) %></td>
     <td><%= link_to 'Destroy', exam, confirm: 'Are you sure?', method: :delete %></td>

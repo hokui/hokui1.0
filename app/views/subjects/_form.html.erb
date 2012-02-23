@@ -12,12 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.label :term_id %>
+    <%= f.collection_select(:term_id, Term.find(:all), :id, :title, include_blank: '学期を選択') %>
+  <div class="field">
+    <%= f.label :page_title %><br />
+    <%= f.text_field :page_title %>
   </div>
   <div class="field">
-    <%= f.label :group %><br />
-    <%= f.text_field :group %>
+    <%= f.label :screen_title %><br />
+    <%= f.text_field :screen_title %>
   </div>
   <div class="actions">
     <%= f.submit %>

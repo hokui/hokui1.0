@@ -2,9 +2,12 @@
 
 <table>
   <tr>
+    <th>ID</th>
+    <th>Subject</th>
     <th>Number</th>
     <th>File</th>
-    <th>Ftype</th>
+    <th>File_name</th>
+    <th>Content_type</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +15,12 @@
 
 <% @summaries.each do |summary| %>
   <tr>
+    <td><%= summary.id %></td>
+    <td><%= summary.subject.screen_title %>
     <td><%= summary.number %></td>
     <td><%= summary.file %></td>
-    <td><%= summary.ftype %></td>
+    <td><%= summary.file_name %></td>
+    <td><%= summary.content_type %></td>
     <td><%= link_to 'Show', summary %></td>
     <td><%= link_to 'Edit', edit_summary_path(summary) %></td>
     <td><%= link_to 'Destroy', summary, confirm: 'Are you sure?', method: :delete %></td>

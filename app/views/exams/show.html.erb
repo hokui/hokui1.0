@@ -1,13 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>ID:</b>
+  <%= @exam.id %>
+</p>
+
+<p>
+  <b>Subject</b>
+  <%= @exam.subject.title %>
+</p>
+
+<p>
   <b>Year:</b>
   <%= @exam.year %>
 </p>
 
 <p>
-  <b>Type:</b>
-  <%= @exam.type %>
+  <b>Q/A:</b>
+  <%= if @exam.type==1 do "A" else "Q" end %>
 </p>
 
 <p>
@@ -16,10 +26,14 @@
 </p>
 
 <p>
-  <b>Ftype:</b>
-  <%= @exam.ftype %>
+  <b>File_name:</b>
+  <%= @exam.file_name %>
 </p>
 
+<p>
+  <b>Content_type:</b>
+  <%= @exam.content_type %>
+</p>
 
 <%= link_to 'Edit', edit_exam_path(@exam) %> |
 <%= link_to 'Back', exams_path %>

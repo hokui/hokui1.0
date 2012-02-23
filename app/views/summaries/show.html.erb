@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>ID:</b>
+  <%= @summary.id %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @summary.subject.screen_title %>
+</p>
+
+<p>
   <b>Number:</b>
   <%= @summary.number %>
 </p>
@@ -11,10 +21,14 @@
 </p>
 
 <p>
-  <b>Ftype:</b>
-  <%= @summary.ftype %>
+  <b>File_name:</b>
+  <%= @summary.file_name %>
 </p>
 
+<p>
+  <b>Content_type:</b>
+  <%= @summary.content_type %>
+</p>
 
 <%= link_to 'Edit', edit_summary_path(@summary) %> |
 <%= link_to 'Back', summaries_path %>

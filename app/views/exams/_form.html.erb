@@ -12,14 +12,11 @@
   <% end %>
 
   <div class="field">
-    <select id="exam_subject_id" name="exam[subject_id]">
-      <optgroup label="1年前期">
-        <option value="1">統計学</option>
-      </optgroup>
-    </select>
+    <%= f.label :subject_id %>
+    <%= f.grouped_collection_select(:subject_id,Term.find(:all),:subjects,:title,:id,:screen_title,include_blank: '教科を選択') %>
   </div>
   <div class="field">
-    <%= f.label '年度(西暦)' %><br />
+    <%= f.label :year %><br />
     <%= f.number_field :year %>
   </div>
   <div class="field">
