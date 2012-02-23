@@ -12,7 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :year %><br />
+    <select id="exam_subject_id" name="exam[subject_id]">
+      <optgroup label="1年前期">
+        <option value="1">統計学</option>
+      </optgroup>
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label '年度(西暦)' %><br />
     <%= f.number_field :year %>
   </div>
   <div class="field">
@@ -21,11 +28,7 @@
   </div>
   <div class="field">
     <%= f.label :file %><br />
-    <%= f.text_field :file %>
-  </div>
-  <div class="field">
-    <%= f.label :ftype %><br />
-    <%= f.text_field :ftype %>
+    <%= f.file_field :file %>
   </div>
   <div class="actions">
     <%= f.submit %>

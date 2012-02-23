@@ -1,6 +1,7 @@
 class CreateExams < ActiveRecord::Migration
   def change
     create_table :exams do |t|
+      t.integer :subject_id, null: false
       t.integer :year, null: false
       t.boolean :type, null: false
       t.binary :file, null: false

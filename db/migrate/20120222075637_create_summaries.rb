@@ -1,6 +1,7 @@
 class CreateSummaries < ActiveRecord::Migration
   def change
     create_table :summaries do |t|
+      t.integer :subject_id, null: false
       t.integer :number, null: false
       t.binary :file, null: false
       t.string :content_type, null: false

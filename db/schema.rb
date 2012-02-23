@@ -11,13 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120222075637) do
+ActiveRecord::Schema.define(:version => 20120223040007) do
 
   create_table "exams", :force => true do |t|
-    t.integer  "year",       :null => false
-    t.boolean  "type",       :null => false
-    t.binary   "file",       :null => false
-    t.string   "ftype",      :null => false
+    t.integer  "subject_id",   :null => false
+    t.integer  "year",         :null => false
+    t.boolean  "type",         :null => false
+    t.binary   "file",         :null => false
+    t.string   "content_type", :null => false
+    t.string   "file_name",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -25,10 +27,12 @@ ActiveRecord::Schema.define(:version => 20120222075637) do
   add_index "exams", ["file"], :name => "index_exams_on_file", :unique => true
 
   create_table "quizzes", :force => true do |t|
-    t.integer  "number",     :null => false
-    t.boolean  "type",       :null => false
-    t.binary   "file",       :null => false
-    t.string   "ftype",      :null => false
+    t.integer  "subject_id",   :null => false
+    t.integer  "number",       :null => false
+    t.boolean  "type",         :null => false
+    t.binary   "file",         :null => false
+    t.string   "content_type", :null => false
+    t.string   "file_name",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -36,22 +40,32 @@ ActiveRecord::Schema.define(:version => 20120222075637) do
   add_index "quizzes", ["file"], :name => "index_quizzes_on_file", :unique => true
 
   create_table "subjects", :force => true do |t|
-    t.string   "title",      :null => false
-    t.string   "group",      :null => false
+    t.integer  "term_id",      :null => false
+    t.string   "page_title",   :null => false
+    t.string   "screen_title", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "subjects", ["title"], :name => "index_subjects_on_title", :unique => true
+  add_index "subjects", ["page_title"], :name => "index_subjects_on_page_title", :unique => true
+  add_index "subjects", ["screen_title"], :name => "index_subjects_on_screen_title", :unique => true
 
   create_table "summaries", :force => true do |t|
-    t.integer  "number",     :null => false
-    t.binary   "file",       :null => false
-    t.string   "ftype",      :null => false
+    t.integer  "subject_id",   :null => false
+    t.integer  "number",       :null => false
+    t.binary   "file",         :null => false
+    t.string   "content_type", :null => false
+    t.string   "file_name",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "summaries", ["file"], :name => "index_summaries_on_file", :unique => true
+
+  create_table "terms", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

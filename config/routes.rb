@@ -1,4 +1,6 @@
 Med93::Application.routes.draw do
+  resources :terms
+
   resources :summaries
 
   resources :quizzes

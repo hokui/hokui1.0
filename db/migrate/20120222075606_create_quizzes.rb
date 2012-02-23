@@ -1,6 +1,7 @@
 class CreateQuizzes < ActiveRecord::Migration
   def change
     create_table :quizzes do |t|
+      t.integer :subject_id, null: false
       t.integer :number, null: false
       t.boolean :type, null: false
       t.binary :file, null: false
