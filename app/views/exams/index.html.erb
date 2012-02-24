@@ -1,12 +1,12 @@
 <h1>Listing exams</h1>
 
-<table>
+<table border="1" style="border-left:1px;">
   <tr>
     <th>ID</th>
     <th>Subject</th>
     <th>Year</th>
+    <th>Number</th>
     <th>Q/A</th>
-    <th>File</th>
     <th>File_name</th>
     <th>Content_type</th>
     <th></th>
@@ -19,8 +19,8 @@
     <td><%= exam.id %></td>
     <td><%= exam.subject.screen_title %></td>
     <td><%= exam.year %></td>
-    <td><%= if exam.type==1 do "A" else "Q" end %></td>
-    <td><%= exam.file %></td>
+    <td><%= exam.number %></td>
+    <td><%= exam.q_a.upcase %></td>
     <td><%= exam.file_name %></td>
     <td><%= exam.content_type %></td>
     <td><%= link_to 'Show', exam %></td>
@@ -32,4 +32,8 @@
 
 <br />
 
+<% @exams.each do |exam| %>
+  <% p exam.number %>
+  <% p exam.q_a %>
+<% end %>
 <%= link_to 'New Exam', new_exam_path %>

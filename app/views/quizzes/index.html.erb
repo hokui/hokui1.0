@@ -6,7 +6,6 @@
     <th>Subject</th>
     <th>Number</th>
     <th>Q/A</th>
-    <th>File</th>
     <th>File_name</th>
     <th>Content_type</th>
     <th></th>
@@ -19,8 +18,7 @@
     <td><%= quiz.id %></td>
     <td><%= quiz.subject.screen_title %></td>
     <td><%= quiz.number %></td>
-    <td><%= if quiz.type==1 do "A" else "Q" end %></td>
-    <td><%= quiz.file %></td>
+    <td><%= quiz.q_a.upcase %></td>
     <td><%= quiz.file_name %></td>
     <td><%= quiz.content_type %></td>
     <td><%= link_to 'Show', quiz %></td>

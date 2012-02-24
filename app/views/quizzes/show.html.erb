@@ -17,12 +17,11 @@
 
 <p>
   <b>Q/A:</b>
-  <%= if @quiz.type==1 do "A" else "Q" end %>
+  <%= @quiz.q_a.upcase %>
 </p>
 
 <p>
   <b>File:</b>
-  <%= @quiz.file %>
 </p>
 
 <p>

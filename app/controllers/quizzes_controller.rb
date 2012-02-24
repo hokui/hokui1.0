@@ -43,7 +43,21 @@ class QuizzesController < ApplicationController
   # POST /quizzes
   # POST /quizzes.json
   def create
-    @quiz = Quiz.new(params[:quiz])
+    @quiz = Quiz.new
+      @quiz.subject_id = params[:quiz][:subject_id]
+      @quiz.number = params[:quiz][:number]
+      if params[:quiz][:q_a]=="1" then @quiz.q_a="a" else @quiz.q_a="q" end
+      @quiz.file = params[:quiz][:file].read
+      @quiz.content_type = params[:quiz][:file].content_type
+      case @quiz.content_type
+        when "application/pdf"
+          ext = "pdf"
+        else
+          #TODO redirect_to "new" notice: "invalid file type"
+      end
+      @quiz.file_name =
+        "#{Subject.find(@quiz.subject_id).page_title}_quiz_" +
+        "#{@quiz.number}_#{@quiz.q_a}.#{ext}"
 
     respond_to do |format|
       if @quiz.save
@@ -60,9 +74,25 @@ class QuizzesController < ApplicationController
   # PUT /quizzes/1.json
   def update
     @quiz = Quiz.find(params[:id])
+      @quiz.subject_id = params[:quiz][:subject_id]
+      @quiz.number = params[:quiz][:number]
+      if params[:quiz][:q_a]=="1" then @quiz.q_a="a" else @quiz.q_a="q" end
+      unless params[:quiz][:file]==nil
+        @quiz.file = params[:quiz][:file].read
+        @quiz.content_type = params[:quiz][:file].content_type
+      end
+      case @quiz.content_type
+        when "application/pdf"
+          ext = "pdf"
+        else
+          #TODO redirect_to "new" notice: "invalid file type"
+      end
+      @quiz.file_name =
+        "#{Subject.find(@quiz.subject_id).page_title}_quiz_" +
+        "#{@quiz.number}_#{@quiz.q_a}.#{ext}"
 
     respond_to do |format|
-      if @quiz.update_attributes(params[:quiz])
+      if @quiz.save
         format.html { redirect_to @quiz, notice: 'Quiz was successfully updated.' }
         format.json { head :ok }
       else

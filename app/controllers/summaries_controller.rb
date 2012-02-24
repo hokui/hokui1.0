@@ -43,7 +43,20 @@ class SummariesController < ApplicationController
   # POST /summaries
   # POST /summaries.json
   def create
-    @summary = Summary.new(params[:summary])
+    @summary = Summary.new
+      @summary.subject_id = params[:summary][:subject_id]
+      @summary.number = params[:summary][:number]
+      @summary.file = params[:summary][:file].read
+      @summary.content_type = params[:summary][:file].content_type
+      case @summary.content_type
+        when "application/pdf"
+          ext = "pdf"
+        else
+          #TODO redirect_to "new" notice: "invalid file type"
+      end
+      @summary.file_name =
+        "#{Subject.find(@summary.subject_id).page_title}_summary_" +
+        "#{@summary.number}.#{ext}"
 
     respond_to do |format|
       if @summary.save
@@ -60,6 +73,21 @@ class SummariesController < ApplicationController
   # PUT /summaries/1.json
   def update
     @summary = Summary.find(params[:id])
+      @summary.subject_id = params[:summary][:subject_id]
+      @summary.number = params[:summary][:number]
+      unless params[:summary][:file]==nil
+        @summary.file = params[:summary][:file].read
+        @summary.content_type = params[:summary][:file].content_type
+      end
+      case @summary.content_type
+        when "application/pdf"
+          ext = "pdf"
+        else
+          #TODO redirect_to "new" notice: "invalid file type"
+      end
+      @summary.file_name =
+        "#{Subject.find(@summary.subject_id).page_title}_summary_" +
+        "#{@summary.number}.#{ext}"
 
     respond_to do |format|
       if @summary.update_attributes(params[:summary])

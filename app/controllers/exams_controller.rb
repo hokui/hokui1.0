@@ -43,7 +43,22 @@ class ExamsController < ApplicationController
   # POST /exams
   # POST /exams.json
   def create
-    @exam = Exam.new(params[:exam])
+    @exam = Exam.new
+      @exam.subject_id = params[:exam][:subject_id]
+      @exam.year = params[:exam][:year]
+      @exam.number = params[:exam][:number]
+      if params[:exam][:q_a]=="1" then @exam.q_a="a" else @exam.q_a="q" end
+      @exam.file = params[:exam][:file].read
+      @exam.content_type = params[:exam][:file].content_type
+      case @exam.content_type
+        when "application/pdf"
+          ext = "pdf"
+        else
+          #TODO redirect_to "new" notice: "invalid file type"
+      end
+      @exam.file_name =
+        "#{Subject.find(@exam.subject_id).page_title}_past-exam_" +
+        "#{@exam.year}_#{@exam.number}_#{@exam.q_a}.#{ext}"
 
     respond_to do |format|
       if @exam.save
@@ -60,9 +75,26 @@ class ExamsController < ApplicationController
   # PUT /exams/1.json
   def update
     @exam = Exam.find(params[:id])
+      @exam.subject_id = params[:exam][:subject_id]
+      @exam.year = params[:exam][:year]
+      @exam.number = params[:exam][:number]
+      if params[:exam][:q_a]=="1" then @exam.q_a="a" else @exam.q_a="q" end
+      unless params[:exam][:file]==nil
+        @exam.file = params[:exam][:file].read
+        @exam.content_type = params[:exam][:file].content_type
+      end
+      case @exam.content_type
+        when "application/pdf"
+          ext = "pdf"
+        else
+          #TODO redirect_to "new" notice: "invalid file type"
+      end
+      @exam.file_name =
+        "#{Subject.find(@exam.subject_id).page_title}_past-exam_" +
+        "#{@exam.year}_#{@exam.number}_#{@exam.q_a}.#{ext}"
 
     respond_to do |format|
-      if @exam.update_attributes(params[:exam])
+      if @exam.save
         format.html { redirect_to @exam, notice: 'Exam was successfully updated.' }
         format.json { head :ok }
       else

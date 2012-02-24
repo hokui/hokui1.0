@@ -7,7 +7,7 @@
 
 <p>
   <b>Subject</b>
-  <%= @exam.subject.title %>
+  <%= @exam.subject.screen_title %>
 </p>
 
 <p>
@@ -16,13 +16,17 @@
 </p>
 
 <p>
+  <b>Number:</b>
+  <%= @exam.number %>
+</p>
+
+<p>
   <b>Q/A:</b>
-  <%= if @exam.type==1 do "A" else "Q" end %>
+  <%= @exam.q_a.upcase %>
 </p>
 
 <p>
   <b>File:</b>
-  <%= @exam.file %>
 </p>
 
 <p>
