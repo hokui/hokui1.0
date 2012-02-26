@@ -1,6 +1,6 @@
 class SummariesController < ApplicationController
 
-  layout "subject"
+  layout "admin"
 
   # GET /summaries
   # GET /summaries.json
@@ -55,7 +55,7 @@ class SummariesController < ApplicationController
           #TODO redirect_to "new" notice: "invalid file type"
       end
       @summary.file_name =
-        "#{Subject.find(@summary.subject_id).page_title}_summary_" +
+        "#{Subject.find(@summary.subject_id).page_title}-summary-" +
         "#{@summary.number}.#{ext}"
 
     respond_to do |format|
@@ -86,7 +86,7 @@ class SummariesController < ApplicationController
           #TODO redirect_to "new" notice: "invalid file type"
       end
       @summary.file_name =
-        "#{Subject.find(@summary.subject_id).page_title}_summary_" +
+        "#{Subject.find(@summary.subject_id).page_title}-summary-" +
         "#{@summary.number}.#{ext}"
 
     respond_to do |format|
@@ -110,5 +110,11 @@ class SummariesController < ApplicationController
       format.html { redirect_to summaries_url }
       format.json { head :ok }
     end
+  end
+
+  def download
+    @summary = Summary.find(params[:id])
+
+    send_data(@summary.file, filename: @summary.file_name, content_type: @summary.content_type)
   end
 end

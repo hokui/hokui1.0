@@ -7,19 +7,19 @@
 
 <% content_for :content do %>
   <nav id="grobal-side-navigation">
-    <h1>2年前期</h1>
+  <% Term.order('id DESC').each do |term| %>
+    <h1><%= term.title %></h1>
     <section>
       <ul>
-        <li><a href=medical-introduction.html>医学概論</a></li>
-        <li><a href=clinical-introduction.html>診療学入門</a></li>
-        <li><a href=medical-english.html>医学英語演習</a></li>
-        <li><a href=genetics.html>遺伝学</a></li>
-        <li><a href=cell-biology.html>細胞生物学</a></li>
-        <li><a href=anatomy-histology.html>解剖学（組織学）</a></li>
-        <li><a href=histology-practice.html>組織学実習</a></li>
-        <li><a href=early-clinical-practice.html>早期臨床演習</a></li>
+      <% Subject.where(term_id: term.id).each do |subject| %>
+        <li>
+          <%= link_to subject.screen_title,
+            { controller: 'subject', action: subject.page_title } %>
+        </li>
+      <% end %>
       </ul>
     </section>
+  <% end %>
   </nav>
 
   <div id=grobal-main-column>

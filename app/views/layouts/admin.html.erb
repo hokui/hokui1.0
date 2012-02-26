@@ -1,0 +1,28 @@
+<% @index_page=false; @subject_page=false; @calender_page=false; %>
+<% @bbs_page=false; @mail_page=false; @sns_page=false; @about_page=false %>
+
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "admin" %>
+<% end %>
+
+<% content_for :content do %>
+  <nav id="grobal-side-navigation">
+    <h1>教科関係</h1>
+    <section>
+      <ul>
+        <li><%= link_to 'terms', terms_path %></li>
+        <li><%= link_to 'subjects', subjects_path %></li>
+        <li><%= link_to 'exams', exams_path %></li>
+        <li><%= link_to 'quizzes', quizzes_path %></li>
+        <li><%= link_to 'summaries', summaries_path %></li>
+      </ul>
+    </section>
+  </nav>
+
+  <div id=grobal-main-column>
+
+    <%= yield %>
+
+  </div>
+<% end %>
+<%= render template: 'layouts/application' %>

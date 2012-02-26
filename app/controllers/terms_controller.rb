@@ -1,6 +1,6 @@
 class TermsController < ApplicationController
 
-  layout 'subject'
+  layout 'admin'
 
   # GET /terms
   # GET /terms.json

@@ -1,15 +1,13 @@
 <h1>Listing summaries</h1>
 
-<table>
+<table class="admin-index">
   <tr>
-    <th>ID</th>
-    <th>Subject</th>
-    <th>Number</th>
-    <th>File_name</th>
-    <th>Content_type</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th class="id"></th>
+    <th class="sub">Sub</th>
+    <th class="number">No</th>
+    <th class="file-name">File_name</th>
+    <th class="content-type">Content_type</th>
+    <th colspan="4" class="dl-menu"></th>
   </tr>
 
 <% @summaries.each do |summary| %>
@@ -19,6 +17,8 @@
     <td><%= summary.number %></td>
     <td><%= summary.file_name %></td>
     <td><%= summary.content_type %></td>
+    <td><%= link_to 'DL',
+      { controller: 'summaries', action: 'download', id: summary.id } %></td>
     <td><%= link_to 'Show', summary %></td>
     <td><%= link_to 'Edit', edit_summary_path(summary) %></td>
     <td><%= link_to 'Destroy', summary, confirm: 'Are you sure?', method: :delete %></td>

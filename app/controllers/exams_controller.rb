@@ -1,6 +1,6 @@
 class ExamsController < ApplicationController
 
-  layout "subject"
+  layout "admin"
 
   # GET /exams
   # GET /exams.json
@@ -57,8 +57,8 @@ class ExamsController < ApplicationController
           #TODO redirect_to "new" notice: "invalid file type"
       end
       @exam.file_name =
-        "#{Subject.find(@exam.subject_id).page_title}_past-exam_" +
-        "#{@exam.year}_#{@exam.number}_#{@exam.q_a}.#{ext}"
+        "#{Subject.find(@exam.subject_id).page_title}-past_exam-" +
+        "#{@exam.year}-#{@exam.number}-#{@exam.q_a}.#{ext}"
 
     respond_to do |format|
       if @exam.save
@@ -90,8 +90,8 @@ class ExamsController < ApplicationController
           #TODO redirect_to "new" notice: "invalid file type"
       end
       @exam.file_name =
-        "#{Subject.find(@exam.subject_id).page_title}_past-exam_" +
-        "#{@exam.year}_#{@exam.number}_#{@exam.q_a}.#{ext}"
+        "#{Subject.find(@exam.subject_id).page_title}-past_exam-" +
+        "#{@exam.year}-#{@exam.number}-#{@exam.q_a}.#{ext}"
 
     respond_to do |format|
       if @exam.save
@@ -114,5 +114,11 @@ class ExamsController < ApplicationController
       format.html { redirect_to exams_url }
       format.json { head :ok }
     end
+  end
+
+  def download
+    @exam = Exam.find(params[:id])
+
+    send_data(@exam.file, filename: @exam.file_name, content_type: @exam.content_type)
   end
 end

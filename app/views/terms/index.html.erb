@@ -1,12 +1,10 @@
 <h1>Listing terms</h1>
 
-<table>
+<table class="admin-index">
   <tr>
-    <th>ID</th>
-    <th>Title</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th class="id"></th>
+    <th class="term-title">Title</th>
+    <th colspan="3" class="menu"></th>
   </tr>
 
 <% @terms.each do |term| %>

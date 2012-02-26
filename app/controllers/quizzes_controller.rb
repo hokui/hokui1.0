@@ -1,6 +1,6 @@
 class QuizzesController < ApplicationController
 
-  layout "subject"
+  layout "admin"
 
   # GET /quizzes
   # GET /quizzes.json
@@ -56,8 +56,8 @@ class QuizzesController < ApplicationController
           #TODO redirect_to "new" notice: "invalid file type"
       end
       @quiz.file_name =
-        "#{Subject.find(@quiz.subject_id).page_title}_quiz_" +
-        "#{@quiz.number}_#{@quiz.q_a}.#{ext}"
+        "#{Subject.find(@quiz.subject_id).page_title}-quiz-" +
+        "#{@quiz.number}-#{@quiz.q_a}.#{ext}"
 
     respond_to do |format|
       if @quiz.save
@@ -88,8 +88,8 @@ class QuizzesController < ApplicationController
           #TODO redirect_to "new" notice: "invalid file type"
       end
       @quiz.file_name =
-        "#{Subject.find(@quiz.subject_id).page_title}_quiz_" +
-        "#{@quiz.number}_#{@quiz.q_a}.#{ext}"
+        "#{Subject.find(@quiz.subject_id).page_title}-quiz-" +
+        "#{@quiz.number}-#{@quiz.q_a}.#{ext}"
 
     respond_to do |format|
       if @quiz.save
@@ -112,5 +112,11 @@ class QuizzesController < ApplicationController
       format.html { redirect_to quizzes_url }
       format.json { head :ok }
     end
+  end
+
+  def download
+    @quiz = Quiz.find(params[:id])
+
+    send_data(@quiz.file, filename: @quiz.file_name, content_type: @quiz.content_type)
   end
 end

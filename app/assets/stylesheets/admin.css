@@ -1,0 +1,94 @@
+#notice
+{
+  color: green;
+}
+
+.field_with_errors
+{
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation
+{
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2
+{
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li
+{
+  font-size: 12px;
+  list-style: square;
+}
+
+table.admin-index
+{
+  border-collapse: collapse;
+}
+
+table.admin-index tr
+{
+  height: 1.5em;
+}
+
+table.admin-index tr th,
+table.admin-index tr td
+{
+  margin: 0;
+  padding: 2px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+table.admin-index tr th
+{
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #696969;
+  border-style: none;
+}
+
+table.admin-index tr th.id { width: 20px; }
+table.admin-index tr th.term-title { width: 70px }
+table.admin-index tr th.sub { width: 80px; }
+table.admin-index tr th.sub-eng { width: 120px; }
+table.admin-index tr th.year { width: 40px; }
+table.admin-index tr th.number { width: 25px; }
+table.admin-index tr th.q-a { width: 35px; }
+table.admin-index tr th.file-name { width: 200px; }
+table.admin-index tr th.content-type { width: 130px; }
+table.admin-index tr th.menu { width: 140px; }
+table.admin-index tr th.dl-menu { width: 170px; }
+
+table.admin-index tr:nth-child(odd)
+{
+  background-color: #e0e0e0;
+}
+table.admin-index tr:nth-child(even)
+{
+  background-color: #ffffff;
+}
+
+table.admin-index tr td
+{
+  color: #000000;
+  border: 1px solid #d0d0d0;
+  border-width: 0px 0px 1px 0px;
+}

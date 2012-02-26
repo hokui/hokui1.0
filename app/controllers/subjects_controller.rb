@@ -1,6 +1,6 @@
 class SubjectsController < ApplicationController
 
-  layout "subject"
+  layout "admin"
 
   # GET /subjects
   # GET /subjects.json
