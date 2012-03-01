@@ -3,7 +3,7 @@
 <head lang="ja">
   <meta charset="utf-8">
   <%= csrf_meta_tags %>
-  <title><%= @page_title ? @page_title : "hokudaimedicine93.com" %></title>
+  <title><%= @page_title ? @page_title+" : hokudaimedicine93.com" : "hokudaimedicine93.com" %></title>
   <%= stylesheet_link_tag "reset" %>
   <%= stylesheet_link_tag "grobal" %>
   <%= yield :stylesheet %>

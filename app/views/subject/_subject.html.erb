@@ -1,3 +1,5 @@
+<% @subject ? @page_title=@subject.screen_title : @page_title="教科のページ" %>
+
 <p>Subject Page</p>
 <h1><%= @subject.screen_title.force_encoding('utf-8') %></h1>
 
