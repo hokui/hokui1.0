@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head lang="ja">
+  <meta charset="utf-8">
+  <%= csrf_meta_tags %>
   <title><%= @page_title ? @page_title : "hokudaimedicine93.com" %></title>
   <%= stylesheet_link_tag "reset" %>
   <%= stylesheet_link_tag "grobal" %>
   <%= yield :stylesheet %>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
 </head>
 <body>
   <div id=grobal-wrapper>
