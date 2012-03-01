@@ -1,24 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>ID:</b>
-  <%= @subject.id %>
-</p>
+<dl class="admin-show">
+  <dt>ID</dt>
+  <dd><%= @subject.id %></dd>
 
-<p>
-  <b>Term:</b>
-  <%= @subject.term.title %>
-</p>
+  <dt>Term</dt>
+  <dd><%= @subject.term.title %></dd>
 
-<p>
-  <b>Page_title:</b>
-  <%= @subject.page_title %>
-</p>
+  <dt>Page_title</dt>
+  <dd><%= @subject.page_title %></dd>
 
-<p>
-  <b>Screen_title:</b>
-  <%= @subject.screen_title %>
-</p>
+  <dt>Screen_title</dt>
+  <dd><%= @subject.screen_title %></dd>
+</dl>
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
 <%= link_to 'Back', subjects_path %>

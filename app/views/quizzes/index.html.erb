@@ -6,7 +6,6 @@
     <th class="sub">Sub</th>
     <th class="number">No</th>
     <th class="q-a">Q/A</th>
-    <th class="file-name">File_name</th>
     <th class="content-type">Content_type</th>
     <th colspan="4" class="dl-menu"></th>
   </tr>
@@ -17,7 +16,6 @@
     <td><%= quiz.subject.screen_title %></td>
     <td><%= quiz.number %></td>
     <td><%= quiz.q_a.upcase %></td>
-    <td><%= quiz.file_name %></td>
     <td><%= quiz.content_type %></td>
     <td><%= link_to 'DL',
       { controller: 'quizzes', action: 'download', id: quiz.id } %></td>

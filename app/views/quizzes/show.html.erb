@@ -1,38 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>ID:</b>
-  <%= @quiz.id %>
-</p>
+<dl class="admin-show">
+  <dt>ID</dt>
+  <dd><%= @quiz.id %></dd>
 
-<p>
-  <b>Subject:</b>
-  <%= @quiz.subject.screen_title %>
-</p>
+  <dt>Subject</dt>
+  <dd><%= @quiz.subject.screen_title %></dd>
 
-<p>
-  <b>Number:</b>
-  <%= @quiz.number %>
-</p>
+  <dt>Number</dt>
+  <dd><%= @quiz.number %></dd>
 
-<p>
-  <b>Q/A:</b>
-  <%= @quiz.q_a.upcase %>
-</p>
+  <dt>Q/A</dt>
+  <dd><%= @quiz.q_a.upcase %></dd>
 
-<p>
-  <b>File:</b>
-</p>
+  <dt>File_name</dt>
+  <dd><%= @quiz.file_name %></dd>
 
-<p>
-  <b>File_name:</b>
-  <%= @quiz.file_name %>
-</p>
+  <dt>Content_type</dt>
+  <dd><%= @quiz.content_type %></dd>
 
-<p>
-  <b>Content_type:</b>
-  <%= @quiz.content_type %>
-</p>
+  <dt>File</dt>
+  <dd><%= link_to 'DL',
+      { controller: 'quizzes', action: 'download', id: @quiz.id } %></dd>
+</dl>
 
 <%= link_to 'Edit', edit_quiz_path(@quiz) %> |
 <%= link_to 'Back', quizzes_path %>

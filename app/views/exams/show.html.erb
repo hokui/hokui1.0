@@ -1,43 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>ID:</b>
-  <%= @exam.id %>
-</p>
+<dl class="admin-show">
+  <dt>ID</dt>
+  <dd><%= @exam.id %></dd>
 
-<p>
-  <b>Subject</b>
-  <%= @exam.subject.screen_title %>
-</p>
+  <dt>Subject</dt>
+  <dd><%= @exam.subject.screen_title %></dd>
 
-<p>
-  <b>Year:</b>
-  <%= @exam.year %>
-</p>
+  <dt>Year</dt>
+  <dd><%= @exam.year %></dd>
 
-<p>
-  <b>Number:</b>
-  <%= @exam.number %>
-</p>
+  <dt>Number</dt>
+  <dd><%= @exam.number %></dd>
 
-<p>
-  <b>Q/A:</b>
-  <%= @exam.q_a.upcase %>
-</p>
+  <dt>Q/A</dt>
+  <dd><%= @exam.q_a.upcase %></dd>
 
-<p>
-  <b>File:</b>
-</p>
+  <dt>File_name</dt>
+  <dd><%= @exam.file_name %></dd>
 
-<p>
-  <b>File_name:</b>
-  <%= @exam.file_name %>
-</p>
+  <dt>Content_type</dt>
+  <dd><%= @exam.content_type %></dd>
 
-<p>
-  <b>Content_type:</b>
-  <%= @exam.content_type %>
-</p>
+  <dt>File</dt>
+  <dd><%= link_to 'DL',
+      { controller: 'exams', action: 'download', id: @exam.id } %></dd>
+</dl>
 
 <%= link_to 'Edit', edit_exam_path(@exam) %> |
 <%= link_to 'Back', exams_path %>

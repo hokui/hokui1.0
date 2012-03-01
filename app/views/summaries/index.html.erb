@@ -5,7 +5,6 @@
     <th class="id"></th>
     <th class="sub">Sub</th>
     <th class="number">No</th>
-    <th class="file-name">File_name</th>
     <th class="content-type">Content_type</th>
     <th colspan="4" class="dl-menu"></th>
   </tr>
@@ -15,7 +14,6 @@
     <td><%= summary.id %></td>
     <td><%= summary.subject.screen_title %>
     <td><%= summary.number %></td>
-    <td><%= summary.file_name %></td>
     <td><%= summary.content_type %></td>
     <td><%= link_to 'DL',
       { controller: 'summaries', action: 'download', id: summary.id } %></td>

@@ -1,33 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>ID:</b>
-  <%= @summary.id %>
-</p>
+<dl class="admin-show">
+  <dt>ID</dt>
+  <dd><%= @summary.id %></dd>
 
-<p>
-  <b>Subject:</b>
-  <%= @summary.subject.screen_title %>
-</p>
+  <dt>Subject</dt>
+  <dd><%= @summary.subject.screen_title %></dd>
 
-<p>
-  <b>Number:</b>
-  <%= @summary.number %>
-</p>
+  <dt>Number</dt>
+  <dd><%= @summary.number %></dd>
 
-<p>
-  <b>File:</b>
-</p>
+  <dt>File_name</dt>
+  <dd><%= @summary.file_name %></dd>
 
-<p>
-  <b>File_name:</b>
-  <%= @summary.file_name %>
-</p>
+  <dt>Content_type</dt>
+  <dd><%= @summary.content_type %></dd>
 
-<p>
-  <b>Content_type:</b>
-  <%= @summary.content_type %>
-</p>
+  <dt>File</dt>
+  <dd><%= link_to 'DL',
+      { controller: 'summaries', action: 'download', id: @summary.id } %></dd>
+</dl>
 
 <%= link_to 'Edit', edit_summary_path(@summary) %> |
 <%= link_to 'Back', summaries_path %>

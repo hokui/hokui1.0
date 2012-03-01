@@ -65,17 +65,16 @@ table.admin-index tr th
   border-style: none;
 }
 
-table.admin-index tr th.id { width: 20px; }
+table.admin-index tr th.id { width: 35px; }
 table.admin-index tr th.term-title { width: 70px }
-table.admin-index tr th.sub { width: 80px; }
-table.admin-index tr th.sub-eng { width: 120px; }
-table.admin-index tr th.year { width: 40px; }
-table.admin-index tr th.number { width: 25px; }
+table.admin-index tr th.sub { width: 160px; }
+table.admin-index tr th.sub-eng { width: 200px; }
+table.admin-index tr th.year { width: 50px; }
+table.admin-index tr th.number { width: 35px; }
 table.admin-index tr th.q-a { width: 35px; }
-table.admin-index tr th.file-name { width: 200px; }
-table.admin-index tr th.content-type { width: 130px; }
-table.admin-index tr th.menu { width: 140px; }
-table.admin-index tr th.dl-menu { width: 170px; }
+table.admin-index tr th.content-type { width: 170px; }
+table.admin-index tr th.menu { width: 160px; }
+table.admin-index tr th.dl-menu { width: 200px; }
 
 table.admin-index tr:nth-child(odd)
 {
@@ -91,4 +90,17 @@ table.admin-index tr td
   color: #000000;
   border: 1px solid #d0d0d0;
   border-width: 0px 0px 1px 0px;
+}
+
+dl.admin-show dt
+{
+  clear: left;
+  float: left;
+  width: 100px;
+  text-align: right;
+  padding-right: 20px;
+}
+
+dl.admin-show dd
+{
 }

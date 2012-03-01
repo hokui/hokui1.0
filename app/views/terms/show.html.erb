@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>ID:</b>
-  <%= @term.id %>
-</p>
+<dl class="admin-show">
+  <dt>ID</dt>
+  <dd><%= @term.id %></dd>
 
-<p>
-  <b>Title:</b>
-  <%= @term.title %>
-</p>
+  <dt>Title</dt>
+  <dd><%= @term.title %></dd>
+</dl>
 
 
 <%= link_to 'Edit', edit_term_path(@term) %> |
