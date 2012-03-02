@@ -1,4 +1,12 @@
 Med93::Application.routes.draw do
+  resources :users
+
+  resources :bbs_bodies
+
+  resources :bbs_topics
+
+  resources :bbs_groups
+
   resources :terms
 
   resources :summaries

@@ -1,0 +1,23 @@
+<h1>Listing bbs_groups</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bbs_groups.each do |bbs_group| %>
+  <tr>
+    <td><%= bbs_group.title %></td>
+    <td><%= link_to 'Show', bbs_group %></td>
+    <td><%= link_to 'Edit', edit_bbs_group_path(bbs_group) %></td>
+    <td><%= link_to 'Destroy', bbs_group, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bbs group', new_bbs_group_path %>

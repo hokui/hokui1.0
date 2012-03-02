@@ -43,7 +43,13 @@ class SubjectsController < ApplicationController
   # POST /subjects
   # POST /subjects.json
   def create
+    @bbs_topic=BbsTopic.new
+    @bbs_topic.title=params[:subject][:screen_title]
+    @bbs_topic.bbs_group_id=Term.find(params[:subject][:term_id]).bbs_group_id
+    @bbs_topic.save
+
     @subject = Subject.new(params[:subject])
+    @subject.bbs_topic_id=@bbs_topic.id
 
     respond_to do |format|
       if @subject.save

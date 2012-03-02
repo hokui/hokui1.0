@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120223040007) do
+ActiveRecord::Schema.define(:version => 20120302030219) do
+
+  create_table "bbs_bodies", :force => true do |t|
+    t.integer  "bbs_topic_id"
+    t.integer  "user_id"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bbs_groups", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bbs_topics", :force => true do |t|
+    t.integer  "bbs_group_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "exams", :force => true do |t|
     t.integer  "subject_id",   :null => false
@@ -46,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20120223040007) do
     t.string   "screen_title", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "bbs_topic_id"
   end
 
   add_index "subjects", ["page_title"], :name => "index_subjects_on_page_title", :unique => true
@@ -65,6 +88,14 @@ ActiveRecord::Schema.define(:version => 20120223040007) do
 
   create_table "terms", :force => true do |t|
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "bbs_group_id"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "full_name"
+    t.string   "handle_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

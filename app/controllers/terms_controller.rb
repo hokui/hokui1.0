@@ -43,8 +43,12 @@ class TermsController < ApplicationController
   # POST /terms
   # POST /terms.json
   def create
-    @term = Term.new(params[:term])
+    @bbs_group=BbsGroup.new
+    @bbs_group.title=params[:term][:title]
+    @bbs_group.save
 
+    @term=Term.new(params[:term])
+    @term.bbs_group_id=@bbs_group.id
     respond_to do |format|
       if @term.save
         format.html { redirect_to @term, notice: 'Term was successfully created.' }
@@ -60,6 +64,10 @@ class TermsController < ApplicationController
   # PUT /terms/1.json
   def update
     @term = Term.find(params[:id])
+
+    @bbs_group=BbsGroup.find(@term.bbs_group_id)
+    @bbs_group.title=params[:term][:title]
+    @bbs_group.save
 
     respond_to do |format|
       if @term.update_attributes(params[:term])
