@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120304010352) do
+ActiveRecord::Schema.define(:version => 20120304025201) do
 
   create_table "bbs_bodies", :force => true do |t|
     t.integer  "bbs_topic_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20120304010352) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_a_term"
   end
 
   create_table "bbs_topics", :force => true do |t|

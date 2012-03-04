@@ -1,2 +1,29 @@
-<h1>Bbs#index</h1>
-<p>Find me in app/views/bbs/index.html.erb</p>
+<h1>BBS page</h1>
+
+<h2>Topic一覧</h2>
+
+<h3>雑談板</h3>
+<ul>
+<% BbsGroup.where(is_a_term: false).each do |group| %>
+  <li><%= group.title %>
+    <ul>
+    <% BbsTopic.where(bbs_group_id: group.id).each do |topic| %>
+      <li><%= topic.title %></li>
+    <% end %>
+    </ul>
+  </li>
+<% end %>
+</ul>
+
+<h3>教科板</h3>
+<ul>
+<% BbsGroup.where(is_a_term: true).each do |group| %>
+  <li><%= group.title %>
+    <ul>
+    <% BbsTopic.where(bbs_group_id: group.id).each do |topic| %>
+      <li><%= topic.title %></li>
+    <% end %>
+    </ul>
+  </li>
+<% end %>
+</ul>

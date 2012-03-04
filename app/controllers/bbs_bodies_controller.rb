@@ -44,7 +44,9 @@ class BbsBodiesController < ApplicationController
 
     respond_to do |format|
       if @bbs_body.save
+        @bbs_topic=BbsTopic.find(@bbs_body.bbs_topic_id)
         format.html { redirect_to @bbs_body, notice: 'Bbs body was successfully created.' }
+        format.js
         format.json { render json: @bbs_body, status: :created, location: @bbs_body }
       else
         format.html { render action: "new" }

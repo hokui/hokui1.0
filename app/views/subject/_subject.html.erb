@@ -89,5 +89,20 @@
 <h2>質問掲示板</h2>
 <p>雑談現金！雑談は<%= link_to '雑談板', {controller: 'bbs', action: 'index'} %>で！</p>
 <section id="subject-billboard">
-  <!-- Ajax -->
+  <div id="bbs">
+    <%= render(@bbs_topic) %>
+  </div>
+
+  <div>
+    <%= form_for(@bbs_body, remote: true) do |f| %>
+    <%= f.hidden_field :bbs_topic_id, value: @bbs_topic.id %>
+    <%= f.hidden_field :user_id, value: 1 %>
+    <div class="field">
+      <%= f.text_field :text %>
+    </div>
+    <div class="action">
+      <%= f.submit %>
+    </div>
+    <% end %>
+  </div>
 </section>
