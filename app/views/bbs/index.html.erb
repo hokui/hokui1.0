@@ -8,7 +8,10 @@
   <li><%= group.title %>
     <ul>
     <% BbsTopic.where(bbs_group_id: group.id).each do |topic| %>
-      <li><%= topic.title %></li>
+      <li class="bbs-topic">
+        <div class="bbs-topic-title"><%= topic.title %></div>
+        <div class="bbs-topic-bodies" id="topic-id-<%= topic.id %>"></div>
+      </li>
     <% end %>
     </ul>
   </li>
@@ -21,7 +24,10 @@
   <li><%= group.title %>
     <ul>
     <% BbsTopic.where(bbs_group_id: group.id).each do |topic| %>
-      <li><%= topic.title %></li>
+      <li class="bbs-topic">
+        <div class="bbs-topic-title"><%= topic.title %></div>
+        <div class="bbs-topic-bodies" id="topic-id-<%= topic.id %>"></div>
+      </li>
     <% end %>
     </ul>
   </li>
