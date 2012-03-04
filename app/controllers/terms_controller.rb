@@ -84,7 +84,9 @@ class TermsController < ApplicationController
   # DELETE /terms/1.json
   def destroy
     @term = Term.find(params[:id])
+    @bbs_group = BbsGroup.find(@term.bbs_group_id)
     @term.destroy
+    @bbs_group.destroy
 
     respond_to do |format|
       format.html { redirect_to terms_url }

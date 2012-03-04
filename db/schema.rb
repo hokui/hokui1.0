@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120302030219) do
+ActiveRecord::Schema.define(:version => 20120304010352) do
 
   create_table "bbs_bodies", :force => true do |t|
     t.integer  "bbs_topic_id"
@@ -98,6 +98,9 @@ ActiveRecord::Schema.define(:version => 20120302030219) do
     t.string   "handle_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "ml_user_number"
+    t.date     "birthday"
+    t.string   "mail"
   end
 
 end

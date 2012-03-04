@@ -1,11 +1,11 @@
 <% @subject ? @page_title=@subject.screen_title : @page_title="教科のページ" %>
 
-<p>Subject Page</p>
-<h1><%= @subject.screen_title.force_encoding('utf-8') %></h1>
+<em class="subject-header">Subject Page</em>
+<h1 class="subject-title"><%= @subject.screen_title.force_encoding('utf-8') %></h1>
 
 <h2>基本情報</h2>
 <section>
-  <dl>
+  <dl class="subject-syllabus">
     <dt>教科名</dt>
     <dd><%= @subject.screen_title.force_encoding('utf-8') %></dd>
     <dt>担当教員</dt>
@@ -14,8 +14,8 @@
 </section>
 
 <h2>授業資料</h2>
-<section>
-  <ul>
+<section class="subject-database">
+  <ul class="subject-summary">
   <% @summaries.each do |summary| %>
     <li><%= link_to "第#{summary.number}回",
         { controller: 'summaries', action: 'download', id: summary.id } %>
@@ -25,8 +25,8 @@
 </section>
 
 <h2>小テスト</h2>
-<section>
-  <ul>
+<section class="subject-database">
+  <ul class="subject-quiz">
   <% for number in 1..@quizzes.maximum('number') %>
     <li>
       第<%= number %>回：
@@ -52,8 +52,8 @@
 </section>
 
 <h2>過去問</h2>
-<section>
-  <ul>
+<section class="subject-database">
+  <ul class="subject-exam">
   <% for year in @exams.minimum('year')..@exams.maximum('year') %>
     <% unless @exams.find_by_year(year).blank? %>
     <li>
@@ -87,7 +87,7 @@
 </section>
 
 <h2>質問掲示板</h2>
-<p>雑談現金！雑談は<a href=../../Billboard.html>雑談板</a>で！</p>
-<section id=subjects-billboard>
-  <!-- TODO 形式は要検討-->
+<p>雑談現金！雑談は<%= link_to '雑談板', {controller: 'bbs', action: 'index'} %>で！</p>
+<section id="subject-billboard">
+  <!-- Ajax -->
 </section>
