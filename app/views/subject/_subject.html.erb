@@ -90,7 +90,7 @@
 <p>雑談現金！雑談は<%= link_to '雑談板', {controller: 'bbs', action: 'index'} %>で！</p>
 <section id="subject-billboard">
   <div id="bbs">
-    <%= render(@bbs_topic) %>
+    <%= render 'bbs_bodies/bbs_bodies' %>
   </div>
 
   <div>

@@ -1,5 +1,6 @@
 <li>
-  <span class="name"><%= bbs_body.user.handle_name %></span>
-  <span class="body"><%= bbs_body.text %></span>
-  <span class="datetime"><%= bbs_body.created_at %></span>
+  <span class="bbs-user-name"><%= User.find(bbs_body['user_id']).handle_name %></span>
+  <span class="bbs-text"><%= bbs_body['text'] %></span>
+  <% t=bbs_body['created_at'] %>
+  <span class="bbs-datetime"><%= "#{t[5,2]}/#{t[8,2]} #{t[11,2].to_i.+(9).to_s}:#{t[14,2]}" %></span>
 </li>

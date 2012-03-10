@@ -11,6 +11,7 @@ class SubjectController < ApplicationController
     @exams=Exam.where(subject_id: @subject.id).select('id, year, number, q_a')
     @bbs_topic=BbsTopic.find(@subject.bbs_topic.id)
     @bbs_body=BbsBody.new
+    @bbs_bodies=JSON.parse(BbsBody.where(bbs_topic_id: @bbs_topic.id).order('id DESC').limit(10).to_json)
   end
 
   def statistics
