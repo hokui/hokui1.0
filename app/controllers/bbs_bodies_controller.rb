@@ -44,10 +44,10 @@ class BbsBodiesController < ApplicationController
 
     respond_to do |format|
       if @bbs_body.save
-        @bbs_bodies=JSON.parse(BbsBody.where(bbs_topic_id: @bbs_body.bbs_topic_id).order('id DESC').limit(10).to_json)
-        p @bbs_bodies
+        @bbs_topic_id=@bbs_body.bbs_topic_id
+        @page=1
         format.html { redirect_to @bbs_body, notice: 'Bbs body was successfully created.' }
-        format.js
+        format.js   { render action: "return_bbs_data" }
         format.json { render json: @bbs_body, status: :created, location: @bbs_body }
       else
         format.html { render action: "new" }

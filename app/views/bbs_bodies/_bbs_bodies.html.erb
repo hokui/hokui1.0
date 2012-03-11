@@ -1,5 +1,6 @@
+<% bbs_bodies=JSON.parse(BbsBody.where(bbs_topic_id: bbs_topic_id).order('id DESC').offset(20*(page-1)).limit(20).to_json) %>
 <ul>
-<% @bbs_bodies.each do |bbs_body| %>
+<% bbs_bodies.each do |bbs_body| %>
   <%= render 'bbs_bodies/bbs_body', bbs_body: bbs_body %>
 <% end %>
 </ul>
