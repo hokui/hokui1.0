@@ -80,4 +80,36 @@ class UsersController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def login
+    @user=User.new()
+  end
+
+  def process_login_request
+    if try_login_to_ml(params[:mail],params[:password])
+      if User.find_by_mail(params[:mail]).blank?
+        @user=User.new
+        @user.mail=params[:mail]
+        if @user.save
+          redirect_to "/users/edit/#{@user.id}"
+        else
+          #TODO
+        end
+      else
+        redirect_to "/"
+      end
+    else
+      #TODO Error code
+    end
+  end
+
+  def try_login_to_ml(mail,password)
+    #TODO login_to_ml code, HTTP requests and processing.
+    if mail && password
+      #TODO session
+      return true
+    else
+      return false
+    end
+  end
 end

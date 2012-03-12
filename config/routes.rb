@@ -1,5 +1,6 @@
 Med93::Application.routes.draw do
 
+  get '/login', to: 'users#login'
   match '/bbs_bodies/return_bbs_data/:bbs_topic_id/:page', to: 'bbs_bodies#return_bbs_data'
   match '/bbs_bodies/create_bbs_window/:bbs_topic_id/', to: 'bbs_bodies#create_bbs_window'
   resources :users
