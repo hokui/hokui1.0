@@ -83,4 +83,14 @@ class BbsBodiesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def create_bbs_window
+    @bbs_topic_id=params[:bbs_topic_id].to_i
+    @bbs_body=BbsBody.new
+  end
+
+  def return_bbs_data
+    @bbs_topic_id=params[:bbs_topic_id].to_i
+    @page=params[:page].to_i
+  end
 end

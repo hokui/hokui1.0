@@ -1,0 +1,23 @@
+<% @index_page=false; @subject_page=false; @calender_page=false; %>
+<% @bbs_page=true; @mail_page=false; @sns_page=false; @about_page=false %>
+
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "bbs" %>
+<% end %>
+<% content_for :javascript do %>
+  <%= javascript_include_tag "bbs" %>
+<% end %>
+
+<% content_for :content do %>
+  <nav id="grobal-side-navigation">
+    考え中
+  </nav>
+
+  <div id=grobal-main-column>
+
+    <%= yield %>
+
+  </div>
+
+<% end %>
+<%= render template: 'layouts/application' %>

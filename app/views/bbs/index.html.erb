@@ -9,8 +9,13 @@
     <ul>
     <% BbsTopic.where(bbs_group_id: group.id).each do |topic| %>
       <li class="bbs-topic">
-        <div class="bbs-topic-title"><%= topic.title %></div>
-        <div class="bbs-topic-bodies" id="topic-id-<%= topic.id %>"></div>
+        <div class="bbs-title">
+          <%= topic.title %>
+          <input id="bbs-display-button-<%=topic.id%>" type="button" value="表示" onClick="bbs_onClick(<%= topic.id %>)">
+          <input id="bbs-destroy-button-<%=topic.id%>" type="button" value="非表示" disabled="disabled" onClick="bbs_destroy(<%= topic.id %>)">
+        </div>
+        <div id="bbs-wrapper-<%=topic.id%>">
+        </div>
       </li>
     <% end %>
     </ul>
@@ -25,8 +30,13 @@
     <ul>
     <% BbsTopic.where(bbs_group_id: group.id).each do |topic| %>
       <li class="bbs-topic">
-        <div class="bbs-topic-title"><%= topic.title %></div>
-        <div class="bbs-topic-bodies" id="topic-id-<%= topic.id %>"></div>
+        <div class="bbs-title">
+          <%= topic.title %>
+          <input id="bbs-display-button-<%=topic.id%>" type="button" value="表示" onClick="bbs_onClick(<%= topic.id %>)">
+          <input id="bbs-destroy-button-<%=topic.id%>" type="button" value="非表示" disabled="disabled" onClick="bbs_destroy(<%= topic.id %>)">
+        </div>
+        <div id="bbs-wrapper-<%=topic.id%>">
+        </div>
       </li>
     <% end %>
     </ul>

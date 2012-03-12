@@ -1,0 +1,17 @@
+<div id="<%= "bbs-bodies-#{bbs_topic_id}" %>">
+  <div class="bbs-text">
+  </div>
+
+  <div>
+  <%= form_for(@bbs_body, remote: true) do |f| %>
+    <%= f.hidden_field :bbs_topic_id, value: bbs_topic_id %>
+    <%= f.hidden_field :user_id, value: 1 %>
+    <div class="field">
+      <%= f.text_field :text, class: 'bbs-text-input' %>
+    </div>
+    <div class="action">
+      <%= f.submit %>
+    </div>
+  <% end %>
+  </div>
+</div>

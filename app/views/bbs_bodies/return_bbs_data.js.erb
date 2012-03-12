@@ -1,3 +1,2 @@
-$('div#bbs').html("<%= escape_javascript(render('bbs_bodies', bbs_topic_id: @bbs_topic_id, page: @page)) %>");
-$('input#bbs_body_text').val("");
-$('input#bbs_body_text').focus();
+$('<%= "div#bbs-bodies-#{@bbs_topic_id} div.bbs-text" %>').html("<%= escape_javascript(render('bbs_bodies', bbs_topic_id: @bbs_topic_id, page: @page)) %>");
+$('input.bbs-text-input').val("");
