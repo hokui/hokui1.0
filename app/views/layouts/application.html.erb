@@ -14,7 +14,15 @@
   <div id=grobal-wrapper>
 
     <header id=grobal-header>
-      <%= image_tag 'grobal-image/grobal-top.png', alt: 'page-top' %>
+      <div id=grobal-banner>
+        <%= image_tag 'grobal-image/grobal-top.png', alt: 'page-top' %>
+        <div id=grobal-user-menu>
+          <%= link_to 'LogOut', '/logout' %>
+          <%= link_to 'profiel', "/users/#{session[:user_id]}/edit" %>
+          <%= link_to 'admin menu', '/terms' %>
+        </div>
+      </div>
+
       <nav id=grobal-header-menu>
         <ul>
           <li id="grobal-header-menu-home">

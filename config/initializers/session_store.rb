@@ -1,6 +1,9 @@
 # Be sure to restart your server when you modify this file.
 
-Med93::Application.config.session_store :cookie_store, key: '_med93_session'
+Med93::Application.config.session_store :cookie_store, key: '_med93_session',
+                                                       expire_after: 2.weeks,
+                                                       http_only: true,
+                                                       cookie_only: true
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information

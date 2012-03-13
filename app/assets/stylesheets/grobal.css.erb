@@ -27,13 +27,26 @@ body
   position: relative;
 }
 
-#grobal-header img
+#grobal-header #grobal-banner
+{
+  position: relative;
+}
+
+#grobal-header #grobal-banner img
 {
   width: 980px;
   height: 60px;
   margin: 0;
   padding: 0;
   position: relative;
+  z-index: 0;
+}
+
+#grobal-header #grobal-banner #grobal-user-menu
+{
+  position: absolute;
+  top: 15px; right: 15px;
+  z-index: 1;
 }
 
 #grobal-header #grobal-header-menu

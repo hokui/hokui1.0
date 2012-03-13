@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  layout 'application', except: :login
+
   # GET /users
   # GET /users.json
   def index
@@ -91,25 +94,32 @@ class UsersController < ApplicationController
         @user=User.new
         @user.mail=params[:mail]
         if @user.save
+          session[:user_id]=@user.id
           redirect_to "/users/edit/#{@user.id}"
         else
-          #TODO
+          redirect_to action: 'login'
         end
       else
+        session[:user_id]=User.find_by_mail(params[:mail]).id
         redirect_to "/"
       end
     else
-      #TODO Error code
+      redirect_to action: 'login', notice: 'wrong pair of mail/password'
     end
   end
 
   def try_login_to_ml(mail,password)
     #TODO login_to_ml code, HTTP requests and processing.
-    if mail && password
-      #TODO session
+    p mail, password
+    if mail!="" && password!=""
       return true
     else
       return false
     end
+  end
+
+  def logout
+    session[:user_id]=nil
+    redirect_to action: 'login'
   end
 end
