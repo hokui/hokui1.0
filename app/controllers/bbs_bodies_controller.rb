@@ -41,6 +41,7 @@ class BbsBodiesController < ApplicationController
   # POST /bbs_bodies.json
   def create
     @bbs_body = BbsBody.new(params[:bbs_body])
+    @bbs_body.user_id=session[:user_id]
 
     respond_to do |format|
       if @bbs_body.save

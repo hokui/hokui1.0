@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_filter :authorize, only: [:login, :process_login_request, :try_login_to_ml]
 
   layout 'application', except: :login
 
@@ -93,6 +94,7 @@ class UsersController < ApplicationController
       if User.find_by_mail(params[:mail]).blank?
         @user=User.new
         @user.mail=params[:mail]
+        @user.authority="guest"
         if @user.save
           session[:user_id]=@user.id
           redirect_to "/users/edit/#{@user.id}"

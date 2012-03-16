@@ -19,6 +19,18 @@
     <%= f.label :handle_name %><br />
     <%= f.text_field :handle_name %>
   </div>
+  <div class="field">
+    <%= f.label :birthyear %>
+    <%= f.number_field :birthyear %>
+    <%= f.label :birthmonth %>
+    <%= f.number_field :birthmonth %>
+    <%= f.label :birthday %>
+    <%= f.number_field :birthday %>
+  </div>
+  <div class="field">
+    <%= f.label :mail %>
+    <%= f.email_field :mail, readonly: true %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
