@@ -28,6 +28,13 @@ class ExamsController < ApplicationController
   # GET /exams/new.json
   def new
     @exam = Exam.new
+    if session[:subject_id]
+      p "session",session[:subject_id]
+      @subject_id=session[:subject_id]
+      session[:subject_id]=nil
+      p "variable",@subject_id
+      p "session",session[:subject_id]
+    end
 
     respond_to do |format|
       format.html # new.html.erb

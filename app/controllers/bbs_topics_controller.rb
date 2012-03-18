@@ -41,6 +41,8 @@ class BbsTopicsController < ApplicationController
   # POST /bbs_topics.json
   def create
     @bbs_topic = BbsTopic.new(params[:bbs_topic])
+    @bbs_topic.user_id=session[:user_id]
+    @bbs_topic.bbs_group_id=flash[:bbs_group_id]
 
     respond_to do |format|
       if @bbs_topic.save

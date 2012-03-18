@@ -1,2 +1,74 @@
-<h1>Index#index</h1>
-<p>Find me in app/views/index/index.html.erb</p>
+<% @index_page=true; @subject_page=false; @calender_page=false; %>
+<% @bbs_page=false; @mail_page=false; @sns_page=false; @about_page=false %>
+
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "index" %>
+<% end %>
+
+<% content_for :content do %>
+  <div id="index-update">
+    <section>
+      <%= link_to controller: 'subject', action: 'index' do %>
+      <div class="index-update-header">
+        <%= image_tag 'index-image/index-subject.gif' %>
+        <h2>過去問・授業資料</h2>
+      </div>
+      <% end %>
+      <h3>更新情報</h3>
+      <div class="index-update-contents" id="index-update-subject">
+        <ul>
+          <li>
+            <span class="index-update-date">Feb 24, 2012</span>
+            <span class="index-update-info">統計学過去問2010</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="index-update-header">
+        <%= image_tag 'index-image/index-calender.gif' %>
+        <h2>カレンダー・イベント</h2>
+      </div>
+      <div class="index-update-contents" id="index-update-calender">
+        We're sorry, <br>but this content is still to come.
+      </div>
+    </section>
+
+    <section>
+      <%= link_to controller: 'bbs', action: 'index' do %>
+      <div class="index-update-header">
+        <%= image_tag 'index-image/index-bbs.gif' %>
+        <h2>BBS</h2>
+      </div>
+      <% end %>
+      <h3>更新情報</h3>
+      <div class="index-update-contents" id="index-update-bbs">
+        <ul>
+          <li>
+            <span class="index-update-date">Mar 2, 2012</span>
+            <span class="index-update-info">New Topic 'ライブ開催'</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="index-update-header">
+        <%= image_tag 'index-image/index-ml.gif' %>
+        <h2>freeML</h2>
+      </div>
+      <div class="index-update-contents" id="index-update-ml">
+        We're sorry, <br>but this content is still to come.
+      </div>
+    </section>
+  </div>
+
+  <section id="index-timeline">
+    <%= image_tag 'index-image/twitter.png' %>
+    <%= image_tag 'index-image/facebook.png' %><br>
+    SNS co-op service is still to come.
+  </section>
+<% end %>
+
+<%= render template: 'layouts/application' %>

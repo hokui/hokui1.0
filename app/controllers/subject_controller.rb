@@ -11,6 +11,7 @@ class SubjectController < ApplicationController
     @exams=Exam.where(subject_id: @subject.id).select('id, year, number, q_a')
     @bbs_topic=BbsTopic.find(@subject.bbs_topic.id)
     @bbs_body=BbsBody.new
+    session[:subject_id]=@subject.id
   end
 
   def statistics
