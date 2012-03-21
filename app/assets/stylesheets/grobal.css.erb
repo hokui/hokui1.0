@@ -2,7 +2,7 @@ body
 {
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
+  background-color: #ff99ff;
   font-size: 14px;
   color: #3e3e3e;
   letter-spacing: 0.1em;
@@ -10,9 +10,8 @@ body
 
 #grobal-wrapper
 {
-  width: 960px;
+  width: 980px;
   margin: 0 auto;
-  position: center;
   padding: 0;
   background: none;
   background-color: #ffffff;
@@ -21,9 +20,9 @@ body
 #grobal-header
 {
   margin: 0;
-  padding: 0px 0px 10px 0px;
+  padding: 0;
   clear: both;
-  height: 98px;
+  height: 88px;
   position: relative;
 }
 
@@ -34,7 +33,7 @@ body
 
 #grobal-header #grobal-banner img
 {
-  width: 960px;
+  width: 980px;
   height: 60px;
   margin: 0;
   padding: 0;
@@ -44,15 +43,16 @@ body
 #grobal-header #grobal-banner #grobal-user-menu
 {
   position: absolute;
-  top: 15px; right: 15px;
+  top: 10px; right: 15px;
   z-index: 1;
+  text-align: right;
 }
 
 #grobal-header #grobal-header-menu
 {
   margin: 0;
   padding: 0;
-  width: 960px;
+  width: 980px;
   height: 28px;
 }
 
@@ -70,16 +70,23 @@ body
   list-style: none;
   margin: 0;
   padding: 0;
-  width: 160px;
+  width: 140px;
   height: 28px;
 }
 
 #grobal-header #grobal-header-menu ul li a
 {
   background-image: url(<%= asset_path 'grobal-image/grobal-top-menu.png' %>);
-  width: 160px;
+  width: 140px;
   height: 28px;
   display: inline-block;
+}
+
+#grobal-contents
+{
+  width: 960px;
+  margin: 10px;
+  padding: 0;
 }
 
 #grobal-side-navigation
@@ -93,7 +100,6 @@ body
 #grobal-side-navigation h1
 {
   font-size: 20px;
-  font-style: none;
   text-align: left;
 }
 
@@ -150,8 +156,8 @@ body
 #grobal-footer
 {
   margin: 0;
-  padding:10px 0px 0px 0px;
-  width: 960px;
+  padding: 0;
+  width: 980px;
   clear: both;
 }
 

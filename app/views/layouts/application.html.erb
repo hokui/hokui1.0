@@ -17,8 +17,8 @@
       <div id=grobal-banner>
         <%= image_tag 'grobal-image/grobal-top.png', alt: 'page-top' %>
         <div id=grobal-user-menu>
-          <%= link_to 'LogOut', '/logout' %>
-          <%= link_to 'profiel', "/users/#{session[:user_id]}/edit" %>
+          <%= link_to 'log-out', '/logout' %><br />
+          <%= link_to 'profiel', "/users/#{session[:user_id]}/edit" %><br />
           <% if User.find_by_id(session[:user_id]).authority=="admin" %>
             <%= link_to 'admin menu', '/terms' %>
           <% else %>
@@ -71,11 +71,21 @@
               <%= link_to '', {controller: 'index', action: 'sns'}, {class: 'other-page'} %>
             <% end %>
           </li>
+          <li id="grobal-header-menu-sns">
+            <% if @sns_page %>
+              <%= link_to '', {controller: 'index', action: 'about'}, {class: 'self-link'} %>
+            <% else %>
+              <%= link_to '', {controller: 'index', action: 'about'}, {class: 'other-page'} %>
+            <% end %>
+          </li>
         </ul>
       </nav>
     </header>
 
-    <%= content_for?(:content) ? yield(:content) : yield %>
+    <div id="grobal-contents">
+      <%= content_for?(:content) ? yield(:content) : yield %>
+      <div style="clear: both;"></div>
+    </div>
 
     <footer id=grobal-footer>
       <hr><!-- TODO 後できちんと画像にすること-->

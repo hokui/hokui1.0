@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-  skip_before_filter :authorize, only: [:login, :process_login_request, :try_login_to_ml]
-
-  layout 'application', except: :login
-
   # GET /users
   # GET /users.json
   def index
@@ -85,43 +81,23 @@ class UsersController < ApplicationController
     end
   end
 
-  def login
-    @user=User.new()
+  def change_password
+    @user = User.find(session[:user_id])
   end
 
-  def process_login_request
-    if try_login_to_ml(params[:mail],params[:password])
-      if User.find_by_mail(params[:mail]).blank?
-        @user=User.new
-        @user.mail=params[:mail]
-        @user.authority="guest"
-        if @user.save
-          session[:user_id]=@user.id
-          redirect_to "/users/edit/#{@user.id}"
-        else
-          redirect_to action: 'login'
-        end
-      else
-        session[:user_id]=User.find_by_mail(params[:mail]).id
-        redirect_to "/"
-      end
-    else
-      redirect_to action: 'login', notice: 'wrong pair of mail/password'
+  def update_password
+    if params[:new_password]!=params[:new_password_confirm]
+      redirect_to action: 'change_password'
+      return
     end
-  end
 
-  def try_login_to_ml(mail,password)
-    #TODO login_to_ml code, HTTP requests and processing.
-    p mail, password
-    if mail!="" && password!=""
-      return true
+    @user=User.find(session[:user_id])
+    if @user.authenticate(params[:password])
+      @user.password=params[:new_password]
+      @user.save
+      redirect_to "/users/edit/#{session[:user_id]}"
     else
-      return false
+      redirect_to action: 'change_password'
     end
-  end
-
-  def logout
-    session[:user_id]=nil
-    redirect_to action: 'login'
   end
 end

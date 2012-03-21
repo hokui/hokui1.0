@@ -99,12 +99,11 @@ ActiveRecord::Schema.define(:version => 20120314105623) do
     t.string   "handle_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "ml_user_number"
     t.date     "birthday"
     t.string   "mail"
-    t.integer  "birthyear"
-    t.integer  "birthmonth"
     t.string   "authority"
+    t.integer  "invited_by"
+    t.string   "password_digest"
   end
 
 end
