@@ -27,6 +27,7 @@
 <h2>小テスト</h2>
 <section class="subject-database">
   <ul class="subject-quiz">
+  <% unless @quizzes.blank? %>
   <% for number in 1..@quizzes.maximum('number') %>
     <li>
       第<%= number %>回：
@@ -47,6 +48,7 @@
         { controller: 'quizzes', action: 'download', id: quiz.id } %>
       <% end %>
     </li>
+  <% end %>
   <% end %>
   </ul>
 </section>
