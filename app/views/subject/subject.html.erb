@@ -57,6 +57,7 @@
 <section class="subject-database">
   <%= link_to '新規', {controller: 'exams', action: 'new'} %>
   <ul class="subject-exam">
+  <% unless @exam.blank? %>
   <% for year in @exams.minimum('year')..@exams.maximum('year') %>
     <% unless @exams.find_by_year(year).blank? %>
     <li>
@@ -85,6 +86,7 @@
         <% end %>
       </ul>
     <% end %>
+  <% end %>
   <% end %>
   </ul>
 </section>
