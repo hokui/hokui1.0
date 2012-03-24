@@ -1,10 +1,13 @@
 class ApplicationController < ActionController::Base
-  force_ssl
   before_filter :authorize
+  before_filter :set_charset
 
   protect_from_forgery
 
   private
+  def set_charset
+    headers["Content-Type"] = "text/html; charset=UTF-8"
+  end
 
   def authorize
     unless User.find_by_id(session[:user_id])

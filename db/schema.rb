@@ -48,8 +48,6 @@ ActiveRecord::Schema.define(:version => 20120314105623) do
     t.datetime "updated_at"
   end
 
-  add_index "exams", ["file"], :name => "index_exams_on_file", :unique => true
-
   create_table "quizzes", :force => true do |t|
     t.integer  "subject_id",   :null => false
     t.integer  "number",       :null => false
@@ -60,8 +58,6 @@ ActiveRecord::Schema.define(:version => 20120314105623) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "quizzes", ["file"], :name => "index_quizzes_on_file", :unique => true
 
   create_table "subjects", :force => true do |t|
     t.integer  "term_id",      :null => false
@@ -84,8 +80,6 @@ ActiveRecord::Schema.define(:version => 20120314105623) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "summaries", ["file"], :name => "index_summaries_on_file", :unique => true
 
   create_table "terms", :force => true do |t|
     t.string   "title"
