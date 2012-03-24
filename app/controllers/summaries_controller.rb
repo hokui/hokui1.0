@@ -53,7 +53,7 @@ class SummariesController < ApplicationController
         when "application/pdf"
           ext = "pdf"
         else
-          redirect_to "new" notice: "invalid file type"
+          redirect_to "new", notice: "invalid file type"
       end
       @summary.file_name =
         "#{Subject.find(@summary.subject_id).page_title}-summary-" +

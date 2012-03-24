@@ -1,4 +1,5 @@
 class QuizzesController < ApplicationController
+  before_filter :admin_authorize, except: [:new, :create]
 
   layout "admin"
 
@@ -53,7 +54,7 @@ class QuizzesController < ApplicationController
         when "application/pdf"
           ext = "pdf"
         else
-          #TODO redirect_to "new" notice: "invalid file type"
+          redirect_to "new", notice: "invalid file type"
       end
       @quiz.file_name =
         "#{Subject.find(@quiz.subject_id).page_title}-quiz-" +

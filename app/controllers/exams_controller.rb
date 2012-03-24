@@ -1,4 +1,5 @@
 class ExamsController < ApplicationController
+  before_filter :admin_authorize, except: [:new, :create]
 
   layout "admin"
 
@@ -61,7 +62,7 @@ class ExamsController < ApplicationController
         when "application/pdf"
           ext = "pdf"
         else
-          #TODO redirect_to "new" notice: "invalid file type"
+          redirect_to "new", notice: "invalid file type"
       end
       @exam.file_name =
         "#{Subject.find(@exam.subject_id).page_title}-past_exam-" +
