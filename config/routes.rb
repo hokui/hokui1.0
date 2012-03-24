@@ -2,7 +2,9 @@ Med93::Application.routes.draw do
 
   get '/logout', to: 'sessions#destroy'
   get '/login', to: 'sessions#new'
-  get '/profiel/change_password', to: 'users#change_password'
+  match 'subject/:id', to: 'subject#subject'
+  get '/profile', to: 'users#edit'
+  get '/profile/change_password', to: 'users#change_password'
   match '/bbs_bodies/return_bbs_data/:bbs_topic_id/:page', to: 'bbs_bodies#return_bbs_data'
   match '/bbs_bodies/create_bbs_window/:bbs_topic_id/', to: 'bbs_bodies#create_bbs_window'
   resources :users

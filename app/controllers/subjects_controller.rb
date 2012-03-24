@@ -1,4 +1,5 @@
 class SubjectsController < ApplicationController
+  before_filter :system_authorize
 
   layout "admin"
 

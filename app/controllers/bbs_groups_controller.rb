@@ -40,7 +40,9 @@ class BbsGroupsController < ApplicationController
   # POST /bbs_groups
   # POST /bbs_groups.json
   def create
-    @bbs_group = BbsGroup.new(params[:bbs_group])
+    @bbs_group = BbsGroup.new
+    @bbs_group.title=params[:bbs_group][:title]
+    @bbs_group.is_a_term=false
 
     respond_to do |format|
       if @bbs_group.save

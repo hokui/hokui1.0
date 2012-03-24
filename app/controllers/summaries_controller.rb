@@ -1,4 +1,5 @@
 class SummariesController < ApplicationController
+  before_filter :admin_authorize, except: [:new, :create]
 
   layout "admin"
 
@@ -52,7 +53,7 @@ class SummariesController < ApplicationController
         when "application/pdf"
           ext = "pdf"
         else
-          #TODO redirect_to "new" notice: "invalid file type"
+          redirect_to "new" notice: "invalid file type"
       end
       @summary.file_name =
         "#{Subject.find(@summary.subject_id).page_title}-summary-" +
@@ -60,7 +61,7 @@ class SummariesController < ApplicationController
 
     respond_to do |format|
       if @summary.save
-        format.html { redirect_to @summary, notice: 'Summary was successfully created.' }
+        format.html { redirect_to "/subject/#{@summary.subject_id}", notice: 'Summary was successfully created.' }
         format.json { render json: @summary, status: :created, location: @summary }
       else
         format.html { render action: "new" }

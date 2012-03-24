@@ -16,8 +16,7 @@
       <ul>
       <% Subject.where(term_id: term.id).each do |subject| %>
         <li>
-          <%= link_to subject.screen_title,
-            { controller: 'subject', action: subject.page_title } %>
+          <%= link_to subject.screen_title, "/subject/#{subject.id}" %>
         </li>
       <% end %>
       </ul>

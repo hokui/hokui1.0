@@ -19,12 +19,8 @@
         <%= image_tag 'grobal-image/grobal-top.png', alt: 'page-top' %>
         <div id=grobal-user-menu>
           <%= link_to 'log-out', '/logout' %><br />
-          <%= link_to 'profiel', "/users/#{session[:user_id]}/edit" %><br />
-          <% if User.find_by_id(session[:user_id]).authority=="admin" %>
-            <%= link_to 'admin menu', '/terms' %>
-          <% else %>
-            <%= 'admin menu' %>
-          <% end %>
+          <%= link_to 'profile', '/profile' %><br />
+          <%= link_to 'admin menu', '/terms' %>
         </div>
       </div>
 

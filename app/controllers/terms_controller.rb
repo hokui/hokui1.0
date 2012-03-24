@@ -1,4 +1,5 @@
 class TermsController < ApplicationController
+  before_filter :system_authorize
 
   layout 'admin'
 
@@ -67,6 +68,7 @@ class TermsController < ApplicationController
 
     @bbs_group=BbsGroup.find(@term.bbs_group_id)
     @bbs_group.title=params[:term][:title]
+    @bbs_group.is_a_term=true
     @bbs_group.save
 
     respond_to do |format|
