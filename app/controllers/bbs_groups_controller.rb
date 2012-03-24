@@ -42,7 +42,7 @@ class BbsGroupsController < ApplicationController
   def create
     @bbs_group = BbsGroup.new
     @bbs_group.title=params[:bbs_group][:title]
-    @bbs_group.is_a_term=false
+    @bbs_group.is_a_term=0
 
     respond_to do |format|
       if @bbs_group.save
