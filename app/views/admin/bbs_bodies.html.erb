@@ -1,0 +1,26 @@
+<h1>BBS投稿管理</h1>
+<% if @notice.blank? %>
+<section>
+  <table class="admin-index">
+    <tr>
+      <th class="id"></th>
+      <th class="topic">Thread</th>
+      <th class="user_name">User</th>
+      <th class="text">text</th>
+      <th class="datetime">posted_at</th>
+    </tr>
+
+  <% @bbs_bodys.each do |bbs_body| %>
+    <tr>
+      <td><%= bbs_body.id %></td>
+      <td><%= bbs_body.bbs_topic.title %></td>
+      <td><%= bbs_body.user.handel_name %></td>
+      <td><%= bbs_body.text %></td>
+      <td><%= bbs_body.created_at %></td>
+    </tr>
+  <% end %>
+  </table>
+</section>
+<% else %>
+  <%= @notice %>
+<% end %>

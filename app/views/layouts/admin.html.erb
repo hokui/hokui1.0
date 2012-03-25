@@ -14,25 +14,25 @@
     <h1>教科関係</h1>
     <section>
       <ul>
-        <li><%= link_to '過去問', exams_path %></li>
-        <li><%= link_to '小テスト', quizzes_path %></li>
-        <li><%= link_to '授業資料', summaries_path %></li>
+        <li><%= link_to '過去問', action: 'exams' %></li>
+        <li><%= link_to '小テスト', action: 'quizzes' %></li>
+        <li><%= link_to '授業資料', action: 'summaries' %></li>
       </ul>
     </section>
     <h1>BBS</h1>
     <section>
       <ul>
-        <li><%= link_to 'BBSスレッド一覧', bbs_topics_path %></li>
-        <li><%= link_to 'BBS投稿一覧', bbs_bodies_path %></li>
+        <li><%= link_to 'BBSスレッド一覧', action: 'bbs_topics' %></li>
+        <li><%= link_to 'BBS投稿一覧', action: 'bbs_bodies' %></li>
       </ul>
     </section>
     <h1>メンバー管理</h1>
     <section>
       <ul>
-        <li><%= link_to 'メンバー管理', users_path %></li>
+        <li><%= link_to 'メンバー管理', action: 'users' %></li>
       </ul>
     </section>
-    <%= link_to 'システム管理者', '/admin/system' %>
+    <%= link_to 'システム管理者', {controller: 'system', action: 'index'} %>
   </nav>
 
   <div id=grobal-main-column>

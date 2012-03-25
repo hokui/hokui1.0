@@ -1,0 +1,34 @@
+<h1>授業資料ファイル管理</h1>
+<% if @notice.blank? %>
+<section>
+  <table class="admin-index">
+    <tr>
+      <th class="id"></th>
+      <th class="sub">Sub</th>
+      <th class="number">No</th>
+      <th class="file-name">File Name</th>
+      <th class="uploaded-by">Owner</th>
+      <th colspan="2" class="dl-menu"></th>
+    </tr>
+
+  <% @summaries.each do |summary| %>
+    <tr>
+      <td><%= summary.id %></td>
+      <td><%= summary.subject.screen_title %></td>
+      <td><%= summary.number %></td>
+      <td><%= summary.file_name %></td>
+      <td><%= User.find(summary.uploaded_by).handle_name %></td>
+      <td><%= link_to 'DL',
+                      { controller: 'summaries', action: 'download', id: summary.id }
+          %></td>
+      <td><%= link_to 'Delete',
+                      { controller: 'admin', action: 'delete_summary', id: summary.id },
+                      confirm: 'Are you sure?'
+          %></td>
+    </tr>
+  <% end %>
+  </table>
+</section>
+<% else %>
+  <%= @notice %>
+<% end %>

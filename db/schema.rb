@@ -11,12 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120314105623) do
+ActiveRecord::Schema.define(:version => 20120325151600) do
 
   create_table "bbs_bodies", :force => true do |t|
-    t.integer  "bbs_topic_id"
-    t.integer  "user_id"
-    t.text     "text"
+    t.integer  "bbs_topic_id", :null => false
+    t.integer  "user_id",      :null => false
+    t.text     "text",         :null => false
+    t.boolean  "deleted",      :null => false
+    t.integer  "deleted_by"
+    t.boolean  "topic_deleted",:null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,9 +32,11 @@ ActiveRecord::Schema.define(:version => 20120314105623) do
   end
 
   create_table "bbs_topics", :force => true do |t|
-    t.integer  "bbs_group_id"
-    t.integer  "user_id"
-    t.string   "title"
+    t.integer  "bbs_group_id", :null => false
+    t.integer  "user_id",      :null => false
+    t.string   "title",        :null => false
+    t.boolean  "deleted",      :null => false
+    t.integer  "deleted_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,6 +49,9 @@ ActiveRecord::Schema.define(:version => 20120314105623) do
     t.binary   "file",         :null => false
     t.string   "content_type", :null => false
     t.string   "file_name",    :null => false
+    t.integer  "uploaded_by",  :null => false
+    t.boolean  "deleted",      :null => false
+    t.integer  "deleted_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55,6 +63,9 @@ ActiveRecord::Schema.define(:version => 20120314105623) do
     t.binary   "file",         :null => false
     t.string   "content_type", :null => false
     t.string   "file_name",    :null => false
+    t.integer  "uploaded_by",  :null => false
+    t.boolean  "deleted",      :null => false
+    t.integer  "deleted_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -77,6 +88,9 @@ ActiveRecord::Schema.define(:version => 20120314105623) do
     t.binary   "file",         :null => false
     t.string   "content_type", :null => false
     t.string   "file_name",    :null => false
+    t.integer  "uploaded_by",  :null => false
+    t.boolean  "deleted",      :null => false
+    t.integer  "deleted_by",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,77 @@
+<h1>ユーザー管理</h1>
+<h2>システム管理者</h2>
+<section>
+  <table class="admin-index">
+    <tr>
+      <th class="id"></th>
+      <th class="full_name">Fullname</th>
+      <th class="user_name">Handle name</th>
+      <th class="mail">Mail Address</th>
+      <th class="full_name">Invited by</th>
+    </tr>
+
+    <% @system.each do |system| %>
+      <tr>
+        <td><%= system.id %></td>
+        <td><%= system.full_name %></td>
+        <td><%= system.handle_name %></td>
+        <td><%= system.mail %></td>
+        <td><%= User.find(system.invited_by).full_name %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
+
+<h2>管理者</h2>
+<% if @notice_admin.blank? %>
+<section>
+  <table class="admin-index">
+    <tr>
+      <th class="id"></th>
+      <th class="full_name">Fullname</th>
+      <th class="user_name">Handle name</th>
+      <th class="mail">Mail Address</th>
+      <th class="full_name">Invited by</th>
+    </tr>
+
+    <% @admin.each do |admin| %>
+      <tr>
+        <td><%= admin.id %></td>
+        <td><%= admin.full_name %></td>
+        <td><%= admin.handle_name %></td>
+        <td><%= admin.mail %></td>
+        <td><%= User.find(admin.invited_by).full_name %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
+<% else %>
+  <%= @notice_admin %>
+<% end %>
+
+<h2>ユーザー</h2>
+<% if @notice_guest.blank? %>
+<section>
+  <table class="admin-index">
+    <tr>
+      <th class="id"></th>
+      <th class="full_name">Fullname</th>
+      <th class="user_name">Handle name</th>
+      <th class="mail">Mail Address</th>
+      <th class="full_name">Invited by</th>
+    </tr>
+
+    <% @guest.each do |guest| %>
+      <tr>
+        <td><%= guest.id %></td>
+        <td><%= guest.full_name %></td>
+        <td><%= guest.handle_name %></td>
+        <td><%= guest.mail %></td>
+        <td><%= User.find(guest.invited_by).full_name %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
+<% else %>
+  <%= @notice_guest %>
+<% end %>

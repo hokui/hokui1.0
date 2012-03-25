@@ -1,0 +1,38 @@
+<h1>過去問ファイル管理</h1>
+<% if @notice.blank? %>
+<section>
+  <table class="admin-index">
+    <tr>
+      <th class="id"></th>
+      <th class="sub">Sub</th>
+      <th class="year">Year</th>
+      <th class="number">No</th>
+      <th class="q-a">Q/A</th>
+      <th class="file-name">File Name</th>
+      <th class="uploaded-by">Owner</th>
+      <th colspan="2" class="dl-menu"></th>
+    </tr>
+
+  <% @exams.each do |exam| %>
+    <tr>
+      <td><%= exam.id %></td>
+      <td><%= exam.subject.screen_title %></td>
+      <td><%= exam.year %></td>
+      <td><%= exam.number %></td>
+      <td><%= exam.q_a.upcase %></td>
+      <td><%= exam.file_name %></td>
+      <td><%= User.find(exam.uploaded_by).handle_name %></td>
+      <td><%= link_to 'DL',
+                      { controller: 'exams', action: 'download', id: exam.id }
+          %></td>
+      <td><%= link_to 'Delete',
+                      { controller: 'admin', action: 'delete_exam', id: exam.id },
+                      confirm: 'Are you sure?'
+          %></td>
+    </tr>
+  <% end %>
+  </table>
+</section>
+<% else %>
+  <%= @notice %>
+<% end %>

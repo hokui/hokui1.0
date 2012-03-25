@@ -1,0 +1,36 @@
+<h1>小テストファイル管理</h1>
+<% if @notice.blank? %>
+<section>
+  <table class="admin-index">
+    <tr>
+      <th class="id"></th>
+      <th class="sub">Sub</th>
+      <th class="number">No</th>
+      <th class="q-a">Q/A</th>
+      <th class="file-name">File Name</th>
+      <th class="uploaded-by">Owner</th>
+      <th colspan="2" class="dl-menu"></th>
+    </tr>
+
+  <% @quizzes.each do |quiz| %>
+    <tr>
+      <td><%= quiz.id %></td>
+      <td><%= quiz.subject.screen_title %></td>
+      <td><%= quiz.number %></td>
+      <td><%= quiz.q_a.upcase %></td>
+      <td><%= quiz.file_name %></td>
+      <td><%= User.find(quiz.uploaded_by).handle_name %></td>
+      <td><%= link_to 'DL',
+                      { controller: 'quizzes', action: 'download', id: quiz.id }
+          %></td>
+      <td><%= link_to 'Delete',
+                      { controller: 'admin', action: 'delete_quiz', id: quiz.id },
+                      confirm: 'Are you sure?'
+          %></td>
+    </tr>
+  <% end %>
+  </table>
+</section>
+<% else %>
+  <%= @notice %>
+<% end %>
