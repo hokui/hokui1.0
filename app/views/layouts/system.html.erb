@@ -1,6 +1,6 @@
 <% @index_page=false; @subject_page=false; @calender_page=false; %>
 <% @bbs_page=false; @mail_page=false; @sns_page=false; @about_page=false %>
-<% @page_title="管理ページ" %>
+<% @page_title="システム管理ページ" %>
 
 <% content_for :stylesheet do %>
   <%= stylesheet_link_tag "admin" %>
@@ -14,25 +14,22 @@
     <h1>教科関係</h1>
     <section>
       <ul>
-        <li><%= link_to '過去問', exams_path %></li>
-        <li><%= link_to '小テスト', quizzes_path %></li>
-        <li><%= link_to '授業資料', summaries_path %></li>
+        <li><%= link_to '教科', subjects_path %></li>
+        <li><%= link_to '学期', terms_path %></li>
       </ul>
     </section>
     <h1>BBS</h1>
     <section>
       <ul>
-        <li><%= link_to 'BBSスレッド一覧', bbs_topics_path %></li>
-        <li><%= link_to 'BBS投稿一覧', bbs_bodies_path %></li>
+        <li><%= link_to 'BBSグループ一覧', bbs_groups_path %></li>
       </ul>
     </section>
     <h1>メンバー管理</h1>
     <section>
       <ul>
-        <li><%= link_to 'メンバー管理', users_path %></li>
+        <li><%= link_to 'メンバー一括招待', '/admin/system/invite_members' %></li>
       </ul>
     </section>
-    <%= link_to 'システム管理者', '/admin/system' %>
   </nav>
 
   <div id=grobal-main-column>

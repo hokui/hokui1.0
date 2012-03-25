@@ -7,6 +7,9 @@ Med93::Application.routes.draw do
   get '/profile/change_password', to: 'users#change_password'
   match '/bbs_bodies/return_bbs_data/:bbs_topic_id/:page', to: 'bbs_bodies#return_bbs_data'
   match '/bbs_bodies/create_bbs_window/:bbs_topic_id/', to: 'bbs_bodies#create_bbs_window'
+  get '/admin/index', to: 'admin#index'
+  get '/admin/system', to: 'admin#system'
+  get '/admin/system/invite_members', to: 'users#invite_from_list'
   resources :users
 
   resources :bbs_bodies

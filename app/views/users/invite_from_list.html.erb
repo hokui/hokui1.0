@@ -1,0 +1,5 @@
+<%= form_tag({controller: 'users', action: 'register_list'}) do %>
+  メールアドレスを改行区切りで入力<br />
+  <%= text_area_tag 'list', size: '70x10' %><br />
+  <%= submit_tag 'submit' %>
+<% end %>

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :admin_authorize, except: [:edit, :update, :change_password, :update_password]
+  before_filter :system_authorize, only: [:invite_from_list, :register_list]
   # GET /users
   # GET /users.json
   def index
@@ -40,10 +42,15 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(params[:user])
+    @user = User.new
+    @user.mail=params[:user][:mail]
+    temp_password=create_random_password
+    @user.password=temp_password
+    @user.invited_by=session[:user_id]
 
     respond_to do |format|
       if @user.save
+        # TODO send_register_confirmation_mail(@user.mail,temp_password)
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -99,5 +106,25 @@ class UsersController < ApplicationController
     else
       redirect_to action: 'change_password'
     end
+  end
+
+  def invite_from_list
+  end
+
+  def register_list
+    data=params[:list]
+    linedata=data.split(/(\r\n?|\n?)/)
+    linedata.each do |line|
+      temp_password=create_random_password
+      if User.new(mail: line, password: temp_password, invited_by: session[:user_id]).save
+        # TODO send_register_confirmation_mail(line,temp_password)
+      end
+    end
+  end
+
+  def create_random_password
+    letters=('a'..'z').to_a + ('0'..'9').to_a
+    random_string=(Array.new(8) { letters[rand(letters.size)] }).join
+    return random_string
   end
 end
