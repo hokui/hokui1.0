@@ -67,6 +67,7 @@ class SystemController < ApplicationController
     subject.title_en=params[:title_en]
     subject.term_id=params[:term_id]
     subject.bbs_topic_id=bbs_topic.id
+    subject.teacher=params[:teacher]
     subject.save
   end
 
@@ -75,6 +76,7 @@ class SystemController < ApplicationController
     subject.title_ja=params[:title_ja]
     subject.title_en=params[:title_en]
     subject.term_id=params[:term_id]
+    subject.teacher=params[:teacher]
     subject.save
     bbs_topic=BbsTopic.find(subject.bbs_topic_id)
     bbs_topic.title=params[:title]

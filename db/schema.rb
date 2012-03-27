@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20120327140000) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "bbs_topic_id", :null => false
+    t.string   "teacher",      :null => false
   end
 
   create_table "summaries", :force => true do |t|

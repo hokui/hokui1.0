@@ -1,94 +1,87 @@
 <% @subject ? @page_title=@subject.screen_title : @page_title="教科のページ" %>
 
 <em class="subject-header">Subject Page</em>
-<h1 class="subject-title"><%= @subject.screen_title.force_encoding('utf-8') %></h1>
+<h1 class="subject-title"><%= @subject.title_ja %></h1>
 
 <h2>基本情報</h2>
 <section>
   <dl class="subject-syllabus">
     <dt>教科名</dt>
-    <dd><%= @subject.screen_title.force_encoding('utf-8') %></dd>
+    <dd><%= @subject.title_ja %></dd>
     <dt>担当教員</dt>
-    <dd></dd>
+    <dd><%= @subject.teacher %></dd>
   </dl>
 </section>
 
 <h2>授業資料</h2>
 <section class="subject-database">
-  <ul class="subject-summary">
-  <% @summaries.each do |summary| %>
-    <li><%= link_to "第#{summary.number}回",
-        { controller: 'summaries', action: 'download', id: summary.id } %>
-    </li>
+  <%= link_to '新規', action: 'new_summary' %>
+  <% if @notice_summary.blank? %>
+    <ul class="subject-summary">
+      <% @summaries.each do |summary| %>
+        <li>
+        <span class="subject-database-number">第<%= summary.number %>回</span>&nbsp;&nbsp;
+        <%= link_to 'DL', { controller: 'summaries', action: 'download', id: summary.id } %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <%= @notice_summary %>
   <% end %>
-  </ul>
 </section>
 
 <h2>小テスト</h2>
 <section class="subject-database">
-  <ul class="subject-quiz">
-  <% unless @quizzes.blank? %>
-  <% for number in 1..@quizzes.maximum('number') %>
-    <li>
-      第<%= number %>回：
-
-      <% quiz=@quizzes.find_by_number_and_q_a(number, "q") %>
-      <% if quiz.blank? %>
-        問題
-      <% else %>
-        <%= link_to "問題",
-        { controller: 'quizzes', action: 'download', id: quiz.id } %>
+  <%= link_to '新規', action: 'new_quiz' %>
+  <% if @notice_quiz.blank? %>
+    <ul class="subject-quiz">
+      <% @quizzes.each do |quiz| %>
+        <li>
+        <% if quiz.number!=quiz_temp_number %>
+          <span class="subject-database-number">第<%= quiz.number %>回</span>&nbsp;
+        <% end %>
+        <% if quiz.q_a=='q' %>
+          <span class="subject-database-q">問題</span>&nbsp;&nbsp;
+        <% else %>
+          <span class="subject-database-a">解答</span>&nbsp;&nbsp;
+        <% end %>
+        <%= link_to 'DL', { controller: 'quizzes', action: 'download', id: quiz.id } %>
+        </li>
+        <% quiz_temp_number=quiz.number %>
       <% end %>
-      、
-      <% quiz=@quizzes.find_by_number_and_q_a(number, "a") %>
-      <% if quiz.blank? %>
-        解答
-      <% else %>
-        <%= link_to "解答",
-        { controller: 'quizzes', action: 'download', id: quiz.id } %>
-      <% end %>
-    </li>
+    </ul>
+  <% else %>
+    <%= @notice_quiz %>
   <% end %>
-  <% end %>
-  </ul>
 </section>
 
 <h2>過去問</h2>
 <section class="subject-database">
-  <%= link_to '新規', {controller: 'exams', action: 'new'} %>
-  <ul class="subject-exam">
-  <% unless @exam.blank? %>
-  <% for year in @exams.minimum('year')..@exams.maximum('year') %>
-    <% unless @exams.find_by_year(year).blank? %>
-    <li>
-      <%= year %>年度：
-      <ul>
-        <% for number in 1..@exams.where(year: year).maximum('number') %>
-          <li>
-            第<%= number %>回
-
-            <% exam=@exams.find_by_number_and_q_a(number, "q") %>
-            <% if exam.blank? %>
-              問題
-            <% else %>
-              <%= link_to "問題",
-              { controller: 'exams', action: 'download', id: exam.id } %>
-            <% end %>
-            、
-            <% exam=@exams.find_by_number_and_q_a(number, "a") %>
-            <% if exam.blank? %>
-              解答
-            <% else %>
-              <%= link_to "解答",
-              { controller: 'exams', action: 'download', id: exam.id } %>
-            <% end %>
-          </li>
+  <%= link_to '新規', action: 'new_exam' %>
+  <% if @notice_exam.blank? %>
+    <ul class="subject-exam">
+      <% @exams.each do |exam| %>
+        <li>
+        <% if exam.year!=exam_temp_year %>
+          <span class="subject-database-year"><%= exam.year %>年度</span>&nbsp;
         <% end %>
-      </ul>
-    <% end %>
+        <% if exam.number!=exam_temp_number %>
+          <span class="subject-database-number">第<%= exam.number %>回</span>&nbsp;
+        <% end %>
+        <% if exam.q_a=='q' %>
+          <span class="subject-database-q">問題</span>&nbsp;&nbsp;
+        <% else %>
+          <span class="subject-database-a">解答</span>&nbsp;&nbsp;
+        <% end %>
+        <%= link_to 'DL', { controller: 'exams', action: 'download', id: exam.id } %>
+        </li>
+        <% exam_temp_year=exam.year %>
+        <% exam_temp_number=exam.number %>
+      <% end %>
+    </ul>
+  <% else %>
+    <%= @notice_exam %>
   <% end %>
-  <% end %>
-  </ul>
 </section>
 
 <h2>質問掲示板</h2>
