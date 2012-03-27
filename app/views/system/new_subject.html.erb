@@ -1,6 +1,6 @@
 <h1>新科目</h1>
 
-<%= form_tag { controller: 'system', action: 'create_subject'} do %>
+<%= form_tag controller: 'system', action: 'create_subject' do %>
   学期を選択<br />
   <%= collection_select('term_id', Term.all, :id, :title, selected: Term.maximum('id')) %>
   教科名（日）<br />

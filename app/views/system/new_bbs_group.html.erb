@@ -1,6 +1,6 @@
 <h1>新規BBSグループ</h1>
 
-<%= form_tag {controller: 'system', action: 'create_bbs_group' } do %>
+<%= form_tag controller: 'system', action: 'create_bbs_group' do %>
   タイトル<br />
   <%= text_field_tag 'title' %><br />
   <%= submit_tag 'submit' %>

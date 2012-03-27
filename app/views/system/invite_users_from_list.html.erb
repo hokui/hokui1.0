@@ -1,6 +1,6 @@
 <h1>ユーザー招待</h1>
 
-<%= form_tag {controller: 'system', action: 'register_users_from_list'} do %>
+<%= form_tag controller: 'system', action: 'register_users_from_list' do %>
   招待するユーザーのメールアドレスを、改行で区切って入力。<br />
   <%= text_area_tag 'list' %><br />
   <%= submit_tag 'submit' %>

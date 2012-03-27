@@ -1,6 +1,6 @@
 <h1>新学期</h1>
 
-<%= form_tag {controller: 'system', action: 'create_term' } do %>
+<%= form_tag controller: 'system', action: 'create_term' do %>
   学期名<br />
   <%= text_field_tag 'title' %><br />
   <%= submit_tag 'submit' %>
