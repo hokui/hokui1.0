@@ -135,7 +135,7 @@ class SystemController < ApplicationController
   end
 
   def register_users_from_list
-    data_rows=params[:list].split(/(\r\n?|\n?)/)
+    linedata=params[:list].split
     linedata.each do |line|
       register_user(line)
     end
@@ -147,6 +147,7 @@ class SystemController < ApplicationController
     temp_password=(Array.new(8){
                      password_characters[rand(password_characters.size)]
                    }).join
+    p mail,temp_password
     user=User.new
     user.mail=mail
     user.invited_by=session[:user_id]

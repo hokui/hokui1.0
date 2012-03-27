@@ -1,4 +1,4 @@
-<% @subject ? @page_title=@subject.screen_title : @page_title="教科のページ" %>
+<% @subject ? @page_title=@subject.title_ja : @page_title="教科のページ" %>
 
 <em class="subject-header">Subject Page</em>
 <h1 class="subject-title"><%= @subject.title_ja %></h1>
@@ -7,15 +7,15 @@
 <section>
   <dl class="subject-syllabus">
     <dt>教科名</dt>
-    <dd><%= @subject.title_ja %></dd>
+    <dd>&nbsp;&nbsp;<%= @subject.title_ja %></dd>
     <dt>担当教員</dt>
-    <dd><%= @subject.teacher %></dd>
+    <dd>&nbsp;&nbsp;<%= @subject.teacher %></dd>
   </dl>
 </section>
 
 <h2>授業資料</h2>
 <section class="subject-database">
-  <%= link_to '新規', action: 'new_summary' %>
+  <%= link_to '新規', action: 'new_summary' %><br />
   <% if @notice_summary.blank? %>
     <ul class="subject-summary">
       <% @summaries.each do |summary| %>
@@ -32,7 +32,7 @@
 
 <h2>小テスト</h2>
 <section class="subject-database">
-  <%= link_to '新規', action: 'new_quiz' %>
+  <%= link_to '新規', action: 'new_quiz' %><br />
   <% if @notice_quiz.blank? %>
     <ul class="subject-quiz">
       <% @quizzes.each do |quiz| %>
@@ -57,7 +57,7 @@
 
 <h2>過去問</h2>
 <section class="subject-database">
-  <%= link_to '新規', action: 'new_exam' %>
+  <%= link_to '新規', action: 'new_exam' %><br />
   <% if @notice_exam.blank? %>
     <ul class="subject-exam">
       <% @exams.each do |exam| %>

@@ -2,12 +2,12 @@
 
 <%= form_tag controller: 'system', action: 'create_subject' do %>
   学期を選択<br />
-  <%= collection_select('term_id', Term.all, :id, :title, selected: Term.maximum('id')) %>
+  <%= select_tag('term_id', options_from_collection_for_select(Term.all, :id, :title, Term.maximum(:id))) %><br />
   教科名（日）<br />
   <%= text_field_tag 'title_ja' %><br />
   教科名（英）<br />
   <%= text_field_tag 'title_en' %><br />
   教員<br />
-  <%= text_field_tag 'teacher' %>
+  <%= text_field_tag 'teacher' %><br />
   <%= submit_tag 'submit' %>
 <% end %>

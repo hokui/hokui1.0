@@ -1,0 +1,14 @@
+<h1>ユーザー権限変更</h1>
+
+<p>次のユーザーの権限を変更します。
+  <%= @user.full_name %><br />
+  <%= @user.mail %><br />
+  現在の権限：<%= @user.authority %>
+</p>
+
+<%= form_tag controller: 'system', action: 'update_user_authority' do %>
+  <%= hidden_field_tag 'id', @user.id %>
+  新しい権限を選択<br />
+  <%= select_tag('authority', options_for_select({system: :system, admin: :admin, guest: :guest}, @user.authority)) %><br />
+  <%= submit_tag 'submit' %>
+<% end %>

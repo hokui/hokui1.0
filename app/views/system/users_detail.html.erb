@@ -9,7 +9,7 @@
       <th class="mail">Mail Address</th>
       <th class="full_name">Invited by</th>
       <th class="date">Birthday</th>
-      <th class="menu"></th>
+      <th class="menu" colspan="2"></th>
     </tr>
 
     <% @system.each do |system| %>
@@ -21,6 +21,7 @@
         <td><%= User.find(system.invited_by).full_name %></td>
         <td><%= system.birthday %></td>
         <td><%= link_to '権限変更', {action: 'edit_user_authority', id: system.id} %></td>
+        <td><%= link_to '退会', {action: 'delete_user', id: system.id}, confirm: "Are you sure to delete '#{system.full_name}'?" %></td>
       </tr>
     <% end %>
   </table>
@@ -37,7 +38,7 @@
       <th class="mail">Mail Address</th>
       <th class="full_name">Invited by</th>
       <th class="date">Birthday</th>
-      <th class="menu"></th>
+      <th class="menu" colspan="2"></th>
     </tr>
 
     <% @admin.each do |admin| %>
@@ -49,6 +50,7 @@
         <td><%= User.find(admin.invited_by).full_name %></td>
         <td><%= admin.birthday %></td>
         <td><%= link_to '権限変更', {action: 'edit_user_authority', id: admin.id} %></td>
+        <td><%= link_to '退会', {action: 'delete_user', id: admin.id}, confirm: "Are you sure to delete '#{admin.full_name}'?" %></td>
       </tr>
     <% end %>
   </table>
@@ -68,7 +70,7 @@
       <th class="mail">Mail Address</th>
       <th class="full_name">Invited by</th>
       <th class="date">Birthday</th>
-      <th class="menu"></th>
+      <th class="menu" colspan="2"></th>
     </tr>
 
     <% @guest.each do |guest| %>
@@ -80,6 +82,7 @@
         <td><%= User.find(guest.invited_by).full_name %></td>
         <td><%= guest.birthday %></td>
         <td><%= link_to '権限変更', {action: 'edit_user_authority', id: guest.id} %></td>
+        <td><%= link_to '退会', {action: 'delete_user', id: guest.id}, confirm: "Are you sure to delete '#{guest.full_name}'?" %></td>
       </tr>
     <% end %>
   </table>
