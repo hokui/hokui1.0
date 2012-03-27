@@ -131,10 +131,10 @@ class SystemController < ApplicationController
     end
   end
 
-  def invite_user_from_list
+  def invite_users_from_list
   end
 
-  def register_user_from_list
+  def register_users_from_list
     data_rows=params[:list].split(/(\r\n?|\n?)/)
     linedata.each do |line|
       register_user(line)

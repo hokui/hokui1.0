@@ -14,20 +14,21 @@
     <h1>教科関係</h1>
     <section>
       <ul>
-        <li><%= link_to '教科', subjects_path %></li>
-        <li><%= link_to '学期', terms_path %></li>
+        <li><%= link_to '教科', {controller: 'system', action: 'subjects'} %></li>
+        <li><%= link_to '学期', {controller: 'system', action: 'terms'} %></li>
       </ul>
     </section>
     <h1>BBS</h1>
     <section>
       <ul>
-        <li><%= link_to 'BBSグループ一覧', bbs_groups_path %></li>
+        <li><%= link_to 'BBSグループ一覧', {controller: 'system', action: 'bbs_groups'} %></li>
       </ul>
     </section>
     <h1>メンバー管理</h1>
     <section>
       <ul>
-        <li><%= link_to 'メンバー一括招待', '/admin/system/invite_members' %></li>
+        <li><%= link_to 'メンバー詳細管理', {controller: 'system', action: 'users_detail'} %></li>
+        <li><%= link_to 'メンバー一括招待', {controller: 'system', action: 'invite_users_from_list'} %></li>
       </ul>
     </section>
   </nav>
