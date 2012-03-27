@@ -16,7 +16,7 @@
   <% @exams.each do |exam| %>
     <tr>
       <td><%= exam.id %></td>
-      <td><%= exam.subject.screen_title %></td>
+      <td><%= exam.subject.title_ja %></td>
       <td><%= exam.year %></td>
       <td><%= exam.number %></td>
       <td><%= exam.q_a.upcase %></td>

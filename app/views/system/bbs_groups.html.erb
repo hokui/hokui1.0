@@ -1,0 +1,22 @@
+<h1>BBSグループ管理</h1>
+<% if @notice.blank? %>
+<section>
+  <table class="admin-index">
+    <tr>
+      <th class="id"></th>
+      <th class="title">Title</th>
+      <th class="bool">is_a_term</th>
+    </tr>
+
+  <% @bbs_groups.each do |bbs_group| %>
+    <tr>
+      <td><%= bbs_group.id %></td>
+      <td><%= bbs_group.title %></td>
+      <td><%= bbs_group.is_a_term %></td>
+    </tr>
+  <% end %>
+  </table>
+</section>
+<% else %>
+  <%= @notice %>
+<% end %>

@@ -1,0 +1,26 @@
+<h1>教科管理</h1>
+<% if @notice.blank? %>
+<section>
+  <table class="admin-index">
+    <tr>
+      <th class="id"></th>
+      <th class="term">Term</th>
+      <th class="sub">title_ja</th>
+      <th class="sub-en">title_en</th>
+      <th class="bbs-topic">BBS-Topic</th>
+    </tr>
+
+  <% @subjects.each do |subject| %>
+    <tr>
+      <td><%= subject.id %></td>
+      <td><%= subject.term.title %></td>
+      <td><%= subject.title_ja %></td>
+      <td><%= subject.title_en %></td>
+      <td><%= subject.bbs_topic.title %></td>
+    </tr>
+  <% end %>
+  </table>
+</section>
+<% else %>
+  <%= @notice %>
+<% end %>

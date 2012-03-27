@@ -14,7 +14,7 @@
   <% @summaries.each do |summary| %>
     <tr>
       <td><%= summary.id %></td>
-      <td><%= summary.subject.screen_title %></td>
+      <td><%= summary.subject.title_ja %></td>
       <td><%= summary.number %></td>
       <td><%= summary.file_name %></td>
       <td><%= User.find(summary.uploaded_by).handle_name %></td>

@@ -15,7 +15,7 @@
   <% @quizzes.each do |quiz| %>
     <tr>
       <td><%= quiz.id %></td>
-      <td><%= quiz.subject.screen_title %></td>
+      <td><%= quiz.subject.title_ja %></td>
       <td><%= quiz.number %></td>
       <td><%= quiz.q_a.upcase %></td>
       <td><%= quiz.file_name %></td>

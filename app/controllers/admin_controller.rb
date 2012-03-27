@@ -6,7 +6,7 @@ class AdminController < ApplicationController
   end
 
   def exams
-    if Exam.all.blank?
+    if Exam.where(deleted: 0).blank?
       @notice='NO exam files exist.'
     else
       page=( params[:page] ? params[:page] : 1 )
@@ -27,7 +27,7 @@ class AdminController < ApplicationController
   end
 
   def quizzes
-    if Quiz.all.blank?
+    if Quiz.where(deleted: 0).blank?
       @notice='NO quiz files exist.'
     else
       page=( params[:page] ? params[:page] : 1 )
@@ -48,7 +48,7 @@ class AdminController < ApplicationController
   end
 
   def summaries
-    if Summary.all.blank?
+    if Summary.where(deleted: 0).blank?
       @notice='NO summary files exist.'
     else
       page=( params[:page] ? params[:page] : 1 )
@@ -69,7 +69,7 @@ class AdminController < ApplicationController
   end
 
   def bbs_topics
-    if BbsTopic.all.blank?
+    if BbsTopic.where(deleted: 0).blank?
       @notice='NO topics exist.'
     else
       page=( params[:page] ? params[:page] : 1 )
@@ -95,7 +95,7 @@ class AdminController < ApplicationController
   end
 
   def bbs_bodies
-    if BbsBody.all.blank?
+    if BbsBody.where(deleted: 0).blank?
       @notice='NO contributions exist.'
     else
       page=( params[:page] ? params[:page] : 1 )
@@ -120,14 +120,14 @@ class AdminController < ApplicationController
                 .select('id, authority, full_name, handle_name, mail, invited_by')
                 .order('id ASC')
     if User.where(authority: 'admin').blank?
-      @notice_admin='NO admin users are registered.'
+      @notice_admin='NO admin users registered.'
     else
       @admin=User.where(authority: 'admin')
                  .select('id, authority, full_name, handle_name, mail, invited_by')
                  .order('id ASC')
     end
     if User.where(authority: 'guest').blank?
-      @notice_guest='NO guest users are registered.'
+      @notice_guest='NO guest users registered.'
     else
       @guest=User.where(authority: 'guest')
                  .select('id, authority, full_name, handle_name, mail, invited_by')

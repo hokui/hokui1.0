@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120325151600) do
+ActiveRecord::Schema.define(:version => 20120327140000) do
 
   create_table "bbs_bodies", :force => true do |t|
     t.integer  "bbs_topic_id", :null => false
@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(:version => 20120325151600) do
   end
 
   create_table "bbs_groups", :force => true do |t|
-    t.string   "title"
+    t.string   "title",        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_a_term"
+    t.boolean  "is_a_term",    :null => false
   end
 
   create_table "bbs_topics", :force => true do |t|
@@ -72,15 +72,12 @@ ActiveRecord::Schema.define(:version => 20120325151600) do
 
   create_table "subjects", :force => true do |t|
     t.integer  "term_id",      :null => false
-    t.string   "page_title",   :null => false
-    t.string   "screen_title", :null => false
+    t.string   "title_ja",     :null => false
+    t.string   "title_en",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "bbs_topic_id"
+    t.integer  "bbs_topic_id", :null => false
   end
-
-  add_index "subjects", ["page_title"], :name => "index_subjects_on_page_title", :unique => true
-  add_index "subjects", ["screen_title"], :name => "index_subjects_on_screen_title", :unique => true
 
   create_table "summaries", :force => true do |t|
     t.integer  "subject_id",   :null => false
@@ -96,10 +93,10 @@ ActiveRecord::Schema.define(:version => 20120325151600) do
   end
 
   create_table "terms", :force => true do |t|
-    t.string   "title"
+    t.string   "title",        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "bbs_group_id"
+    t.integer  "bbs_group_id", :null => false
   end
 
   create_table "users", :force => true do |t|
