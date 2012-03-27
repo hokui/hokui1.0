@@ -9,6 +9,7 @@
       <th class="mail">Mail Address</th>
       <th class="full_name">Invited by</th>
       <th class="date">Birthday</th>
+      <th class="menu"></th>
     </tr>
 
     <% @system.each do |system| %>
@@ -19,6 +20,7 @@
         <td><%= system.mail %></td>
         <td><%= User.find(system.invited_by).full_name %></td>
         <td><%= system.birthday %></td>
+        <td><%= link_to '権限変更', {action: 'edit_user_authority', id: system.id} %></td>
       </tr>
     <% end %>
   </table>
@@ -35,6 +37,7 @@
       <th class="mail">Mail Address</th>
       <th class="full_name">Invited by</th>
       <th class="date">Birthday</th>
+      <th class="menu"></th>
     </tr>
 
     <% @admin.each do |admin| %>
@@ -45,6 +48,7 @@
         <td><%= admin.mail %></td>
         <td><%= User.find(admin.invited_by).full_name %></td>
         <td><%= admin.birthday %></td>
+        <td><%= link_to '権限変更', {action: 'edit_user_authority', id: admin.id} %></td>
       </tr>
     <% end %>
   </table>
@@ -64,6 +68,7 @@
       <th class="mail">Mail Address</th>
       <th class="full_name">Invited by</th>
       <th class="date">Birthday</th>
+      <th class="menu"></th>
     </tr>
 
     <% @guest.each do |guest| %>
@@ -74,6 +79,7 @@
         <td><%= guest.mail %></td>
         <td><%= User.find(guest.invited_by).full_name %></td>
         <td><%= guest.birthday %></td>
+        <td><%= link_to '権限変更', {action: 'edit_user_authority', id: guest.id} %></td>
       </tr>
     <% end %>
   </table>

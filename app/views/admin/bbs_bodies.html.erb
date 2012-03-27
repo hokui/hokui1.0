@@ -8,6 +8,7 @@
       <th class="user_name">User</th>
       <th class="text">text</th>
       <th class="datetime">posted_at</th>
+      <th class="menu"></th>
     </tr>
 
   <% @bbs_bodys.each do |bbs_body| %>
@@ -17,6 +18,7 @@
       <td><%= bbs_body.user.handel_name %></td>
       <td><%= bbs_body.text %></td>
       <td><%= bbs_body.created_at %></td>
+      <td><%= link_to '削除', {action: 'delete_bbs_body', id: bbs_body.id } %></td>
     </tr>
   <% end %>
   </table>
