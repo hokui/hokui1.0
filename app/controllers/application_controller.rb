@@ -10,19 +10,19 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    unless User.find_by_id(session[:user_id])
+    unless User.find(session[:user_id])
       redirect_to controller: 'sessions', action: 'new'
     end
   end
 
   def admin_authorize
-    unless User.find_by_id(session[:user_id]).authority=="admin" or User.find_by_id(session[:user_id]).authority=="system"
+    unless User.find(session[:user_id]).authority=="admin" or User.find(session[:user_id]).authority=="system"
       redirect_to controller: 'index', action: 'index', notice: 'you do not have a permission.'
     end
   end
 
   def system_authorize
-    unless User.find_by_id(session[:user_id]).authority=="system"
+    unless User.find(session[:user_id]).authority=="system"
       redirect_to controller: 'index', action: 'index', notice: 'you do not have a permission.'
     end
   end

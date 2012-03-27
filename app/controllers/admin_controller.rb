@@ -86,7 +86,7 @@ class AdminController < ApplicationController
     bbs_topic.deleted=1
     bbs_topic.deleted_by=session[:user_id]
     bbs_topic.save
-    bbs_bodies=BbsBody.find_by_bbs_topid_id(bbs_topic.id)
+    bbs_bodies=BbsBody.find_all_by_bbs_topic_id(bbs_topic.id)
     bbs_bodies.each do |bbs_body|
       bbs_body.topic_deleted=1
       bbs_body.save

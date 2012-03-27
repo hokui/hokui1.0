@@ -118,16 +118,16 @@ class SystemController < ApplicationController
   end
 
   def users_detail
-    @system=User.find_by_authority('system')
+    @system=User.find_all_by_authority('system')
     if User.find_by_authority('admin').blank?
       @notice_admin='NO admin users registered.'
     else
-      @admin=User.find_by_authority('admin')
+      @admin=User.find_all_by_authority('admin')
     end
     if User.find_by_authority('guest').blank?
       @notice_guest='NO guest users registered.'
     else
-      @guest=User.find_by_authority('guest')
+      @guest=User.find_all_by_authority('guest')
     end
   end
 

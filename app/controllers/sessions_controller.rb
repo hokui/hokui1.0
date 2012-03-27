@@ -5,9 +5,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user=User.find_by_mail(params[:mail])
-    p user.password_digest, params[:password]
-    if user && user.authenticate(params[:password])
+    if User.find_by_mail(params[:mail]).blank?
+      redirect_to action: 'new', notice: 'invalid email'
+    else
+      user=User.find_by_mail(params[:mail])
+    end
+    if user.authenticate(params[:password])
       session[:user_id]=user.id
       if user.full_name.blank? or user.handle_name.blank?
         redirect_to '/profile', notice: 'Please input user information'
@@ -15,8 +18,7 @@ class SessionsController < ApplicationController
         redirect_to root_url
       end
     else
-      flash.now.alert="Invalid mail or password"
-      redirect_to action: 'new'
+      redirect_to action: 'new', notice: 'invalid password'
     end
   end
 
