@@ -1,0 +1,13 @@
+<h1>新科目</h1>
+
+<%= form_tag { controller: 'system', action: 'create_subject'} do %>
+  学期を選択<br />
+  <%= collection_select('term_id', Term.all, :id, :title, selected: Term.maximum('id')) %>
+  教科名（日）<br />
+  <%= text_field_tag 'title_ja' %><br />
+  教科名（英）<br />
+  <%= text_field_tag 'title_en' %><br />
+  教員<br />
+  <%= text_field_tag 'teacher' %>
+  <%= submit_tag 'submit' %>
+<% end %>

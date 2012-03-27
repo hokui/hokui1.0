@@ -1,6 +1,6 @@
 <h1>メンバーを招待</h1>
 
-<%= form_tag {controller: 'admin', action: 'register_user'} %>
+<%= form_tag {controller: 'admin', action: 'register_user'} do %>
   メールアドレス<br />
   <%= email_field_tag 'mail' %><br />
   <%= submit_tag '登録' %>

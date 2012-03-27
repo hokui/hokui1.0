@@ -29,6 +29,7 @@ class SystemController < ApplicationController
     term.title=params[:title]
     term.bbs_group_id=bbs_group.id
     term.save
+    redirect_to action: 'terms'
   end
 
   def update_term
@@ -38,6 +39,7 @@ class SystemController < ApplicationController
     bbs_group=BbsGroup.find(term.bbs_group_id)
     bbs_group.title=params[:title]
     bbs_group.save
+    redirect_to action: 'terms'
   end
 
   def subjects
@@ -57,7 +59,7 @@ class SystemController < ApplicationController
 
   def create_subject
     bbs_topic=BbsTopic.new
-    bbs_topic.title=params[:title]
+    bbs_topic.title=params[:title_ja]
     bbs_topic.user_id=session[:user_id]
     bbs_topic.deleted=0
     bbs_topic.bbs_group_id=Term.find(params[:term_id]).bbs_group_id
@@ -69,6 +71,7 @@ class SystemController < ApplicationController
     subject.bbs_topic_id=bbs_topic.id
     subject.teacher=params[:teacher]
     subject.save
+    redirect_to action: 'subjects'
   end
 
   def update_subject
@@ -81,6 +84,7 @@ class SystemController < ApplicationController
     bbs_topic=BbsTopic.find(subject.bbs_topic_id)
     bbs_topic.title=params[:title]
     bbs_topic.save
+    redirect_to action: 'subjects'
   end
 
   def bbs_groups
@@ -103,12 +107,14 @@ class SystemController < ApplicationController
     bbs_group.title=params[:title]
     bbs_group.is_a_term=0
     bbs_group.save
+    redirect_to action: 'bbs_groups'
   end
 
   def update_bbs_group
     bbs_group=BbsGroup.find(params[:id])
     bbs_group.title=params[:title]
     bbs_group.save
+    redirect_to action: 'bbs_groups'
   end
 
   def users_detail
@@ -133,6 +139,7 @@ class SystemController < ApplicationController
     linedata.each do |line|
       register_user(line)
     end
+    redirect_to action: 'users_detail'
   end
 
   def register_user(mail)

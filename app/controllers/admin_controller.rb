@@ -151,5 +151,6 @@ class AdminController < ApplicationController
     if user.save
       #send_mail
     end
+    redirect_to action: 'users'
   end
 end
