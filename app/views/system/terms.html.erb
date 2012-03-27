@@ -8,11 +8,11 @@
       <th class="bbs_group">BBS-Group</th>
     </tr>
 
-  <% @bbs_groups.each do |bbs_group| %>
+  <% @terms.each do |term| %>
     <tr>
-      <td><%= bbs_group.id %></td>
-      <td><%= bbs_group.title %></td>
-      <td><%= bbs_group.bbs_group_title %></td>
+      <td><%= term.id %></td>
+      <td><%= term.title %></td>
+      <td><%= term.bbs_group_title %></td>
     </tr>
   <% end %>
   </table>
