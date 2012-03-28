@@ -1,0 +1,11 @@
+<h1>新規過去問ファイルをアップロード</h1>
+
+<%= form_tag action: 'create_exam' do %>
+  教科を選択<br />
+  <%= select_tag('subject_id', option_groups_from_collection_for_select(Term.all, :subjects, :title, :id, :title_ja, @subject_id)) %><br />
+  <%= select_year(Time.now, start_year: Time.now.year-10, end_year: Time.now.year) %>年度<br />
+  第<%= select_tag('number', options_from_collection_for_select((1..10).to_a, 'to_i', 'to_i')) %>回<br />
+  問題or解答<%= select_tag('q_a', options_for_select({'選択' => '', '問題' => 'q', '解答' => 'a'}, '')) %><br />
+  ファイル<%= file_field_tag('file') %><br />
+  <%= submit_tag 'submit' %>
+<% end %>

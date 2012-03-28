@@ -1,43 +1,33 @@
 Med93::Application.routes.draw do
 
-  get '/logout', to: 'sessions#destroy'
-  get '/login', to: 'sessions#new'
+=begin
   match 'subject/:id', to: 'subject#subject'
-  get '/profile', to: 'users#edit'
-  get '/profile/change_password', to: 'users#change_password'
   match '/bbs_bodies/return_bbs_data/:bbs_topic_id/:page', to: 'bbs_bodies#return_bbs_data'
   match '/bbs_bodies/create_bbs_window/:bbs_topic_id/', to: 'bbs_bodies#create_bbs_window'
   get '/admin/index', to: 'admin#index'
   get '/admin/system', to: 'admin#system'
   get '/admin/system/invite_members', to: 'users#invite_from_list'
-  resources :users
-
-  resources :bbs_bodies
-
-  resources :bbs_topics
-
-  resources :bbs_groups
-
-  resources :terms
-
-  resources :summaries
-
-  resources :quizzes
-
-  resources :exams
-
-  resources :subjects
-
-  #get "mail/index"
-  #get "bbs/index"
-  #get "calender/index"
-  #get "subject/index"
-  #get "index/index"
-  #get "index/sns"
-  #get "index/about"
+  match ':controller(/:action(/:id(.:format)))'
+=end
 
   root to: 'index#index'
-  match ':controller(/:action(/:id(.:format)))'
+
+  get '/login', to: 'sessions#new'
+  get '/logout', to: 'sessions#destroy'
+
+  get '/profile', to: 'users#edit' # TODO create profile_controller
+  get '/profile', to: 'users#change_password'
+
+  match '/admin/:action', controller: 'admin'
+  match '/system/:action', controller: 'system'
+
+  match '/subject/:action(/:id)', controller: 'subject'
+
+  get '/calender/index'
+  get '/bbs/index'
+  get '/mail/index'
+  get '/index/sns'
+  get '/index/about'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

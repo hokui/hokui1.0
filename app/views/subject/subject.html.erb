@@ -15,7 +15,7 @@
 
 <h2>授業資料</h2>
 <section class="subject-database">
-  <%= link_to '新規', action: 'new_summary' %><br />
+  <%= link_to '新規', {action: 'new_summary', id: @subject.id } %><br />
   <% if @notice_summary.blank? %>
     <ul class="subject-summary">
       <% @summaries.each do |summary| %>
@@ -32,7 +32,7 @@
 
 <h2>小テスト</h2>
 <section class="subject-database">
-  <%= link_to '新規', action: 'new_quiz' %><br />
+  <%= link_to '新規', {action: 'new_quiz', id: @subject.id} %><br />
   <% if @notice_quiz.blank? %>
     <ul class="subject-quiz">
       <% @quizzes.each do |quiz| %>
@@ -57,7 +57,7 @@
 
 <h2>過去問</h2>
 <section class="subject-database">
-  <%= link_to '新規', action: 'new_exam' %><br />
+  <%= link_to '新規', {action: 'new_exam', @subject.id} %><br />
   <% if @notice_exam.blank? %>
     <ul class="subject-exam">
       <% @exams.each do |exam| %>
@@ -87,5 +87,8 @@
 <h2>質問掲示板</h2>
 <p>雑談現金！雑談は<%= link_to '雑談板', {controller: 'bbs', action: 'index'} %>で！</p>
 <section id="subject-billboard">
-  <%= render 'bbs_bodies/bbs_window', bbs_topic_id: @bbs_topic.id %>
+  BBS service, COMING SOON!
+  <% if nil %>
+    <%= render 'bbs_bodies/bbs_window', bbs_topic_id: @bbs_topic.id %>
+  <% end %>
 </section>

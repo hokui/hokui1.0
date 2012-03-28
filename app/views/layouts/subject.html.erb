@@ -5,7 +5,9 @@
   <%= stylesheet_link_tag "subject" %>
 <% end %>
 <% content_for :javascript do %>
-  <%= javascript_include_tag "subject" %>
+  <% if nil %>  
+    <%= javascript_include_tag "subject" %>
+  <% end %>
 <% end %>
 
 <% content_for :content do %>
@@ -16,7 +18,7 @@
       <ul>
       <% Subject.where(term_id: term.id).each do |subject| %>
         <li>
-          <%= link_to subject.title_ja, "/subject/#{subject.id}" %>
+          <%= link_to subject.title_ja, "/subject/subject/#{subject.id}" %>
         </li>
       <% end %>
       </ul>
