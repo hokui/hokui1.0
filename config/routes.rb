@@ -13,10 +13,13 @@ Med93::Application.routes.draw do
   root to: 'index#index'
 
   get '/login', to: 'sessions#new'
+  post 'sessions/create', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
   get '/profile', to: 'users#edit' # TODO create profile_controller
-  get '/profile', to: 'users#change_password'
+  get '/profile/change_password', to: 'users#change_password'
+  post '/users/update_password', to: 'users#update_password'
+  resources :users
 
   match '/admin/:action', controller: 'admin'
   match '/system/:action', controller: 'system'
