@@ -67,7 +67,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to '/', notice: 'User was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -102,7 +102,7 @@ class UsersController < ApplicationController
     if @user.authenticate(params[:password])
       @user.password=params[:new_password]
       @user.save
-      redirect_to "/users/edit/#{session[:user_id]}"
+      redirect_to "/profile"
     else
       redirect_to action: 'change_password'
     end
