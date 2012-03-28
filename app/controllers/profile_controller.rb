@@ -14,3 +14,4 @@ class ProfileController < ApplicationController
   def update_password
     user=User.find(session[:user_id])
   end
+end
