@@ -93,7 +93,7 @@ class UsersController < ApplicationController
   end
 
   def update_password
-    if params[:new_password]!=params[:new_password_confirm]
+    if params[:new_password]!=params[:new_password_confirm] or prams [:new_password].blank?
       redirect_to action: 'change_password'
       return
     end

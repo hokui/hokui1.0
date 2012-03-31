@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    unless User.find(session[:user_id])
+    if session[:user_id].blank? or User.find(session[:user_id]).blank?
       redirect_to controller: 'sessions', action: 'new'
     end
   end
