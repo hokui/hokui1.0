@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    user=User.find_by_mail(params[:mail])
     if user==nil
       # TODO BUG 条件分岐は読まれてるけど、なぜかredirect先に飛ばない
       redirect_to controller: 'sessions', action: 'new'
