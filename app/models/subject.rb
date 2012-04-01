@@ -4,4 +4,21 @@ class Subject < ActiveRecord::Base
   has_many :exams
   has_many :quizzes
   has_many :summaries
+
+  validates :term_id,
+    presence: true,
+    format: {with: /^[0-9]+$/}
+  validates :title_ja,
+    presence: true,
+    uniqueness: true
+  validates :title_en,
+    presence: true,
+    uniqueness: true,
+    format: {with: /^[a-z_]$/}
+  validates :bbs_topic_id,
+    presence: true,
+    uniqueness: true,
+    format: {with: /^[0-9]+$/}
+  validates :teacher,
+    presence: true
 end
