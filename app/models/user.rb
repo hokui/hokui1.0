@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+=begin
   validates :full_name,
     uniqueness: true,
     length: {in: 2..8}
@@ -22,4 +23,5 @@ class User < ActiveRecord::Base
   validates :invited_by,
     presence: true,
     format: {with: /^[0-9]+$/}
+=end
 end

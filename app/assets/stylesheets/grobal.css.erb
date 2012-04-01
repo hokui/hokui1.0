@@ -2,10 +2,19 @@ body
 {
   margin: 0;
   padding: 0;
-  background-color: #ff99ff;
+  background-image: url(<%= asset_path 'grobal-image/grobal-bg.png' %>);
+  background-repeat: repeat;
   font-size: 14px;
   color: #3e3e3e;
   letter-spacing: 0.1em;
+}
+
+#grobal-dummy-wrapper
+{
+  width: 1102px;
+  margin: 0 auto;
+  background-image: url(<%= asset_path 'grobal-image/grobal-bg-side.png' %>);
+  background-repeat: repeat-y;
 }
 
 #grobal-wrapper

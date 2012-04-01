@@ -11,24 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120327140000) do
+ActiveRecord::Schema.define(:version => 20120401123658) do
 
   create_table "bbs_bodies", :force => true do |t|
-    t.integer  "bbs_topic_id", :null => false
-    t.integer  "user_id",      :null => false
-    t.text     "text",         :null => false
-    t.boolean  "deleted",      :null => false
+    t.integer  "bbs_topic_id",  :null => false
+    t.integer  "user_id",       :null => false
+    t.text     "text",          :null => false
+    t.boolean  "deleted",       :null => false
     t.integer  "deleted_by"
-    t.boolean  "topic_deleted",:null => false
+    t.boolean  "topic_deleted", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "bbs_groups", :force => true do |t|
-    t.string   "title",        :null => false
+    t.string   "title",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_a_term",    :null => false
+    t.boolean  "is_a_term",  :null => false
   end
 
   create_table "bbs_topics", :force => true do |t|
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(:version => 20120327140000) do
     t.string   "file_name",    :null => false
     t.integer  "uploaded_by",  :null => false
     t.boolean  "deleted",      :null => false
-    t.integer  "deleted_by",   :null => false
+    t.integer  "deleted_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20120327140000) do
     t.string   "authority"
     t.integer  "invited_by"
     t.string   "password_digest"
+    t.integer  "new_column"
   end
 
 end
