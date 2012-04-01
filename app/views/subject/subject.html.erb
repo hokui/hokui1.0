@@ -20,7 +20,7 @@
     <ul class="subject-summary">
       <% @summaries.each do |summary| %>
         <li>
-        <span class="subject-database-number">第<%= summary.number %>回</span>&nbsp;&nbsp;
+        <span class="subject-database-number">第<%= summary.number %>回</span>
         <%= link_to 'DL', { controller: 'summaries', action: 'download', id: summary.id } %>
         </li>
       <% end %>
@@ -38,13 +38,13 @@
       <% quiz_temp_number=0 %>
       <% @quizzes.each do |quiz| %>
         <li>
-        <% if quiz.number!=quiz_temp_number %>
-          <span class="subject-database-number">第<%= quiz.number %>回</span>&nbsp;
-        <% end %>
+        <span class="subject-database-number">
+          <% if quiz.number!=quiz_temp_number %>第<%= quiz.number %>回<% end %>
+        </span>
         <% if quiz.q_a=='q' %>
-          <span class="subject-database-q">問題</span>&nbsp;&nbsp;
+          <span class="subject-database-q">問題</span>
         <% else %>
-          <span class="subject-database-a">解答</span>&nbsp;&nbsp;
+          <span class="subject-database-a">解答</span>
         <% end %>
         <%= link_to 'DL', { controller: 'quizzes', action: 'download', id: quiz.id } %>
         </li>
@@ -65,16 +65,16 @@
       <% exam_temp_number=0 %>
       <% @exams.each do |exam| %>
         <li>
-        <% if exam.year!=exam_temp_year %>
-          <span class="subject-database-year"><%= exam.year %>年度</span>&nbsp;
-        <% end %>
-        <% if exam.number!=exam_temp_number %>
-          <span class="subject-database-number">第<%= exam.number %>回</span>&nbsp;
-        <% end %>
+        <span class="subject-database-year">
+          <% if exam.year!=exam_temp_year %><%= exam.year %>年度<% end %>
+        </span>
+        <span class="subject-database-number">
+          <% if exam.number!=exam_temp_number %>第<%= exam.number %>回<% end %>
+        </span>
         <% if exam.q_a=='q' %>
-          <span class="subject-database-q">問題</span>&nbsp;&nbsp;
+          <span class="subject-database-q">問題</span>
         <% else %>
-          <span class="subject-database-a">解答</span>&nbsp;&nbsp;
+          <span class="subject-database-a">解答</span>
         <% end %>
         <%= link_to 'DL', { controller: 'exams', action: 'download', id: exam.id } %>
         </li>
