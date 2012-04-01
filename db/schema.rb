@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(:version => 20120401123658) do
     t.string   "file_name",    :null => false
     t.integer  "uploaded_by",  :null => false
     t.boolean  "deleted",      :null => false
-    t.integer  "deleted_by"
+    t.integer  "deleted_by",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
