@@ -19,9 +19,15 @@ body
 {
   width: 1102px;
   height: 100%;
+  min-height: 100%;
   margin: 0 auto;
   background-image: url(<%= asset_path 'grobal-image/grobal-bg-side.png' %>);
   background-repeat: repeat-y;
+}
+
+body > #grobal-dummy-wrapper
+{
+  height: 100%;
 }
 
 #grobal-wrapper
