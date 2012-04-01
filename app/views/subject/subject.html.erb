@@ -35,7 +35,7 @@
   <%= link_to '新規', {action: 'new_quiz', id: @subject.id} %><br />
   <% if @notice_quiz.blank? %>
     <ul class="subject-quiz">
-      quiz_temp_number=0
+      <% quiz_temp_number=0 %>
       <% @quizzes.each do |quiz| %>
         <li>
         <% if quiz.number!=quiz_temp_number %>
@@ -61,8 +61,8 @@
   <%= link_to '新規', {action: 'new_exam', id: @subject.id} %><br />
   <% if @notice_exam.blank? %>
     <ul class="subject-exam">
-      exam_temp_year=0
-      exam_temp_number=0
+      <% exam_temp_year=0 %>
+      <% exam_temp_number=0 %>
       <% @exams.each do |exam| %>
         <li>
         <% if exam.year!=exam_temp_year %>
