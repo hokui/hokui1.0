@@ -5,6 +5,7 @@ class Subject < ActiveRecord::Base
   has_many :quizzes
   has_many :summaries
 
+=begin
   validates :term_id,
     presence: true,
     format: {with: /^[0-9]+$/}
@@ -21,4 +22,5 @@ class Subject < ActiveRecord::Base
     format: {with: /^[0-9]+$/}
   validates :teacher,
     presence: true
+=end
 end

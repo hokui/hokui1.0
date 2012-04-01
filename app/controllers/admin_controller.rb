@@ -13,7 +13,7 @@ class AdminController < ApplicationController
       @exams=Exam.where(deleted: 0)
                  .select('id, subject_id, year, number, q_a, file_name, uploaded_by, deleted')
                  .order('id DESC')
-                 .offset(25*(params[:page]-1))
+                 .offset(25*(page-1))
                  .limit(25)
     end
   end
@@ -34,7 +34,7 @@ class AdminController < ApplicationController
       @quizzes=Quiz.where(deleted: 0)
                    .select('id, subject_id, number, q_a, content_type, file_name, uploaded_by, deleted')
                    .order('id DESC')
-                   .offset(25*(params[:page]-1))
+                   .offset(25*(page-1))
                    .limit(25)
     end
   end
@@ -55,7 +55,7 @@ class AdminController < ApplicationController
       @summaries=Summary.where(deleted: 0)
                         .select('id, subject_id, number, content_type, file_name, uploaded_by, deleted')
                         .order('id DESC')
-                        .offset(25*(params[:page]-1))
+                        .offset(25*(page-1))
                         .limit(25)
     end
   end
@@ -76,7 +76,7 @@ class AdminController < ApplicationController
       @bbs_topics=BbsTopic.where(deleted: 0)
                           .select('id, bbs_group_id, user_id, title, deleted')
                           .order('id DESC')
-                          .offset(25*(params[:page]-1))
+                          .offset(25*(page-1))
                           .limit(25)
     end
   end
@@ -102,7 +102,7 @@ class AdminController < ApplicationController
       @bbs_bodies=BbsBody.where(deleted: 0, topic_deleted: 0)
                          .select('id, bbs_topic_id, user_id, text, deleted, topic_deleted, created_at')
                          .order('id DESC')
-                         .offset(25*(params[:page]-1))
+                         .offset(25*(page-1))
                          .limit(25)
     end
   end

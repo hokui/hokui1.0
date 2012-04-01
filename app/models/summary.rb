@@ -1,6 +1,7 @@
 class Summary < ActiveRecord::Base
   belongs_to :subject
 
+=begin
   validates :subject_id,
     presence: true,
     format: {with: /^[0-9]+$/}
@@ -22,4 +23,5 @@ class Summary < ActiveRecord::Base
     format: {with: /^[0-1]$/}
   validates :deleted_by,
     format: {with: /^[0-9]+$/}
+=end
 end
