@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 class Term < ActiveRecord::Base
   belongs_to :bbs_group
   has_many :subjects
