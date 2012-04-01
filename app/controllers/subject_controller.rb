@@ -38,7 +38,7 @@ class SubjectController < ApplicationController
   def create_exam
     exam=Exam.new
     exam.subject_id=params[:subject_id]
-    exam.year=params[:year]
+    exam.year=params[:date][:year]
     exam.number=params[:number]
     exam.q_a=params[:q_a]
     exam.file=params[:file].read
@@ -52,7 +52,7 @@ class SubjectController < ApplicationController
     exam.uploaded_by=session[:user_id]
     exam.deleted=0
     exam.save
-    redirect_to action: 'exams'
+    redirect_to action: 'subject', id: params[:subject_id]
   end
 
   def update_exam
@@ -82,7 +82,7 @@ class SubjectController < ApplicationController
     quiz.uploaded_by=session[:user_id]
     quiz.deleted=0
     quiz.save
-    redirect_to action: 'quizzes'
+    redirect_to action: 'subject', id: params[:subject_id]
   end
 
   def update_quiz
@@ -110,7 +110,7 @@ class SubjectController < ApplicationController
     summary.uploaded_by=session[:user_id]
     summary.deleted=0
     summary.save
-    redirect_to action: 'summaries'
+    redirect_to action: 'subject', id: params[:subject_id]
   end
 
   def update_summary

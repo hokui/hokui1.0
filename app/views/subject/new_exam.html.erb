@@ -1,6 +1,6 @@
 <h1>新規過去問ファイルをアップロード</h1>
 
-<%= form_tag action: 'create_exam' do %>
+<%= form_tag({action: 'create_exam'}, {multipart: true}) do %>
   教科を選択<br />
   <%= select_tag('subject_id', option_groups_from_collection_for_select(Term.all, :subjects, :title, :id, :title_ja, @subject_id)) %><br />
   <%= select_year(Time.now, start_year: Time.now.year-10, end_year: Time.now.year) %>年度<br />
