@@ -25,6 +25,9 @@ Med93::Application.routes.draw do
   match '/system/:action', controller: 'system'
 
   match '/subject/:action(/:id)', controller: 'subject'
+  get '/exams/download'
+  get '/quizzes/download'
+  get '/summaries/download'
 
   get '/calender/index'
   get '/bbs/index'
