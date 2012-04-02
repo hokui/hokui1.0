@@ -5,5 +5,4 @@ log/*.log
 tmp/
 .sass-cache/
 public/assets/
-config/database.yml
-config/initializers/secret_token.rb
+config/
