@@ -1,7 +1,6 @@
 class Quiz < ActiveRecord::Base
   belongs_to :subject
 
-=begin
   validates :subject_id,
     presence: true,
     format: {with: /^[0-9]+$/}
@@ -21,10 +20,4 @@ class Quiz < ActiveRecord::Base
   validates :uploaded_by,
     presence: true,
     format: {with: /^[0-9]+$/}
-  validates :deleted,
-    presence: true,
-    format: {with: /^[0-1]$/}
-  validates :deleted_by,
-    format: {with: /^[0-9]+$/}
-=end
 end

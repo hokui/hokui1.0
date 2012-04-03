@@ -5,7 +5,6 @@ class Subject < ActiveRecord::Base
   has_many :quizzes
   has_many :summaries
 
-=begin
   validates :term_id,
     presence: true,
     format: {with: /^[0-9]+$/}
@@ -15,12 +14,12 @@ class Subject < ActiveRecord::Base
   validates :title_en,
     presence: true,
     uniqueness: true,
-    format: {with: /^[a-z_]$/}
+    format: {with: /^[a-z_]+$/}
   validates :bbs_topic_id,
     presence: true,
     uniqueness: true,
     format: {with: /^[0-9]+$/}
   validates :teacher,
-    presence: true
-=end
+    presence: true,
+    length: {in 2..8}
 end

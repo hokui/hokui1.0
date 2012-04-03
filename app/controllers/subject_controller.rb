@@ -79,7 +79,7 @@ class SubjectController < ApplicationController
       redirect_to action: 'new_quiz', notice: 'invalid file type'
       return
     end
-    quiz.file_name="#{Subject.find(quiz.subject_id).title_en}-past_quiz-"+
+    quiz.file_name="#{Subject.find(quiz.subject_id).title_en}-quiz-"+
                    "#{quiz.number}-#{quiz.q_a}.#{ext}"
     quiz.uploaded_by=session[:user_id]
     quiz.deleted=0
