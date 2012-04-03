@@ -21,5 +21,5 @@ class Subject < ActiveRecord::Base
     format: {with: /^[0-9]+$/}
   validates :teacher,
     presence: true,
-    length: {in 2..8}
+    length: {in: 2..8}
 end
