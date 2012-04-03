@@ -9,11 +9,12 @@ class AdminController < ApplicationController
     if Exam.where(deleted: 0).blank?
       @notice='NO exam files exist.'
     else
-      page=( params[:page] ? params[:page] : 1 )
+      @page=( params[:page] ? params[:page] : 1 )
+      @page_max=Exam.where(deleted: 0).count/25+1
       @exams=Exam.where(deleted: 0)
                  .select('id, subject_id, year, number, q_a, file_name, uploaded_by, deleted')
                  .order('id DESC')
-                 .offset(25*(page-1))
+                 .offset(25*(@page-1))
                  .limit(25)
     end
   end
@@ -30,11 +31,12 @@ class AdminController < ApplicationController
     if Quiz.where(deleted: 0).blank?
       @notice='NO quiz files exist.'
     else
-      page=( params[:page] ? params[:page] : 1 )
+      @page=( params[:page] ? params[:page] : 1 )
+      @page_max=Quiz.where(deleted: 0).count/25+1
       @quizzes=Quiz.where(deleted: 0)
                    .select('id, subject_id, number, q_a, content_type, file_name, uploaded_by, deleted')
                    .order('id DESC')
-                   .offset(25*(page-1))
+                   .offset(25*(@page-1))
                    .limit(25)
     end
   end
@@ -51,11 +53,12 @@ class AdminController < ApplicationController
     if Summary.where(deleted: 0).blank?
       @notice='NO summary files exist.'
     else
-      page=( params[:page] ? params[:page] : 1 )
+      @page=( params[:page] ? params[:page] : 1 )
+      @page_max=Summary.where(deleted: 0).count/25+1
       @summaries=Summary.where(deleted: 0)
                         .select('id, subject_id, number, content_type, file_name, uploaded_by, deleted')
                         .order('id DESC')
-                        .offset(25*(page-1))
+                        .offset(25*(@page-1))
                         .limit(25)
     end
   end
@@ -72,11 +75,12 @@ class AdminController < ApplicationController
     if BbsTopic.where(deleted: 0).blank?
       @notice='NO topics exist.'
     else
-      page=( params[:page] ? params[:page] : 1 )
+      @page=( params[:page] ? params[:page] : 1 )
+      @page_max=BbsTopic.where(deleted: 0).count/25+1
       @bbs_topics=BbsTopic.where(deleted: 0)
                           .select('id, bbs_group_id, user_id, title, deleted')
                           .order('id DESC')
-                          .offset(25*(page-1))
+                          .offset(25*(@page-1))
                           .limit(25)
     end
   end
@@ -98,12 +102,13 @@ class AdminController < ApplicationController
     if BbsBody.where(deleted: 0).blank?
       @notice='NO contributions exist.'
     else
-      page=( params[:page] ? params[:page] : 1 )
+      @page=( params[:page] ? params[:page] : 1 )
+      @page_max=BbsBody.where(deleted: 0,topic_deleted: 0).count/100+1
       @bbs_bodies=BbsBody.where(deleted: 0, topic_deleted: 0)
                          .select('id, bbs_topic_id, user_id, text, deleted, topic_deleted, created_at')
                          .order('id DESC')
-                         .offset(25*(page-1))
-                         .limit(25)
+                         .offset(100*(@page-1))
+                         .limit(100)
     end
   end
 

@@ -22,6 +22,14 @@
     </tr>
   <% end %>
   </table>
+  <p class="pagenation">
+  <% for page in 1..@page_max %>
+    <% if page=@page %>
+      <%= page %>&nbsp;
+    <% else %>
+      <%= link_to page, {controller: 'admin', action: 'bbs_bodies', page: page} %>&nbsp;
+    <% end %>
+  <% end %>
 </section>
 <% else %>
   <%= @notice %>
