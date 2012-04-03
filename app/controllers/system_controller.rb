@@ -154,7 +154,7 @@ class SystemController < ApplicationController
     user.password=temp_password
     user.authority='guest'
     if user.save
-      NoticeMailer.registration_confirm(user.mail, temp_password, User.find(user.invited_by).full_name)
+      NoticeMailer.registration_confirm(user.mail, temp_password, User.find(user.invited_by).full_name).deliver
     end
   end
 
