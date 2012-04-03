@@ -45,7 +45,7 @@ class SubjectController < ApplicationController
     exam.content_type=params[:file].content_type
     ext=check_content_type(exam.content_type)
     if ext==nil
-      redirect_to 'new_exam', notice: 'invalid file type'
+      redirect_to action: 'new_exam', notice: 'invalid file type'
       return
     end
     exam.file_name="#{Subject.find(exam.subject_id).title_en}-past_exam-"+
@@ -76,7 +76,7 @@ class SubjectController < ApplicationController
     quiz.content_type=params[:file].content_type
     ext=check_content_type(quiz.content_type)
     if ext==nil
-      redirect_to 'new_quiz', notice: 'invalid file type'
+      redirect_to action: 'new_quiz', notice: 'invalid file type'
       return
     end
     quiz.file_name="#{Subject.find(quiz.subject_id).title_en}-past_quiz-"+
@@ -106,7 +106,7 @@ class SubjectController < ApplicationController
     summary.content_type=params[:file].content_type
     ext=check_content_type(summary.content_type)
     if ext==nil
-      redirect_to 'new_summary', notice: 'invalid file type'
+      redirect_to action: 'new_summary', notice: 'invalid file type'
       return
     end
     summary.file_name="#{Subject.find(summary.subject_id).title_en}-summary-#{summary.number}.#{ext}"
