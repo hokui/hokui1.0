@@ -6,13 +6,13 @@ class SessionsController < ApplicationController
   def create
     user=User.find_by_mail(params[:mail])
     if user==nil
-      # TODO BUG 条件分岐は読まれてるけど、なぜかredirect先に飛ばない
       redirect_to controller: 'sessions', action: 'new'
+      return
     end
     if user.authenticate(params[:password])
       session[:user_id]=user.id
       if user.full_name.blank? or user.handle_name.blank?
-        redirect_to '/profile', notice: 'Please input user information'
+        redirect_to '/profile/edit_password', notice: 'Please input user information'
       else
         redirect_to root_url
       end

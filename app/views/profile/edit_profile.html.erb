@@ -1,0 +1,17 @@
+<h1>ユーザー情報変更</h1>
+
+<%= form_tag({action: 'update_profile'}) do %>
+  氏名（本名を入力してください。空白は無視されます。）<br />
+  <%= text_field_tag :full_name, @user.full_name %><br />
+  ハンドルネーム<br />
+  <%= text_field_tag :handle_name, @user.handle_name %><br />
+  生年月日<br />
+  <%= select_date @user.birthday, prefix: :birthday, order: [:year, :month, :day], use_month_numbers: true, start_year: 1980, end_year: 1995, default: @user.birthday %><br />
+  メールアドレス<br />
+  <%= text_field_tag :mail, @user.mail %><br />
+  <%= submit_tag 'submit' %>
+<% end %>
+
+<p>
+<%= link_to 'パスワード変更', action: 'edit_password' %>
+</p>
