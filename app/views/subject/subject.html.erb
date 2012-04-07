@@ -10,6 +10,12 @@
     <dd>&nbsp;&nbsp;<%= @subject.title_ja %></dd>
     <dt>担当教員</dt>
     <dd>&nbsp;&nbsp;<%= @subject.teacher %></dd>
+    <dt>使用教科書</dt>
+    <dd><ul>
+      <% @textbooks.each do |text| %>
+        <li><%= text %></li>
+      <% end %>
+    </ul></dd>
   </dl>
 </section>
 

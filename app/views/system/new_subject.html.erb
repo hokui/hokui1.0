@@ -9,5 +9,7 @@
   <%= text_field_tag 'title_en' %><br />
   教員<br />
   <%= text_field_tag 'teacher' %><br />
+  教科書:複数ある場合は、改行で区切ってください。<br />
+  <%= text_area_tag 'textbooks' %><br />
   <%= submit_tag 'submit' %>
 <% end %>

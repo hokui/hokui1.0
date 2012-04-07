@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403000000) do
+ActiveRecord::Schema.define(:version => 20120407050033) do
 
   create_table "bbs_bodies", :force => true do |t|
     t.integer  "bbs_topic_id",  :null => false
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20120403000000) do
     t.datetime "updated_at"
     t.integer  "bbs_topic_id", :null => false
     t.string   "teacher",      :null => false
+    t.string   "textbooks"
   end
 
   create_table "summaries", :force => true do |t|
@@ -106,10 +107,11 @@ ActiveRecord::Schema.define(:version => 20120403000000) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "birthday"
-    t.string   "mail",         :null => false
-    t.string   "authority",    :null => false
-    t.integer  "invited_by",   :null => false
+    t.string   "mail"
+    t.string   "authority"
+    t.integer  "invited_by"
     t.string   "password_digest"
+    t.integer  "new_column"
   end
 
 end

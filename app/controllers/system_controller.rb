@@ -70,6 +70,7 @@ class SystemController < ApplicationController
     subject.term_id=params[:term_id]
     subject.bbs_topic_id=bbs_topic.id
     subject.teacher=params[:teacher]
+    subject.textbooks=params[:textbooks]
     subject.save
     redirect_to action: 'subjects'
   end
@@ -80,6 +81,7 @@ class SystemController < ApplicationController
     subject.title_en=params[:title_en]
     subject.term_id=params[:term_id]
     subject.teacher=params[:teacher]
+    subject.textbooks=params[:textbooks]
     subject.save
     bbs_topic=BbsTopic.find(subject.bbs_topic_id)
     bbs_topic.title=params[:title]
