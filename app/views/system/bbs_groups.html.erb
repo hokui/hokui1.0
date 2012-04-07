@@ -6,6 +6,7 @@
       <th class="id"></th>
       <th class="title">Title</th>
       <th class="bool">is_a_term</th>
+      <th class="menu"></th>
     </tr>
 
   <% @bbs_groups.each do |bbs_group| %>
@@ -13,6 +14,11 @@
       <td><%= bbs_group.id %></td>
       <td><%= bbs_group.title %></td>
       <td><%= bbs_group.is_a_term %></td>
+      <% if bbs_group.is_a_term %>
+        <td></td>
+      <% else %>
+        <td><%= link_to 'edit', {action: 'edit_bbs_group', id: bbs_group.id} %></td>
+      <% end %>
     </tr>
   <% end %>
   </table>

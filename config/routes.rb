@@ -22,7 +22,7 @@ Med93::Application.routes.draw do
   resources :users
 
   match '/admin/:action', controller: 'admin'
-  match '/system/:action', controller: 'system'
+  match '/system/:action(/:id)', controller: 'system'
 
   match '/subject/:action(/:id)', controller: 'subject'
   get '/exams/download'

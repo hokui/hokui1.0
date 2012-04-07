@@ -1,0 +1,16 @@
+<h1>教科情報を修正</h1>
+
+<%= form_tag controller: 'system', action: 'update_subject' do %>
+  <%= hidden_field_tag :id, @subject.id %>
+  学期を選択<br />
+  <%= select_tag('term_id', options_from_collection_for_select(Term.all, :id, :title, @subject.term_id)) %><br />
+  教科名（日）<br />
+  <%= text_field_tag 'title_ja', @subject.title_ja %><br />
+  教科名（英）<br />
+  <%= text_field_tag 'title_en', @subject.title_en %><br />
+  教員<br />
+  <%= text_field_tag 'teacher', @subject.teacher %><br />
+  教科書:複数ある場合は、改行で区切ってください。<br />
+  <%= text_area_tag 'textbooks', @subject.textbooks %><br />
+  <%= submit_tag 'submit' %>
+<% end %>

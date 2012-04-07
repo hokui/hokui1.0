@@ -84,7 +84,7 @@ class SystemController < ApplicationController
     subject.textbooks=params[:textbooks]
     subject.save
     bbs_topic=BbsTopic.find(subject.bbs_topic_id)
-    bbs_topic.title=params[:title]
+    bbs_topic.title=params[:title_ja]
     bbs_topic.save
     redirect_to action: 'subjects'
   end

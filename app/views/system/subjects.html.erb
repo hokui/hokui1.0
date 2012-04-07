@@ -10,6 +10,7 @@
       <th class="full_name">Teacher</th>
       <th class="textbooks">Textbooks</th>
       <th class="id">BBS-Topic</th>
+      <th class="menu"></th>
     </tr>
 
   <% @subjects.each do |subject| %>
@@ -21,6 +22,7 @@
       <td><%= subject.teacher %></td>
       <td><%= subject.textbooks %></td>
       <td><%= subject.bbs_topic_id %></td>
+      <td><%= link_to 'edit', {action: 'edit_subject', id: subject.id} %></td>
     </tr>
   <% end %>
   </table>

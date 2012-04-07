@@ -1,0 +1,8 @@
+<h1>BBSグループ名を編集</h1>
+
+<%= form_tag controller: 'system', action: 'update_bbs_group' do %>
+  <%= hidden_field_tag :id, @bbs_group.id %>
+  タイトル<br />
+  <%= text_field_tag 'title', @bbs_group.title %><br />
+  <%= submit_tag 'submit' %>
+<% end %>

@@ -1,0 +1,8 @@
+<h1>学期名を編集</h1>
+
+<%= form_tag controller: 'system', action: 'update_term' do %>
+  <%= hidden_field_tag :id, @term.id %>
+  学期名<br />
+  <%= text_field_tag 'title', @term.title %><br />
+  <%= submit_tag 'submit' %>
+<% end %>
