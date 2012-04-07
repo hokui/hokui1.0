@@ -1,2 +1,65 @@
-<h1>Index#about</h1>
-<p>Find me in app/views/index/about.html.erb</p>
+<% @index_page=false; @subject_page=false; @calender_page=false; %>
+<% @bbs_page=false; @mail_page=false; @sns_page=false; @about_page=true %>
+
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "about" %>
+<% end %>
+
+<% content_for :content do %>
+<div id=grobal-main-column>
+<h1>About Us</h1>
+<h2>ホクイネットとは</h2>
+<section>
+  ホクイネットは、北海道大学医学部医学科93期生がより快適な大学生活を<br />
+  送ることができるように作成されたものです。<br />
+  私達は、以下の機能を提供します。
+  <ul class=about-function>
+    <li>各講義の授業資料・小テスト・過去問の共有</li>
+    <li>BBS（予定）</li>
+    <li>カレンダー、イベント共有（予定）</li>
+    <li>ML連携サービス（予定）</li>
+    <li>Twitter/Facebook連携サービス（予定）</li>
+  </ul>
+</section>
+
+<h2>開発チーム</h2>
+<section>
+  <dl id=about-team>
+    <dt>Rikiya KAMENO</dt>
+    <dd><ul>
+      <li>Project Leader</li>
+      <li>Server Engineer</li>
+      <li>Public Relation Worker</li>
+    </ul></dd>
+    <dt>Takeshi ITOH</dt>
+    <dd><ul>
+      <li>Programmer</li>
+      <li>Server Engineer</li>
+    </ul></dd>
+    <dt>Nana MUNAKATA</dt>
+    <dd><ul>
+      <li>Web designer</li>
+    </ul></dd>
+    <dt>Akari MINEMURA</dt>
+    <dd><ul>
+      <li>Web designer<li>
+    </ul></dd>
+  </dl>
+</section>
+
+<h2>公式連絡先</h2>
+<section>
+  <p>
+  ホクイネットを利用するには、管理者によるメンバー登録が必要です。<br />
+  あなたのまわりで参加を希望する方がいる場合は、下記のアドレスにご一報ください。
+  </p>
+  <p>
+  また、バグを発見したり、機能面に関するご意見・ご不満などがありました場合も、<br />
+  以下のアドレスにご一報ください。
+  </p>
+  <p>hokui93.net at gmail.com （atを@に直してください。）</p>
+</section>
+</div>
+<% end %>
+
+<%= render template: 'layouts/application' %>

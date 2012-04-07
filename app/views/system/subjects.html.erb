@@ -7,7 +7,8 @@
       <th class="term">Term</th>
       <th class="sub">title_ja</th>
       <th class="sub-en">title_en</th>
-      <th class="bbs-topic">BBS-Topic</th>
+      <th class="full_name">Teacher</th>
+      <th class="id">BBS-Topic</th>
     </tr>
 
   <% @subjects.each do |subject| %>
@@ -16,7 +17,8 @@
       <td><%= subject.term.title %></td>
       <td><%= subject.title_ja %></td>
       <td><%= subject.title_en %></td>
-      <td><%= subject.bbs_topic.title %></td>
+      <td><%= subject.teacher %></td>
+      <td><%= subject.bbs_topic_id %></td>
     </tr>
   <% end %>
   </table>

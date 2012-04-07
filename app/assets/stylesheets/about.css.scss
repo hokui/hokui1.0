@@ -1,0 +1,21 @@
+ul.about-function
+{
+  margin: 5px 0 0 10px;
+
+  li {line-height: 1.5em;}
+}
+
+dl#about-team{
+  margin: 5px 0 0 10px;
+
+  dt { margin-left: 5px;}
+  dd {
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    ul li {
+      line-height: 1.5em;
+    }
+  }
+}
+

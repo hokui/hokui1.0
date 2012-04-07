@@ -5,14 +5,14 @@
     <tr>
       <th class="id"></th>
       <th class="sub">Title</th>
-      <th class="bbs_group">BBS-Group</th>
+      <th class="id">BBS-Group-ID</th>
     </tr>
 
   <% @terms.each do |term| %>
     <tr>
       <td><%= term.id %></td>
       <td><%= term.title %></td>
-      <td><%= term.bbs_group.title %></td>
+      <td><%= term.bbs_group_id %></td>
     </tr>
   <% end %>
   </table>
