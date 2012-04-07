@@ -7,7 +7,11 @@ class SubjectController < ApplicationController
 
   def subject
     @subject=Subject.find(params[:id])
-    @textbooks=@subject.textbooks.split
+    if @subject.textbooks.blank?
+      @textbooks=['NO textbooks infomation are registered']
+    else
+      @textbooks=@subject.textbooks.split
+    end
     if Summary.where(subject_id: @subject.id, deleted: 0).blank?
       @notice_summary='NO summary files exist.'
     else
