@@ -1,0 +1,10 @@
+<h1>小テストファイル情報を修正</h1>
+
+<%= form_tag({action: 'update_quiz'}) do %>
+  <%= hidden_field_tag :id, @quiz.id %>
+  教科を選択<br />
+  <%= select_tag('subject_id', option_groups_from_collection_for_select(Term.all, :subjects, :title, :id, :title_ja, @quiz.subject_id)) %><br />
+  第<%= select_tag('number', options_from_collection_for_select((1..20).to_a, 'to_i', 'to_i', @quiz.number)) %>回<br />
+  問題or解答<%= select_tag('q_a', options_for_select({'問題' => 'q', '解答' => 'a'}, @quiz.q_a)) %><br />
+  <%= submit_tag 'submit' %>
+<% end %>

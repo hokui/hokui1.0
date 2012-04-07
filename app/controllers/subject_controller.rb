@@ -58,6 +58,16 @@ class SubjectController < ApplicationController
   end
 
   def update_exam
+    exam=Exam.find(params[:id])
+    exam.subject_id=params[:subject_id]
+    exam.year=params[:date][:year]
+    exam.number=params[:number]
+    exam.q_a=params[:q_a]
+    ext=check_content_type(exam.content_type)
+    exam.file_name="#{Subject.find(exam.subject_id).title_en}-past_exam-"+
+                   "#{exam.year}-#{exam.number}-#{exam.q_a}.#{ext}"
+    exam.save
+    redirect_to action: 'subject', id: params[:subject_id]
   end
 
   def new_quiz
@@ -89,6 +99,15 @@ class SubjectController < ApplicationController
   end
 
   def update_quiz
+    quiz=Quiz.find(params[:id])
+    quiz.subject_id=params[:subject_id]
+    quiz.number=params[:number]
+    quiz.q_a=params[:q_a]
+    ext=check_content_type(quiz.content_type)
+    quiz.file_name="#{Subject.find(quiz.subject_id).title_en}-quiz-"+
+                   "#{quiz.number}-#{quiz.q_a}.#{ext}"
+    quiz.save
+    redirect_to action: 'subject', id: params[:subject_id]
   end
 
   def new_summary
@@ -118,6 +137,13 @@ class SubjectController < ApplicationController
   end
 
   def update_summary
+    summary=Summary.new
+    summary.subject_id=params[:subject_id]
+    summary.number=params[:number]
+    ext=check_content_type(summary.content_type)
+    summary.file_name="#{Subject.find(summary.subject_id).title_en}-summary-#{summary.number}.#{ext}"
+    summary.save
+    redirect_to action: 'subject', id: params[:subject_id]
   end
 
   def check_content_type(content_type)

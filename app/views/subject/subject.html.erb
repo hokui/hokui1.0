@@ -28,6 +28,7 @@
         <li>
         <span class="subject-database-number">第<%= summary.number %>回</span>
         <%= link_to 'DL', { controller: 'summaries', action: 'download', id: summary.id } %>
+        <%= link_to 'edit', { controller: 'subject', action: 'edit_summary', id: summary.id } %>
         </li>
       <% end %>
     </ul>
@@ -53,6 +54,7 @@
           <span class="subject-database-a">解答</span>
         <% end %>
         <%= link_to 'DL', { controller: 'quizzes', action: 'download', id: quiz.id } %>
+        <%= link_to 'edit', { controller: 'subject', action: 'edit_quiz', id: quiz.id } %>
         </li>
         <% quiz_temp_number=quiz.number %>
       <% end %>
@@ -83,6 +85,7 @@
           <span class="subject-database-a">解答</span>
         <% end %>
         <%= link_to 'DL', { controller: 'exams', action: 'download', id: exam.id } %>
+        <%= link_to 'edit', { controller: 'subject', action: 'edit_exam', id: exam.id } %>
         </li>
         <% exam_temp_year=exam.year %>
         <% exam_temp_number=exam.number %>

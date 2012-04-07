@@ -1,0 +1,8 @@
+<h1>授業資料ファイル情報を修正</h1>
+
+<%= form_tag({action: 'create_summary'}) do %>
+  教科を選択<br />
+  <%= select_tag('subject_id', option_groups_from_collection_for_select(Term.all, :subjects, :title, :id, :title_ja, @summary.subject_id)) %><br />
+  第<%= select_tag('number', options_from_collection_for_select((1..30).to_a, 'to_i', 'to_i', @summary.number)) %>回<br />
+  <%= submit_tag 'submit' %>
+<% end %>
