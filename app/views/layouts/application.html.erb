@@ -37,53 +37,53 @@
 
       <nav id=grobal-header-menu>
         <ul>
-          <li>
+          <li id=grobal-header-menu-home>
             <% if @index_page %>
-              <%= link_to image_tag('grobal-image/grobal-top-menu-home.gif', {alt: 'home'}), {controller: 'index', action: 'index'}, {class: 'self-link'} %>
+              <%= link_to '', {controller: 'index', action: 'index'}, {class: 'self-link'} %>
             <% else %>
-              <%= link_to image_tag('grobal-image/grobal-top-menu-home.gif', {alt: 'home'}), {controller: 'index', action: 'index'}, {class: 'other-page'} %>
+              <%= link_to '', {controller: 'index', action: 'index'}, {class: 'other-page'} %>
             <% end %>
           </li>
-          <li>
+          <li id=grobal-header-menu-study>
             <% if @subject_page %>
-              <%= link_to image_tag('grobal-image/grobal-top-menu-study.gif', {alt: 'study'}), {controller: 'subject', action: 'index'}, {class: 'self-link'} %>
+              <%= link_to '', {controller: 'subject', action: 'index'}, {class: 'self-link'} %>
             <% else %>
-              <%= link_to image_tag('grobal-image/grobal-top-menu-study.gif', {alt: 'study'}), {controller: 'subject', action: 'index'}, {class: 'other-page'} %>
+              <%= link_to '', {controller: 'subject', action: 'index'}, {class: 'other-page'} %>
             <% end %>
           </li>
-          <li>
+          <li id=grobal-header-menu-calender>
             <% if @calender_page %>
-              <%= link_to image_tag('grobal-image/grobal-top-menu-calender.gif', {alt: 'calender'}), {controller: 'calender', action: 'index'}, {class: 'self-link'} %>
+              <%= link_to '', {controller: 'calender', action: 'index'}, {class: 'self-link'} %>
             <% else %>
-              <%= link_to image_tag('grobal-image/grobal-top-menu-calender.gif', {alt: 'calender'}), {controller: 'calender', action: 'index'}, {class: 'other-page'} %>
+              <%= link_to '', {controller: 'calender', action: 'index'}, {class: 'other-page'} %>
             <% end %>
           </li>
-          <li>
+          <li id=grobal-header-menu-bbs>
             <% if @bbs_page %>
-              <%= link_to image_tag('grobal-image/grobal-top-menu-bbs.gif', {alt: 'bbs'}), {controller: 'bbs', action: 'index'}, {class: 'self-link'} %>
+              <%= link_to '', {controller: 'bbs', action: 'index'}, {class: 'self-link'} %>
             <% else %>
-              <%= link_to image_tag('grobal-image/grobal-top-menu-bbs.gif', {alt: 'bbs'}), {controller: 'bbs', action: 'index'}, {class: 'other-page'} %>
+              <%= link_to '', {controller: 'bbs', action: 'index'}, {class: 'other-page'} %>
             <% end %>
           </li>
-          <li>
+          <li id=grobal-header-menu-freeml>
             <% if @mail_page %>
-              <%= link_to image_tag('grobal-image/grobal-top-menu-freeml.gif', {alt: 'freeml'}), {controller: 'mail', action: 'index'}, {class: 'self-link'} %>
+              <%= link_to '', {controller: 'mail', action: 'index'}, {class: 'self-link'} %>
             <% else %>
-              <%= link_to image_tag('grobal-image/grobal-top-menu-freeml.gif', {alt: 'freeml'}), {controller: 'mail', action: 'index'}, {class: 'other-page'} %>
+              <%= link_to '', {controller: 'mail', action: 'index'}, {class: 'other-page'} %>
             <% end %>
           </li>
-          <li>
+          <li id=grobal-header-menu-sns>
             <% if @sns_page %>
-              <%= link_to image_tag('grobal-image/grobal-top-menu-sns.gif', {alt: 'sns'}), {controller: 'index', action: 'sns'}, {class: 'self-link'} %>
+              <%= link_to '', {controller: 'index', action: 'sns'}, {class: 'self-link'} %>
             <% else %>
-              <%= link_to image_tag('grobal-image/grobal-top-menu-sns.gif', {alt: 'sns'}), {controller: 'index', action: 'sns'}, {class: 'other-page'} %>
+              <%= link_to '', {controller: 'index', action: 'sns'}, {class: 'other-page'} %>
             <% end %>
           </li>
-          <li>
+          <li id=grobal-header-menu-about>
             <% if @about_page %>
-              <%= link_to image_tag('grobal-image/grobal-top-menu-about.gif', {alt: 'about'}), {controller: 'index', action: 'about'}, {class: 'self-link'} %>
+              <%= link_to '', {controller: 'index', action: 'about'}, {class: 'self-link'} %>
             <% else %>
-              <%= link_to image_tag('grobal-image/grobal-top-menu-about.gif', {alt: 'about'}), {controller: 'index', action: 'about'}, {class: 'other-page'} %>
+              <%= link_to '', {controller: 'index', action: 'about'}, {class: 'other-page'} %>
             <% end %>
           </li>
         </ul>

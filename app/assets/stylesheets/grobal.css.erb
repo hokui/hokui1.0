@@ -102,14 +102,36 @@ body > #grobal-dummy-wrapper
   width: 140px;
   height: 28px;
   display: inline-block;
+  background: url(<%= asset_path 'grobal-image/grobal-top-menu.gif' %>) no-repeat;
 }
 
-#grobal-header #grobal-header-menu ul li a img
-{
-  width: 140px;
-  height: 28px;
-  border: 0;
-}
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-home a           { background-position: -140px 0; }
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-home a:hover,
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-home a.self-link { background-position: 0 0; }
+
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-study a           { background-position: -140px -28px; }
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-study a:hover,
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-study a.self-link { background-position: 0 -28px; }
+
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-calender a           { background-position: -140px -56px; }
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-calender a:hover,
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-calender a.self-link { background-position: 0 -56px; }
+
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-bbs a           { background-position: -140px -84px; }
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-bbs a:hover,
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-bbs a.self-link { background-position: 0 -84px; }
+
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-freeml a           { background-position: -140px -112px; }
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-freeml a:hover,
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-freeml a.self-link { background-position: 0 -112px; }
+
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-sns a           { background-position: -140px -140px; }
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-sns a:hover,
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-sns a.self-link { background-position: 0 -140px; }
+
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-about a           { background-position: -140px -168px; }
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-about a:hover,
+#grobal-header #grobal-header-menu ul li#grobal-header-menu-about a.self-link { background-position: 0 -168px; }
 
 #grobal-contents
 {
