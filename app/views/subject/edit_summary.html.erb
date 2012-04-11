@@ -4,5 +4,6 @@
   教科を選択<br />
   <%= select_tag('subject_id', option_groups_from_collection_for_select(Term.all, :subjects, :title, :id, :title_ja, @summary.subject_id)) %><br />
   第<%= select_tag('number', options_from_collection_for_select((1..30).to_a, 'to_i', 'to_i', @summary.number)) %>回<br />
+  ファイルの概要（限りなく簡潔に）<%= text_field_tag 'description' %>
   <%= submit_tag 'submit' %>
 <% end %>

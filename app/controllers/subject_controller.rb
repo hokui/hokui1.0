@@ -15,17 +15,17 @@ class SubjectController < ApplicationController
     if Summary.where(subject_id: @subject.id, deleted: 0).blank?
       @notice_summary='NO summary files exist.'
     else
-      @summaries=Summary.where(subject_id: @subject.id, deleted: 0).select('id, number').order('number ASC')
+      @summaries=Summary.where(subject_id: @subject.id, deleted: 0).select('id, number, page, description').order('number ASC')
     end
     if Quiz.where(subject_id: @subject.id, deleted: 0).blank?
       @notice_quiz='NO quiz files exist.'
     else
-      @quizzes=Quiz.where(subject_id: @subject.id, deleted: 0).select('id, number, q_a').order('number ASC, q_a DESC')
+      @quizzes=Quiz.where(subject_id: @subject.id, deleted: 0).select('id, number, q_a, page, description').order('number ASC, q_a DESC')
     end
     if Exam.where(subject_id: @subject.id, deleted: 0).blank?
       @notice_exam='NO exam files exist.'
     else
-      @exams=Exam.where(subject_id: @subject.id, deleted: 0).select('id, year, number, q_a').order('year ASC, number ASC, q_a DESC')
+      @exams=Exam.where(subject_id: @subject.id, deleted: 0).select('id, year, number, q_a, page, description').order('year ASC, number ASC, q_a DESC')
     end
     @bbs_topic=BbsTopic.find(@subject.bbs_topic.id)
     @bbs_body=BbsBody.new
@@ -41,11 +41,13 @@ class SubjectController < ApplicationController
   end
 
   def create_exam
+    page=Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
     exam=Exam.new
     exam.subject_id=params[:subject_id]
     exam.year=params[:date][:year]
     exam.number=params[:number]
     exam.q_a=params[:q_a]
+    exam.page=page+1
     exam.file=params[:file].read
     exam.content_type=params[:file].content_type
     ext=check_content_type(exam.content_type)
@@ -54,22 +56,26 @@ class SubjectController < ApplicationController
       return
     end
     exam.file_name="#{Subject.find(exam.subject_id).title_en}-past_exam-"+
-                   "#{exam.year}-#{exam.number}-#{exam.q_a}.#{ext}"
+                   "#{exam.year}-#{exam.number}-#{exam.q_a}-#{exam.page}.#{ext}"
     exam.uploaded_by=session[:user_id]
     exam.deleted=0
+    exam.description=params[:description]
     exam.save
     redirect_to action: 'subject', id: params[:subject_id]
   end
 
   def update_exam
+    page=Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
     exam=Exam.find(params[:id])
     exam.subject_id=params[:subject_id]
     exam.year=params[:date][:year]
     exam.number=params[:number]
     exam.q_a=params[:q_a]
+    exam.page=page+1
     ext=check_content_type(exam.content_type)
     exam.file_name="#{Subject.find(exam.subject_id).title_en}-past_exam-"+
-                   "#{exam.year}-#{exam.number}-#{exam.q_a}.#{ext}"
+                   "#{exam.year}-#{exam.number}-#{exam.q_a}-#{exam.page}.#{ext}"
+    exam.description=params[:description]
     exam.save
     redirect_to action: 'subject', id: params[:subject_id]
   end
@@ -83,10 +89,12 @@ class SubjectController < ApplicationController
   end
 
   def create_quiz
+    page=Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
     quiz=Quiz.new
     quiz.subject_id=params[:subject_id]
     quiz.number=params[:number]
     quiz.q_a=params[:q_a]
+    quiz.page=page+1
     quiz.file=params[:file].read
     quiz.content_type=params[:file].content_type
     ext=check_content_type(quiz.content_type)
@@ -95,21 +103,25 @@ class SubjectController < ApplicationController
       return
     end
     quiz.file_name="#{Subject.find(quiz.subject_id).title_en}-quiz-"+
-                   "#{quiz.number}-#{quiz.q_a}.#{ext}"
+                   "#{quiz.number}-#{quiz.q_a}-#{quiz.page}.#{ext}"
     quiz.uploaded_by=session[:user_id]
     quiz.deleted=0
+    quiz.description=params[:description]
     quiz.save
     redirect_to action: 'subject', id: params[:subject_id]
   end
 
   def update_quiz
+    page=Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
     quiz=Quiz.find(params[:id])
     quiz.subject_id=params[:subject_id]
     quiz.number=params[:number]
     quiz.q_a=params[:q_a]
+    quiz.page=page+1
     ext=check_content_type(quiz.content_type)
     quiz.file_name="#{Subject.find(quiz.subject_id).title_en}-quiz-"+
-                   "#{quiz.number}-#{quiz.q_a}.#{ext}"
+                   "#{quiz.number}-#{quiz.q_a}-#{quiz.page}.#{ext}"
+    quiz.description=params[:description]
     quiz.save
     redirect_to action: 'subject', id: params[:subject_id]
   end
@@ -123,9 +135,11 @@ class SubjectController < ApplicationController
   end
 
   def create_summary
+    page=Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0).maximum('page')
     summary=Summary.new
     summary.subject_id=params[:subject_id]
     summary.number=params[:number]
+    summary.page=page+1
     summary.file=params[:file].read
     summary.content_type=params[:file].content_type
     ext=check_content_type(summary.content_type)
@@ -133,19 +147,23 @@ class SubjectController < ApplicationController
       redirect_to action: 'new_summary', notice: 'invalid file type'
       return
     end
-    summary.file_name="#{Subject.find(summary.subject_id).title_en}-summary-#{summary.number}.#{ext}"
+    summary.file_name="#{Subject.find(summary.subject_id).title_en}-summary-#{summary.number}-#{summary.page}.#{ext}"
     summary.uploaded_by=session[:user_id]
     summary.deleted=0
+    summary.description=params[:description]
     summary.save
     redirect_to action: 'subject', id: params[:subject_id]
   end
 
   def update_summary
+    page=Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0).maximum('page')
     summary=Summary.new
     summary.subject_id=params[:subject_id]
     summary.number=params[:number]
+    summary.page=page+1
     ext=check_content_type(summary.content_type)
-    summary.file_name="#{Subject.find(summary.subject_id).title_en}-summary-#{summary.number}.#{ext}"
+    summary.file_name="#{Subject.find(summary.subject_id).title_en}-summary-#{summary.number}-#{summary.page}.#{ext}"
+    summary.description=params[:description]
     summary.save
     redirect_to action: 'subject', id: params[:subject_id]
   end

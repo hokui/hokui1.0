@@ -6,5 +6,6 @@
   第<%= select_tag('number', options_from_collection_for_select((1..20).to_a, 'to_i', 'to_i')) %>回<br />
   問題or解答<%= select_tag('q_a', options_for_select({'選択' => '', '問題' => 'q', '解答' => 'a'}, '')) %><br />
   ファイル<%= file_field_tag('file') %><br />
+  ファイルの概要（限りなく簡潔に）<%= text_field_tag 'description' %>
   <%= submit_tag 'submit' %>
 <% end %>
