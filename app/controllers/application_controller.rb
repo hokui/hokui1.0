@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   before_filter :authorize
   before_filter :set_charset
 
+  RAILS_ROOT='/home/hokui93/app/med93'
+
   protect_from_forgery
 
   private

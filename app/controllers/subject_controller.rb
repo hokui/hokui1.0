@@ -43,7 +43,7 @@ class SubjectController < ApplicationController
   end
 
   def create_exam
-    if Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0) == nil
+    if Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0).blank?
       page=0
     else
       page=Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
@@ -67,7 +67,7 @@ class SubjectController < ApplicationController
     exam.description=params[:description]
     exam.save
 
-    File.open(RAILS_ROOT+'/public/files/' + exam.file_name, 'w') do |f|
+    File.open(RAILS_ROOT+'/public/files/' + exam.file_name, 'wb') do |f|
       f.write(params[:file].read)
     end
 
@@ -82,7 +82,7 @@ class SubjectController < ApplicationController
   end
 
   def update_exam
-    if Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0) == nil
+    if Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0).blank?
       page=0
     else
       page=Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
@@ -107,7 +107,6 @@ class SubjectController < ApplicationController
     update.subject_id=params[:subject_id]
     update.type='更新'
     update.data_type='過去問'
-    update.file_id=exam.id
 
     redirect_to action: 'subject', id: params[:subject_id]
   end
@@ -121,7 +120,7 @@ class SubjectController < ApplicationController
   end
 
   def create_quiz
-    if Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0) == nil
+    if Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0).blank?
       page=0
     else
       page=Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
@@ -144,7 +143,7 @@ class SubjectController < ApplicationController
     quiz.description=params[:description]
     quiz.save
 
-    File.open(RAILS_ROOT+'/public/files/' + quiz.file_name, 'w') do |f|
+    File.open(RAILS_ROOT+'/public/files/' + quiz.file_name, 'wb') do |f|
       f.write(params[:file].read)
     end
 
@@ -153,13 +152,13 @@ class SubjectController < ApplicationController
     update.subject_id=params[:subject_id]
     update.type='up'
     update.data_type='小テスト'
-    update.file_id=exam.id
+    update.file_id=quiz.id
 
     redirect_to action: 'subject', id: params[:subject_id]
   end
 
   def update_quiz
-    if Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0) == nil
+    if Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0).blank?
       page=0
     else
       page=Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
@@ -183,7 +182,6 @@ class SubjectController < ApplicationController
     update.subject_id=params[:subject_id]
     update.type='更新'
     update.data_type='小テスト'
-    update.file_id=exam.id
 
     redirect_to action: 'subject', id: params[:subject_id]
   end
@@ -197,7 +195,7 @@ class SubjectController < ApplicationController
   end
 
   def create_summary
-    if Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0) == nil
+    if Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0).blank?
       page=0
     else
       page=Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0).maximum('page')
@@ -218,7 +216,7 @@ class SubjectController < ApplicationController
     summary.description=params[:description]
     summary.save
 
-    File.open(RAILS_ROOT+'/public/files/' + summary.file_name, 'w') do |f|
+    File.open(RAILS_ROOT+'/public/files/' + summary.file_name, 'wb') do |f|
       f.write(params[:file].read)
     end
 
@@ -227,13 +225,13 @@ class SubjectController < ApplicationController
     update.subject_id=params[:subject_id]
     update.type='up'
     update.data_type='授業資料'
-    update.file_id=exam.id
+    update.file_id=summary.id
 
     redirect_to action: 'subject', id: params[:subject_id]
   end
 
   def update_summary
-    if Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0) == nil
+    if Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0).blank?
       page=0
     else
       page=Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0).maximum('page')
@@ -255,7 +253,6 @@ class SubjectController < ApplicationController
     update.subject_id=params[:subject_id]
     update.type='更新'
     update.data_type='授業資料'
-    update.file_id=exam.id
 
     redirect_to action: 'subject', id: params[:subject_id]
   end
