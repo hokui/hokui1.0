@@ -41,7 +41,11 @@ class SubjectController < ApplicationController
   end
 
   def create_exam
-    page=Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
+    if Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0) == nil
+      page=0
+    else
+      page=Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
+    end
     exam=Exam.new
     exam.subject_id=params[:subject_id]
     exam.year=params[:date][:year]
@@ -65,7 +69,11 @@ class SubjectController < ApplicationController
   end
 
   def update_exam
-    page=Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
+    if Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0) == nil
+      page=0
+    else
+      page=Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
+    end
     exam=Exam.find(params[:id])
     exam.subject_id=params[:subject_id]
     exam.year=params[:date][:year]
@@ -89,7 +97,11 @@ class SubjectController < ApplicationController
   end
 
   def create_quiz
-    page=Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
+    if Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0) == nil
+      page=0
+    else
+      page=Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
+    end
     quiz=Quiz.new
     quiz.subject_id=params[:subject_id]
     quiz.number=params[:number]
@@ -112,7 +124,11 @@ class SubjectController < ApplicationController
   end
 
   def update_quiz
-    page=Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
+    if Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0) == nil
+      page=0
+    else
+      page=Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
+    end
     quiz=Quiz.find(params[:id])
     quiz.subject_id=params[:subject_id]
     quiz.number=params[:number]
@@ -135,7 +151,11 @@ class SubjectController < ApplicationController
   end
 
   def create_summary
-    page=Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0).maximum('page')
+    if Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0) == nil
+      page=0
+    else
+      page=Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0).maximum('page')
+    end
     summary=Summary.new
     summary.subject_id=params[:subject_id]
     summary.number=params[:number]
@@ -156,7 +176,11 @@ class SubjectController < ApplicationController
   end
 
   def update_summary
-    page=Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0).maximum('page')
+    if Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0) == nil
+      page=0
+    else
+      page=Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0).maximum('page')
+    end
     summary=Summary.new
     summary.subject_id=params[:subject_id]
     summary.number=params[:number]
