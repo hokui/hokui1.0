@@ -21,7 +21,7 @@
           <% @subject_updates.each do |update| %>
             <li>
             <span class="index-update-date"><%= update.created_at %></span>
-            <span class="index-update-info"><%= update.subject.title_ja %>の<%= update.data_type %>を<%= update.type %></span>
+            <span class="index-update-info"><%= update.subject.title_ja %>の<%= update.data_type %>を<%= update.update_type %></span>
             </li>
           <% end %>
         </ul>
