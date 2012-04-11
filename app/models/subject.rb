@@ -4,6 +4,7 @@ class Subject < ActiveRecord::Base
   has_many :exams
   has_many :quizzes
   has_many :summaries
+  has_many :subject_updates
 
   validates :term_id,
     presence: true,
