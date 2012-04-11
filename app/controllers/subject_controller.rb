@@ -77,6 +77,7 @@ class SubjectController < ApplicationController
     update.type='up'
     update.data_type='過去問'
     update.file_id=exam.id
+    update.save
 
     redirect_to action: 'subject', id: params[:subject_id]
   end
@@ -107,6 +108,7 @@ class SubjectController < ApplicationController
     update.subject_id=params[:subject_id]
     update.type='更新'
     update.data_type='過去問'
+    update.save
 
     redirect_to action: 'subject', id: params[:subject_id]
   end
@@ -153,6 +155,7 @@ class SubjectController < ApplicationController
     update.type='up'
     update.data_type='小テスト'
     update.file_id=quiz.id
+    update.save
 
     redirect_to action: 'subject', id: params[:subject_id]
   end
@@ -182,6 +185,7 @@ class SubjectController < ApplicationController
     update.subject_id=params[:subject_id]
     update.type='更新'
     update.data_type='小テスト'
+    update.save
 
     redirect_to action: 'subject', id: params[:subject_id]
   end
@@ -226,6 +230,7 @@ class SubjectController < ApplicationController
     update.type='up'
     update.data_type='授業資料'
     update.file_id=summary.id
+    update.save
 
     redirect_to action: 'subject', id: params[:subject_id]
   end
@@ -253,6 +258,7 @@ class SubjectController < ApplicationController
     update.subject_id=params[:subject_id]
     update.type='更新'
     update.data_type='授業資料'
+    update.save
 
     redirect_to action: 'subject', id: params[:subject_id]
   end
