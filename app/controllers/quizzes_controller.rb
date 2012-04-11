@@ -116,8 +116,8 @@ class QuizzesController < ApplicationController
   end
 
   def download
-    @quiz = Quiz.find(params[:id])
+    quiz = Quiz.find(params[:id])
 
-    send_data(@quiz.file, filename: @quiz.file_name, content_type: @quiz.content_type)
+    send_file(RAILS_ROOT+'/public/files/' + quiz.file_name, filename: quiz.file_name, content_type: quiz.content_type)
   end
 end

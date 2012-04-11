@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120411110715) do
+ActiveRecord::Schema.define(:version => 20120411124629) do
 
   create_table "bbs_bodies", :force => true do |t|
     t.integer  "bbs_topic_id",  :null => false
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(:version => 20120411110715) do
     t.integer  "year",         :null => false
     t.integer  "number",       :null => false
     t.string   "q_a",          :null => false
-    t.binary   "file",         :null => false
     t.string   "content_type", :null => false
     t.string   "file_name",    :null => false
     t.integer  "uploaded_by",  :null => false
@@ -62,7 +61,6 @@ ActiveRecord::Schema.define(:version => 20120411110715) do
     t.integer  "subject_id",   :null => false
     t.integer  "number",       :null => false
     t.string   "q_a",          :null => false
-    t.binary   "file",         :null => false
     t.string   "content_type", :null => false
     t.string   "file_name",    :null => false
     t.integer  "uploaded_by",  :null => false
@@ -72,6 +70,16 @@ ActiveRecord::Schema.define(:version => 20120411110715) do
     t.datetime "updated_at"
     t.integer  "page"
     t.string   "description"
+  end
+
+  create_table "subject_updates", :force => true do |t|
+    t.integer  "subject_id"
+    t.integer  "user_id"
+    t.string   "type"
+    t.string   "data_type"
+    t.integer  "file_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "subjects", :force => true do |t|
@@ -88,7 +96,6 @@ ActiveRecord::Schema.define(:version => 20120411110715) do
   create_table "summaries", :force => true do |t|
     t.integer  "subject_id",   :null => false
     t.integer  "number",       :null => false
-    t.binary   "file",         :null => false
     t.string   "content_type", :null => false
     t.string   "file_name",    :null => false
     t.integer  "uploaded_by",  :null => false

@@ -125,8 +125,8 @@ class ExamsController < ApplicationController
   end
 
   def download
-    @exam = Exam.find(params[:id])
+    exam = Exam.find(params[:id])
 
-    send_data(@exam.file, filename: @exam.file_name, content_type: @exam.content_type)
+    send_file(RAILS_ROOT+'/public/files/' + exam.file_name, filename: exam.file_name, content_type: exam.content_type)
   end
 end

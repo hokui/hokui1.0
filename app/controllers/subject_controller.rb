@@ -1,3 +1,5 @@
+# -*- encoding:utf8 -*-
+
 class SubjectController < ApplicationController
 
   layout "subject"
@@ -52,7 +54,6 @@ class SubjectController < ApplicationController
     exam.number=params[:number]
     exam.q_a=params[:q_a]
     exam.page=page+1
-    exam.file=params[:file].read
     exam.content_type=params[:file].content_type
     ext=check_content_type(exam.content_type)
     if ext==nil
@@ -66,11 +67,15 @@ class SubjectController < ApplicationController
     exam.description=params[:description]
     exam.save
 
+    File.open(RAILS_ROOT+'/public/files/' + exam.file_name, 'w') do |f|
+      f.write(params[:file].read)
+    end
+
     update=SubjectUpdate.new
     update.user_id=session[:user_id]
     update.subject_id=params[:subject_id]
-    update.type='create'
-    update.data_type='exam'
+    update.type='up'
+    update.data_type='過去問'
     update.file_id=exam.id
 
     redirect_to action: 'subject', id: params[:subject_id]
@@ -83,6 +88,7 @@ class SubjectController < ApplicationController
       page=Exam.where(subject_id: params[:subject_id], year: params[:date][:year], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
     end
     exam=Exam.find(params[:id])
+    old_file_name=exam.file_name
     exam.subject_id=params[:subject_id]
     exam.year=params[:date][:year]
     exam.number=params[:number]
@@ -94,11 +100,13 @@ class SubjectController < ApplicationController
     exam.description=params[:description]
     exam.save
 
+    File.rename(RAILS_ROOT+'/public/files/' + old_file_name, RAILS_ROOT+'/public/files/' + exam.file_name)
+
     update=SubjectUpdate.new
     update.user_id=session[:user_id]
     update.subject_id=params[:subject_id]
-    update.type='update'
-    update.data_type='exam'
+    update.type='更新'
+    update.data_type='過去問'
     update.file_id=exam.id
 
     redirect_to action: 'subject', id: params[:subject_id]
@@ -123,7 +131,6 @@ class SubjectController < ApplicationController
     quiz.number=params[:number]
     quiz.q_a=params[:q_a]
     quiz.page=page+1
-    quiz.file=params[:file].read
     quiz.content_type=params[:file].content_type
     ext=check_content_type(quiz.content_type)
     if ext==nil
@@ -137,11 +144,15 @@ class SubjectController < ApplicationController
     quiz.description=params[:description]
     quiz.save
 
+    File.open(RAILS_ROOT+'/public/files/' + quiz.file_name, 'w') do |f|
+      f.write(params[:file].read)
+    end
+
     update=SubjectUpdate.new
     update.user_id=session[:user_id]
     update.subject_id=params[:subject_id]
-    update.type='create'
-    update.data_type='quiz'
+    update.type='up'
+    update.data_type='小テスト'
     update.file_id=exam.id
 
     redirect_to action: 'subject', id: params[:subject_id]
@@ -154,6 +165,7 @@ class SubjectController < ApplicationController
       page=Quiz.where(subject_id: params[:subject_id], number: params[:number], q_a: params[:q_a], deleted: 0).maximum('page')
     end
     quiz=Quiz.find(params[:id])
+    old_file_name=quiz.file_name
     quiz.subject_id=params[:subject_id]
     quiz.number=params[:number]
     quiz.q_a=params[:q_a]
@@ -164,11 +176,13 @@ class SubjectController < ApplicationController
     quiz.description=params[:description]
     quiz.save
 
+    File.rename(RAILS_ROOT+'/public/files/' + old_file_name, RAILS_ROOT+'/public/files/' + quiz.file_name)
+
     update=SubjectUpdate.new
     update.user_id=session[:user_id]
     update.subject_id=params[:subject_id]
-    update.type='update'
-    update.data_type='quiz'
+    update.type='更新'
+    update.data_type='小テスト'
     update.file_id=exam.id
 
     redirect_to action: 'subject', id: params[:subject_id]
@@ -192,7 +206,6 @@ class SubjectController < ApplicationController
     summary.subject_id=params[:subject_id]
     summary.number=params[:number]
     summary.page=page+1
-    summary.file=params[:file].read
     summary.content_type=params[:file].content_type
     ext=check_content_type(summary.content_type)
     if ext==nil
@@ -205,11 +218,15 @@ class SubjectController < ApplicationController
     summary.description=params[:description]
     summary.save
 
+    File.open(RAILS_ROOT+'/public/files/' + summary.file_name, 'w') do |f|
+      f.write(params[:file].read)
+    end
+
     update=SubjectUpdate.new
     update.user_id=session[:user_id]
     update.subject_id=params[:subject_id]
-    update.type='create'
-    update.data_type='summary'
+    update.type='up'
+    update.data_type='授業資料'
     update.file_id=exam.id
 
     redirect_to action: 'subject', id: params[:subject_id]
@@ -221,7 +238,8 @@ class SubjectController < ApplicationController
     else
       page=Summary.where(subject_id: params[:subject_id], number: params[:number], deleted: 0).maximum('page')
     end
-    summary=Summary.new
+    summary=Summary.find(params[:id])
+    old_file_name=summary.file_name
     summary.subject_id=params[:subject_id]
     summary.number=params[:number]
     summary.page=page+1
@@ -230,11 +248,13 @@ class SubjectController < ApplicationController
     summary.description=params[:description]
     summary.save
 
+    File.rename(RAILS_ROOT+'/public/files/' + old_file_name, RAILS_ROOT+'/public/files/' + summary.file_name)
+
     update=SubjectUpdate.new
     update.user_id=session[:user_id]
     update.subject_id=params[:subject_id]
-    update.type='update'
-    update.data_type='summary'
+    update.type='更新'
+    update.data_type='授業資料'
     update.file_id=exam.id
 
     redirect_to action: 'subject', id: params[:subject_id]

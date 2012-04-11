@@ -114,8 +114,8 @@ class SummariesController < ApplicationController
   end
 
   def download
-    @summary = Summary.find(params[:id])
+    summary = Summary.find(params[:id])
 
-    send_data(@summary.file, filename: @summary.file_name, content_type: @summary.content_type)
+    send_file(RAILS_ROOT+'/public/files/' + summary.file_name, filename: summary.file_name, content_type: summary.content_type)
   end
 end
