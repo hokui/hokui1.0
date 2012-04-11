@@ -16,13 +16,18 @@
       <% end %>
       <h3>更新情報</h3>
       <div class="index-update-contents" id="index-update-subject">
+      <% if @subject_update_notice.blank? %>
         <ul>
-          <li>
-            <span class="index-update-date">Apr 7, 2012</span>
-            <span class="index-update-info">ホクイネット オープン！</span>
-            <span class="index-update-info">2年前期の講義情報を登録</span>
-          </li>
+          <% @subject_updates.each do |update| %>
+            <li>
+            <span class="index-update-date"><%= update.created_at %></span>
+            <span class="index-update-info"><%= update.subject.title_ja %>の<%= update.data_type %>を<%= update.type %></span>
+            </li>
+          <% end %>
         </ul>
+      <% else %>
+        <%= @subject_update_notice %>
+      <% end %>
       </div>
     </section>
 

@@ -65,6 +65,14 @@ class SubjectController < ApplicationController
     exam.deleted=0
     exam.description=params[:description]
     exam.save
+
+    update=SubjectUpdate.new
+    update.user_id=session[:user_id]
+    update.subject_id=params[:subject_id]
+    update.type='create'
+    update.data_type='exam'
+    update.file_id=exam.id
+
     redirect_to action: 'subject', id: params[:subject_id]
   end
 
@@ -85,6 +93,14 @@ class SubjectController < ApplicationController
                    "#{exam.year}-#{exam.number}-#{exam.q_a}-#{exam.page}.#{ext}"
     exam.description=params[:description]
     exam.save
+
+    update=SubjectUpdate.new
+    update.user_id=session[:user_id]
+    update.subject_id=params[:subject_id]
+    update.type='update'
+    update.data_type='exam'
+    update.file_id=exam.id
+
     redirect_to action: 'subject', id: params[:subject_id]
   end
 
@@ -120,6 +136,14 @@ class SubjectController < ApplicationController
     quiz.deleted=0
     quiz.description=params[:description]
     quiz.save
+
+    update=SubjectUpdate.new
+    update.user_id=session[:user_id]
+    update.subject_id=params[:subject_id]
+    update.type='create'
+    update.data_type='quiz'
+    update.file_id=exam.id
+
     redirect_to action: 'subject', id: params[:subject_id]
   end
 
@@ -139,6 +163,14 @@ class SubjectController < ApplicationController
                    "#{quiz.number}-#{quiz.q_a}-#{quiz.page}.#{ext}"
     quiz.description=params[:description]
     quiz.save
+
+    update=SubjectUpdate.new
+    update.user_id=session[:user_id]
+    update.subject_id=params[:subject_id]
+    update.type='update'
+    update.data_type='quiz'
+    update.file_id=exam.id
+
     redirect_to action: 'subject', id: params[:subject_id]
   end
 
@@ -172,6 +204,14 @@ class SubjectController < ApplicationController
     summary.deleted=0
     summary.description=params[:description]
     summary.save
+
+    update=SubjectUpdate.new
+    update.user_id=session[:user_id]
+    update.subject_id=params[:subject_id]
+    update.type='create'
+    update.data_type='summary'
+    update.file_id=exam.id
+
     redirect_to action: 'subject', id: params[:subject_id]
   end
 
@@ -189,6 +229,14 @@ class SubjectController < ApplicationController
     summary.file_name="#{Subject.find(summary.subject_id).title_en}-summary-#{summary.number}-#{summary.page}.#{ext}"
     summary.description=params[:description]
     summary.save
+
+    update=SubjectUpdate.new
+    update.user_id=session[:user_id]
+    update.subject_id=params[:subject_id]
+    update.type='update'
+    update.data_type='summary'
+    update.file_id=exam.id
+
     redirect_to action: 'subject', id: params[:subject_id]
   end
 
