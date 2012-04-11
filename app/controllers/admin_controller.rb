@@ -66,7 +66,7 @@ class AdminController < ApplicationController
   def delete_summary
     summary=Summary.find(params[:id])
     summary.deleted=1
-    summary.deleted_bysession[:user_id]
+    summary.deleted_by=session[:user_id]
     summary.save
     redirect_to action: 'summaries'
   end
