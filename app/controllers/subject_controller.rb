@@ -74,7 +74,7 @@ class SubjectController < ApplicationController
     update=SubjectUpdate.new
     update.user_id=session[:user_id]
     update.subject_id=params[:subject_id]
-    update.type='up'
+    update.type='追加'
     update.data_type='過去問'
     update.file_id=exam.id
     update.save
@@ -152,7 +152,7 @@ class SubjectController < ApplicationController
     update=SubjectUpdate.new
     update.user_id=session[:user_id]
     update.subject_id=params[:subject_id]
-    update.type='up'
+    update.type='追加'
     update.data_type='小テスト'
     update.file_id=quiz.id
     update.save
@@ -227,7 +227,7 @@ class SubjectController < ApplicationController
     update=SubjectUpdate.new
     update.user_id=session[:user_id]
     update.subject_id=params[:subject_id]
-    update.type='up'
+    update.type='追加'
     update.data_type='授業資料'
     update.file_id=summary.id
     update.save
