@@ -15,7 +15,6 @@ class Quiz < ActiveRecord::Base
     format: {with: /^(q|a)$/}
   validates :file_name,
     presence: true,
-    uniqueness: true,
     format: {with: /^[a-z_]+\-quiz\-[0-9]+\-(q|a)\-[0-9]+\.(pdf|jpg|png|gif|tif|doc|docx|ppt|pptx|txt|rtf)$/}
   validates :uploaded_by,
     presence: true,

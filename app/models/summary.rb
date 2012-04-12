@@ -12,7 +12,6 @@ class Summary < ActiveRecord::Base
     format: {with: /^(text|image|application)\/[a-z0-9_\-\.]+$/}
   validates :file_name,
     presence: true,
-    uniqueness: true,
     format: {with: /^[a-z_]+\-summary\-[0-9]+\-[0-9]+\.(pdf|jpg|png|gif|tif|doc|docx|ppt|pptx|txt|rtf)$/}
   validates :uploaded_by,
     presence: true,
