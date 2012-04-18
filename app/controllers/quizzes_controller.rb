@@ -1,5 +1,5 @@
 class QuizzesController < ApplicationController
-  before_filter :admin_authorize, except: [:new, :create]
+  before_filter :admin_authorize, except: [:new, :create, :download]
 
   layout "admin"
 
